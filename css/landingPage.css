@@ -1,74 +1,426 @@
-@media screen and (max-width:700px) {
-    body{
+@media screen and (max-width:400px) {
+    body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 60% 10%;
+        grid-template-rows: 10% 80% 10%;
         grid-template-columns: auto;
-        margin:0%;
+        margin: 0%;
     }
+
     nav {
         background-color: rgb(30, 185, 242);
         grid-row: 1;
-        display:grid;
-        grid-template-columns: 70% 30%;
+        display: grid;
+        grid-template-columns: 90% 10%;
         margin: 0%;
+    }
+    p a{
+        display: none;
     }
     #logo {
-        width: 90%;
-        height:auto;
+        width: 70%;
+        height: auto;
         margin: 0%;
     }
-    #mainContent{
+
+    #mainContent {
         grid-row: 2;
         display: grid;
-        grid-template-rows: 50% 50% ;
+        grid-template-rows: 50% 50%;
     }
+
     #mainImage {
         grid-row: 1;
-        padding-left:20%;
+        padding-left: 10%;
     }
+
     figcaption {
-        color:rgb(72,103,61);
+        color: rgb(72, 103, 61);
         font-size: 1.5em;
     }
+
     #contentImage {
-        height:80%;
+        height: 80%;
     }
+
     #otherHalf {
         grid-row: 2;
         display: grid;
         grid-template-rows: 50% 50%;
-        background-color:rgb(159,236,236);
+        background-color: rgb(159, 236, 236);
     }
+
     .button1 {
-        grid-row:1;
+        grid-row: 1;
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .button2 {
-        grid-row:2;
+        grid-row: 2;
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
     }
+
     .loginButton {
-      height:50%;
-      width: 50%;  
-      border-radius: 10px;
-      border:none;
-      background-color: rgb(0,186,198);
-      color:white;
-      font-size: 1.4em;
+        height: 50%;
+        width: 50%;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(0, 186, 198);
+        color: white;
+        font-size: 1.4em;
     }
-    hr{
-        height:2px;
-        background-color: rgb(0,186,198);
+
+    .loginButton:hover {
+        background-color: white;
+        color: rgb(0, 186, 198);
+
     }
+
+    hr {
+        height: 2px;
+        background-color: rgb(0, 186, 198);
+    }
+
     footer {
-        background-color:rgb(159,236,236);
-        grid-row:3;
+        background-color: rgb(159, 236, 236);
+        grid-row: 3;
         font-style: italic;
+    }
+
+}
+
+@media screen and (min-width:400px) and (max-width:500px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 80% 10%;
+        grid-template-columns: auto;
+        margin: 0%;
+    }
+    p a{
+        display: none;
+    }
+    nav {
+        background-color: rgb(30, 185, 242);
+        grid-row: 1;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav #hamburgerIcon {
+        width: 100px;
+    }
+
+    nav .mainMenu {
+        display: none;
+    }
+
+    #logo {
+        width: 60%;
+        height: auto;
+        margin: 0%;
+
+    }
+
+    #mainContent {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
+
+    #mainImage {
+        grid-row: 1;
+        padding-left: 10%;
+    }
+
+    figcaption {
+        color: rgb(72, 103, 61);
+        font-size: 1.5em;
+    }
+
+    #contentImage {
+        height: 80%;
+    }
+
+    #otherHalf {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50%;
+        background-color: rgb(159, 236, 236);
+    }
+
+    .button1 {
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button2 {
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginButton:hover {
+        background-color: white;
+        color: rgb(0, 186, 198);
+
+    }
+
+    .loginButton {
+        height: 50%;
+        width: 50%;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(0, 186, 198);
+        color: white;
+        font-size: 1.4em;
+    }
+
+    hr {
+        height: 2px;
+        background-color: rgb(0, 186, 198);
+    }
+
+    footer {
+        background-color: rgb(159, 236, 236);
+        grid-row: 3;
+        font-style: italic;
+    }
+
+}
+
+@media screen and (min-width:501px) and (max-width:700px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 80% 10%;
+        grid-template-columns: auto;
+        margin: 0%;
+    }
+
+    nav {
+        background-color: rgb(30, 185, 242);
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        margin: 0%;
+    }
+
+    #logo {
+        width: 60%;
+        height: auto;
+        margin: 0%;
+    }
+
+    #mainContent {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
+
+    #mainImage {
+        grid-row: 1;
+        padding-left: 25%;
+    }
+
+    figcaption {
+        color: rgb(72, 103, 61);
+        font-size: 1.5em;
+    }
+
+    #contentImage {
+        height: 80%;
+    }
+
+    #otherHalf {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50%;
+        background-color: rgb(159, 236, 236);
+    }
+
+    .button1 {
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button2 {
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginButton:hover {
+        background-color: white;
+        color: rgb(0, 186, 198);
+
+    }
+
+    .loginButton {
+        height: 50%;
+        width: 50%;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(0, 186, 198);
+        color: white;
+        font-size: 1.4em;
+    }
+
+    hr {
+        height: 2px;
+        background-color: rgb(0, 186, 198);
+    }
+
+    footer {
+        background-color: rgb(159, 236, 236);
+        grid-row: 3;
+        font-style: italic;
+    }
+
+}
+
+@media screen and (min-width:701px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 80% 10%;
+        grid-template-columns: auto;
+        margin: 0%;
+        padding: 0%;
+    }
+
+    nav {
+        background-color: rgb(30, 185, 242);
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 50% 10% 10% 10% 10% 10%;
+        margin: 0%;
+    }
+
+    #logoBox {
+        grid-column: 1;
+        margin-top: 0%;
+        height: 100%;
+    }
+    nav p{
+        margin-top: 10%;
+    }
+
+    p a{
+        color:white;
+        text-decoration: none;
+        font-size: 3em;
+        
+    }
+    #nav1 {
+        grid-column: 2;
+    }
+
+    #nav2 {
+        grid-column: 3;
+    }
+
+    #nav3 {
+        grid-column: 4;
+    }
+
+    #nav4 {
+        grid-column: 5;
+    }
+
+    #nav5 {
+        grid-column: 6;
+    }
+    .flatIcon{
+        height:7%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 5%;
+        
+    }
+    #logo {
+        width: 25%;
+        height: auto;
+        margin-left: 5%;
+    }
+
+    #mainContent {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 70% 30%;
+    }
+
+    #mainImage {
+        grid-row: 1;
+        padding-left: 43%;
+    }
+
+    figcaption {
+        color: rgb(72, 103, 61);
+        font-size: 3em;
+    }
+
+    #contentImage {
+        height: 80%;
+    }
+
+    #otherHalf {
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        background-color: rgb(159, 236, 236);
+    }
+
+    .button1 {
+        grid-column: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button2 {
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginButton {
+        height: 50%;
+        width: 25%;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(0, 186, 198);
+        color: white;
+        font-size: 2em;
+    }
+
+    .loginButton:hover {
+        background-color: white;
+        color: rgb(0, 186, 198);
+
+    }
+
+    hr {
+        height: 2px;
+        background-color: rgb(0, 186, 198);
+    }
+
+    footer {
+        background-color: rgb(159, 236, 236);
+        grid-row: 3;
+        font-style: italic;
+        font-size: 2em;
     }
 
 }

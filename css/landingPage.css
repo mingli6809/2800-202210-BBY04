@@ -1,0 +1,74 @@
+@media screen and (max-width:700px) {
+    body{
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 60% 10%;
+        grid-template-columns: auto;
+        margin:0%;
+    }
+    nav {
+        background-color: rgb(30, 185, 242);
+        grid-row: 1;
+        display:grid;
+        grid-template-columns: 70% 30%;
+        margin: 0%;
+    }
+    #logo {
+        width: 90%;
+        height:auto;
+        margin: 0%;
+    }
+    #mainContent{
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50% ;
+    }
+    #mainImage {
+        grid-row: 1;
+        padding-left:20%;
+    }
+    figcaption {
+        color:rgb(72,103,61);
+        font-size: 1.5em;
+    }
+    #contentImage {
+        height:80%;
+    }
+    #otherHalf {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 50% 50%;
+        background-color:rgb(159,236,236);
+    }
+    .button1 {
+        grid-row:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .button2 {
+        grid-row:2;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+    .loginButton {
+      height:50%;
+      width: 50%;  
+      border-radius: 10px;
+      border:none;
+      background-color: rgb(0,186,198);
+      color:white;
+      font-size: 1.4em;
+    }
+    hr{
+        height:2px;
+        background-color: rgb(0,186,198);
+    }
+    footer {
+        background-color:rgb(159,236,236);
+        grid-row:3;
+        font-style: italic;
+    }
+
+}

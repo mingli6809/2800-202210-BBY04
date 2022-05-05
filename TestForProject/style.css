@@ -19,7 +19,8 @@ body {
 }
 
 .logo-image {
-    padding-left: 10px;
+    padding-left: 5px;
+    margin: auto;
 }
 
 .hamburger-menu {
@@ -51,6 +52,7 @@ body {
 }
 
 .foot-area {
+    padding-left: 15px;
     font-size: 30px;
     background-color: rgb(124, 236, 236);
 }

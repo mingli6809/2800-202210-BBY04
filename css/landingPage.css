@@ -11,12 +11,10 @@
         background-color: rgb(30, 185, 242);
         grid-row: 1;
         display: grid;
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 85% 15%;
         margin: 0%;
     }
-    p a{
-        display: none;
-    }
+    
     #logo {
         width: 70%;
         height: auto;
@@ -63,7 +61,79 @@
         justify-content: center;
         align-items: center;
     }
-
+    #menu{
+        display:none;
+        position: relative;
+        top:0%;
+        right:100%;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        height:300px;
+        width:120px;
+        background-color: rgb(30, 185, 242);
+        color:white;
+    }
+    p a{
+        color:white;
+        text-decoration: none;
+    }
+    
+    #nav1 {
+        grid-row: 1;
+        height:20px;
+        display:flex;
+        justify-content: center;
+        color:white;
+        border: 1px;
+        border-color:rgb(0, 186, 198);
+    }
+    #nav2 {
+        grid-row: 2;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav3 {
+        grid-row: 3;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav4 {
+        grid-row: 4;
+        height:20px;
+        color:white;
+        display:flex;
+        justify-content: center;
+    }
+    #nav5 {
+        grid-row: 5;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav6 {
+        grid-row: 6;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    
+    .hamburgerIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 10%;  
+    }
+    .flatIcon{
+        height: 70%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 5%;
+    }
     .loginButton {
         height: 50%;
         width: 50%;
@@ -101,22 +171,84 @@
         grid-template-columns: auto;
         margin: 0%;
     }
+    #menu{
+        display:none;
+        position: relative;
+        top:0%;
+        right:100%;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        height:300px;
+        width:120px;
+        background-color: rgb(30, 185, 242);
+        color:white;
+    }
     p a{
-        display: none;
+        color:white;
+        text-decoration: none;
+    }
+    
+    #nav1 {
+        grid-row: 1;
+        height:20px;
+        display:flex;
+        justify-content: center;
+        color:white;
+        border: 1px;
+        border-color:rgb(0, 186, 198);
+    }
+    #nav2 {
+        grid-row: 2;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav3 {
+        grid-row: 3;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav4 {
+        grid-row: 4;
+        height:20px;
+        color:white;
+        display:flex;
+        justify-content: center;
+    }
+    #nav5 {
+        grid-row: 5;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav6 {
+        grid-row: 6;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    
+    .hamburgerIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 10%;  
+    }
+    .flatIcon{
+        height: 70%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 5%;
     }
     nav {
         background-color: rgb(30, 185, 242);
         grid-row: 1;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    nav #hamburgerIcon {
-        width: 100px;
-    }
-
-    nav .mainMenu {
-        display: none;
+        display: grid;
+        grid-template-columns: 87% 13%;
     }
 
     #logo {
@@ -212,7 +344,79 @@
         grid-template-columns: 70% 30%;
         margin: 0%;
     }
-
+    #menu{
+        display:none;
+        position: relative;
+        top:0%;
+        right:100%;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        height:300px;
+        width:120px;
+        background-color: rgb(30, 185, 242);
+        color:white;
+    }
+    p a{
+        color:white;
+        text-decoration: none;
+    }
+    
+    #nav1 {
+        grid-row: 1;
+        height:20px;
+        display:flex;
+        justify-content: center;
+        color:white;
+        border: 1px;
+        border-color:rgb(0, 186, 198);
+    }
+    #nav2 {
+        grid-row: 2;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav3 {
+        grid-row: 3;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav4 {
+        grid-row: 4;
+        height:20px;
+        color:white;
+        display:flex;
+        justify-content: center;
+    }
+    #nav5 {
+        grid-row: 5;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav6 {
+        grid-row: 6;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    
+    .hamburgerIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 10%;  
+    }
+    .flatIcon{
+        height: 70%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 5%;
+    }
     #logo {
         width: 60%;
         height: auto;
@@ -303,53 +507,64 @@
         background-color: rgb(30, 185, 242);
         grid-row: 1;
         display: grid;
-        grid-template-columns: 50% 10% 10% 10% 10% 10%;
+        grid-template-columns: 50% 50%;
         margin: 0%;
     }
+    #hamburgerMenu {
+        display:none;
 
+    }
+    #menu {
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
     #logoBox {
         grid-column: 1;
         margin-top: 0%;
         height: 100%;
     }
     nav p{
-        margin-top: 10%;
+        margin-top: 5%;
     }
 
     p a{
         color:white;
         text-decoration: none;
-        font-size: 3em;
+        font-size: 1.5em;
         
     }
     #nav1 {
-        grid-column: 2;
+        grid-column: 1;
     }
 
     #nav2 {
-        grid-column: 3;
+        grid-column: 2;
     }
 
     #nav3 {
-        grid-column: 4;
+        grid-column: 3;
     }
 
     #nav4 {
-        grid-column: 5;
+        grid-column: 4;
     }
 
     #nav5 {
-        grid-column: 6;
+        grid-column: 5;
+    }
+    #nav6 {
+        display: none;
     }
     .flatIcon{
-        height:7%;
+        height:6%;
         width:auto;
         filter: invert(100%);
         margin-top: 5%;
         
     }
     #logo {
-        width: 25%;
+        width: 39%;
         height: auto;
         margin-left: 5%;
     }
@@ -362,7 +577,7 @@
 
     #mainImage {
         grid-row: 1;
-        padding-left: 43%;
+        padding-left: 39%;
     }
 
     figcaption {

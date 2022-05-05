@@ -18,13 +18,15 @@
             <img src="img/StudentVote.png" id="logo" alt="logo">
         </figure>
 
-        
-            <p id = "nav1"><a href = "#" ><i>&#8962;</i>  Home</a></p>
-            <p id = "nav2"><a href = "#" >Past Votes</a></p>
-            <p id = "nav3"><a href = "#" > <i>☎</i> Contact</a></p>
-            <p id = "nav4"><a href = "#" > <img src = "img/settings.png" class = "flatIcon"> Setting</a></p>
-            <p id = "nav5"><a href = "#" > <img src = "img/power.png" class = "flatIcon"> <span id = "logout">Logout</span> </a></p>
-        
+        <div id = "menu">
+            <p id = "nav1"><a href = "#" ><img src = "img/home.png" class = "flatIcon">  Home</a></p>
+            <p id = "nav2"><a href = "#" ><img src = "img/vote.png" class = "flatIcon">  Vote</a></p>
+            <p id = "nav3"><a href = "#" > <img src = "img/contact.png" class = "flatIcon">  Contact </a></p>
+            <p id = "nav4"><a href = "#" > <img src = "img/settings.png" class = "flatIcon">  Settings</a></p>
+            <p id = "nav5"><a href = "#" > <img src = "img/power.png" class = "flatIcon">  Logout </a></p>
+            <p id = "nav6" onclick = "hideMenu()"><a href = "#" > <img src = "img/close (1).png" class = "flatIcon">  Close </a></p>
+        </div>
+        <div id = "hamburgerMenu"><img onclick = "displayMenu()" src = "img/hamburger.png" class = "hamburgerIcon"> </div>
     </nav>
 
     <!-- Main content of the page -->
@@ -49,6 +51,7 @@
         <hr>
         Made by BBY-04 &#169;
     </footer>
+    <script src = "js/landingPage.js"></script>
 </body>
 
 </html>

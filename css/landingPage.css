@@ -1,3 +1,4 @@
+/* Mobile Screen 1 */
 @media screen and (max-width:400px) {
     body {
         height: 100vh;
@@ -34,7 +35,7 @@
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 1.5em;
+        font-size: 120%;
     }
 
     #contentImage {
@@ -163,6 +164,7 @@
 
 }
 
+/* Mobile Screen 2 */
 @media screen and (min-width:400px) and (max-width:500px) {
     body {
         height: 100vh;
@@ -175,7 +177,7 @@
         display:none;
         position: relative;
         top:0%;
-        right:100%;
+        right:70%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
         height:300px;
         width:120px;
@@ -236,7 +238,8 @@
         height:6%;
         width:auto;
         filter: invert(100%);
-        margin-top: 10%;  
+        margin-top: 10%;
+          
     }
     .flatIcon{
         height: 70%;
@@ -271,7 +274,7 @@
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 1.5em;
+        font-size: 150%;
     }
 
     #contentImage {
@@ -312,7 +315,7 @@
         border: none;
         background-color: rgb(0, 186, 198);
         color: white;
-        font-size: 1.4em;
+        font-size: 140%;
     }
 
     hr {
@@ -328,6 +331,7 @@
 
 }
 
+/* Mobile Screen 3 */
 @media screen and (min-width:501px) and (max-width:700px) {
     body {
         height: 100vh;
@@ -341,14 +345,14 @@
         background-color: rgb(30, 185, 242);
         grid-row: 1;
         display: grid;
-        grid-template-columns: 70% 30%;
+        grid-template-columns: 85% 15%;
         margin: 0%;
     }
     #menu{
         display:none;
         position: relative;
         top:0%;
-        right:100%;
+        right:35%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
         height:300px;
         width:120px;
@@ -436,7 +440,7 @@
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 1.5em;
+        font-size: 100%;
     }
 
     #contentImage {
@@ -477,7 +481,7 @@
         border: none;
         background-color: rgb(0, 186, 198);
         color: white;
-        font-size: 1.4em;
+        font-size: 100%;
     }
 
     hr {
@@ -493,7 +497,8 @@
 
 }
 
-@media screen and (min-width:701px) {
+/* Desktop View */
+@media screen and (min-width:1200px) {
     body {
         height: 100vh;
         display: grid;
@@ -512,7 +517,15 @@
     }
     #hamburgerMenu {
         display:none;
-
+        position: relative;
+        justify-content: end; 
+        margin-right: 5%;
+        margin-top: 2.5%;
+    }
+    .hamburgerIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%);
     }
     #menu {
         grid-column: 2;
@@ -612,12 +625,12 @@
 
     .loginButton {
         height: 50%;
-        width: 25%;
+        width: 35%;
         border-radius: 10px;
         border: none;
         background-color: rgb(0, 186, 198);
         color: white;
-        font-size: 2em;
+        font-size: 150%;
     }
 
     .loginButton:hover {
@@ -639,3 +652,163 @@
     }
 
 }
+
+@media screen  and (min-width:700px) and (max-width:1200px){
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 80% 10%;
+        grid-template-columns: auto;
+        margin: 0%;
+        padding: 0%;
+    }
+
+    nav {
+        background-color: rgb(30, 185, 242);
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin: 0%;
+    }
+    #hamburgerMenu {
+        display:none;
+        position: relative;
+        justify-content: end;
+        margin-right: 5%;
+        margin-top: 2.5%;
+ 
+    }
+    .hamburgerIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%); 
+        
+    }
+    #menu {
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    #logoBox {
+        grid-column: 1;
+        margin-top: 0%;
+        height: 100%;
+    }
+    nav p{
+        margin-top: 5%;
+    }
+
+    p a{
+        color:white;
+        text-decoration: none;
+        font-size: 1.5em;
+        
+    }
+    #nav1 {
+        grid-column: 1;
+    }
+
+    #nav2 {
+        grid-column: 2;
+    }
+
+    #nav3 {
+        grid-column: 3;
+    }
+
+    #nav4 {
+        grid-column: 4;
+    }
+
+    #nav5 {
+        grid-column: 5;
+    }
+    #nav6 {
+        display: none;
+    }
+    .flatIcon{
+        height:6%;
+        width:auto;
+        filter: invert(100%);
+        margin-top: 5%;
+        
+    }
+    #logo {
+        width: 39%;
+        height: auto;
+        margin-left: 5%;
+    }
+
+    #mainContent {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 70% 30%;
+    }
+
+    #mainImage {
+        grid-row: 1;
+        padding-left: 39%;
+    }
+
+    figcaption {
+        color: rgb(72, 103, 61);
+        font-size: 150%;
+    }
+
+    #contentImage {
+        height: 80%;
+    }
+
+    #otherHalf {
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        background-color: rgb(159, 236, 236);
+    }
+
+    .button1 {
+        grid-column: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button2 {
+        grid-column: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginButton {
+        height: 50%;
+        width: 40%;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(0, 186, 198);
+        color: white;
+        font-size: 150%;
+    }
+
+    .loginButton:hover {
+        background-color: white;
+        color: rgb(0, 186, 198);
+
+    }
+
+    hr {
+        height: 2px;
+        background-color: rgb(0, 186, 198);
+    }
+
+    footer {
+        background-color: rgb(159, 236, 236);
+        grid-row: 3;
+        font-style: italic;
+        font-size: 2em;
+    }
+    .menuText {
+        display: none;
+
+    }
+} 

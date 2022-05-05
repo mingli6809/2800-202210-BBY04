@@ -40,10 +40,14 @@
     }
 
     #menu {
-        font-size: 32px;
+        font-size: 25px;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 1fr;
+    }
+    
+    #menu > p {
+        position: relative;
     }
     
     .flatIcon {

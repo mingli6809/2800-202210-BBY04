@@ -186,7 +186,7 @@
 }
 
 /* 1080p */
-@media screen and (min-width:1440px) {
+@media screen and (min-width:1080px) {
     body {
         height: 100vh;
         display: grid;

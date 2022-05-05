@@ -1,3 +1,13 @@
+<<<<<<< Updated upstream
+@media screen and (min-width: 300px) {
+=======
+@media screen and (max-width: 700px) {
+
+}
+
+@media screen and (min-width: 992px) {
+    
+}
 body {
     padding: 0px;
     margin: 0px;
@@ -26,35 +36,73 @@ body {
 .hamburger-menu {
     font-size: 35px;
     text-align: right;
-    padding-right: 5px;
+    padding-left: 190px;
     margin: auto;
 }
+>>>>>>> Stashed changes
 
-.content-area {
-    font-size: 80px;
-    text-align: center;
 }
 
-.vote-area {
-    font-size: 20px;
-    background-color: rgb(124, 236, 236);
-    display: grid;
-    grid-template-rows: 5fr 5fr;
-    grid-gap: 10px;
-    padding: 10px;
+@media screen and (min-width: 700px) {
+    body {
+        padding: 0px;
+        margin: 0px;
+        overflow-y: hidden; 
+        overflow-x: hidden; 
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-rows: 1fr 2fr 6fr 1fr;
+        grid-template-columns: 10fr;
+        height: 100vh;
+    }
+    
+    .header {
+        background-color: rgb(0, 134, 211);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .logo-image {
+        padding-left: 5px;
+        margin: auto;
+    }
+    
+    .hamburger-menu {
+        font-size: 35px;
+        text-align: right;
+        padding-left: 190px;
+        margin: auto;
+    }
+    
+    .content-area {
+        font-size: 80px;
+        text-align: center;
+    }
+    
+    .vote-area {
+        font-size: 20px;
+        background-color: rgb(124, 236, 236);
+        display: grid;
+        grid-template-rows: 5fr 5fr;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+    
+    .voting-poll {
+        font-size: 35px;
+        background-color:bisque;
+        border: 2px solid black;
+        margin: auto;
+    }
+    
+    .foot-area {
+        padding-left: 15px;
+        font-size: 30px;
+        background-color: rgb(124, 236, 236);
+    }
 }
 
-.voting-poll {
-    font-size: 35px;
-    background-color:bisque;
-    border: 2px solid black;
-    margin: auto;
-}
-
-.foot-area {
-    padding-left: 15px;
-    font-size: 30px;
-    background-color: rgb(124, 236, 236);
-}
 
 

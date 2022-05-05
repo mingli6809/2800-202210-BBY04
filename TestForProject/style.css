@@ -39,6 +39,10 @@
         margin: auto;
     }
 
+    .hamburger-menu:hover {
+        cursor: pointer;
+    }
+    
     #menu {
         font-size: 25px;
         display: grid;
@@ -49,7 +53,7 @@
     #menu > p {
         position: relative;
     }
-    
+
     .flatIcon {
         width: 25px;
     }

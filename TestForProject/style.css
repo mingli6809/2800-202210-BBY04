@@ -36,12 +36,24 @@
     }
     
     .hamburger-menu {
-        font-size: 35px;
-        text-align: right;
-        padding-left: 190px;
         margin: auto;
     }
+
+    #menu {
+        font-size: 32px;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1fr;
+    }
     
+    .flatIcon {
+        width: 25px;
+    }
+
+    .hamburgerIcon {
+        width: 25px;
+    }
+
     .content-area {
         font-size: 80px;
         margin: auto;

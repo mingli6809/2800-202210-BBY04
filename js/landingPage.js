@@ -25,4 +25,3 @@ document.getElementById("createuser").addEventListener("click", function (e) {
 
 });
 
-console.log("hello");

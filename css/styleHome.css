@@ -1,7 +1,11 @@
-    #failedLogin{
-        color:red;
+   
+    .logout-btn {
+        font-size: 3 em;
+        margin: auto;
+        position: absolute;
+        right: 0px;
+        padding: 25px;
     }
-    
     body {
         padding: 0px;
         margin: 0px;

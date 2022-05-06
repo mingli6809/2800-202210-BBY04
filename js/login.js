@@ -30,7 +30,9 @@ document.getElementById("submit").addEventListener("click", function (e) {
             let dataParsed = JSON.parse(data);
             console.log(dataParsed);
             if (dataParsed.status == "fail") {
+                document.getElementById("failedLogin").style.display = "block";
                 document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+                
             } else {
                 localStorage.setItem("email", email.value);
                 window.location.replace("/profile");

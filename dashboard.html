@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/dashboardStyle.css">
-        <link rel="icon" href="img/voting-box.png" type="image/x-icon">
+        <link rel="stylesheet" href="/css/dashboardStyle.css">
+        <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
         <meta name="viewport" content="width=device=width, initial-scale=1.0">
         <title>StudentVote - Dashboard</title>
         
@@ -13,10 +13,14 @@
         <div class="grid-container">
             <div class="header">
                 <div class="logo-image">
-                    <img id="studentvote-logo" alt="logo" src="img/StudentVoterLogoResized.png">
+                    <img id="studentvote-logo" alt="logo" src="/img/StudentVoterLogoResized.png">
                 </div>
                 <div class="logout-btn">
-                    <button type="button" class="block">Log Out</button>
+                    <form action="/logout" method="get">
+                      
+                        <button type="submit" class="block"  value="Signout">Log Out</button>
+                      </form>
+                  
                 </div>
             </div>
             <div class="content-area">
@@ -31,6 +35,8 @@
             </div>
             <div class="foot-area"><hr>Made by BBY-04 ©</div>
         </div>
-        
+        <script>
+             document.getElementById("username-text").innerHTML=localStorage.getItem("email");;
+        </script>
     </body>
 </html>

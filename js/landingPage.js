@@ -14,13 +14,15 @@ hamburgerMenu.style.display = "flex";
 
 }
 
-let loginButton = document.getElementById("loginbutton");
-loginButton.addEventListener("click", function(){
-    window.location = "/loginPage";
-})
+document.getElementById("login").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.replace("/login_landing");
 
-let createButton = document.getElementById("createbutton");
-createButton.addEventListener("click", function(){
-    window.location = "/signup";
-})
+});
+document.getElementById("createuser").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.replace("/createuser");
 
+});
+
+console.log("hello");

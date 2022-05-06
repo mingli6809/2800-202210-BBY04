@@ -55,10 +55,10 @@ a:hover {
     height: auto;
   }
 
-  .block:hover {
-      color: rgb(0, 0, 0);
-      background-color: #9FECEC;
-  }
+.block:hover {
+    color: rgb(0, 0, 0);
+    background-color: #9FECEC;
+}
 
 .logo-image {
     margin: auto;

@@ -1,3 +1,5 @@
+"use strict";
+
 let hamburgerMenu = document.getElementById("hamburgerMenu");
 let menu = document.getElementById("menu");
 

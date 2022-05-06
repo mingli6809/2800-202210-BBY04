@@ -16,12 +16,12 @@ hamburgerMenu.style.display = "flex";
 
 document.getElementById("login").addEventListener("click", function (e) {
     e.preventDefault();
-    window.location.replace("/login_landing");
+    window.location = "/login_landing" ;
 
 });
 document.getElementById("createuser").addEventListener("click", function (e) {
     e.preventDefault();
-    window.location.replace("/createuser");
+    window.location = "/createuser" ;
 
 });
 

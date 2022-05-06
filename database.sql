@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS test2;
-use test2;
+CREATE DATABASE IF NOT EXISTS test1;
+use test1;
 CREATE TABLE IF NOT EXISTS customer (
 ID int NOT NULL AUTO_INCREMENT,
 email varchar(30),

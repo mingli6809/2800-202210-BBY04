@@ -14,6 +14,13 @@ hamburgerMenu.style.display = "flex";
 
 }
 
+let loginButton = document.getElementById("loginbutton");
+loginButton.addEventListener("click", function(){
+    window.location = "/login.html";
+})
 
+let createButton = document.getElementById("createbutton");
+createButton.addEventListener("click", function(){
+    window.location = "/signup.html";
+})
 
-console.log("hello");

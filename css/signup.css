@@ -95,7 +95,7 @@
 }
 
 /* 1080p */
-@media screen and (max-width:1080px) {
+@media screen and (min-width:400px) and (max-width:1080px) {
     body {
         height: 100vh;
         display: grid;
@@ -122,7 +122,7 @@
 
     #sign-up-text {
         color: #3D3D67;
-        padding-top: 40px;
+        padding-top: 10px;
         font-family: 'Judson', serif;
         font-size: 80px;
     }
@@ -148,7 +148,7 @@
     input[type=email] {
         background-image: url(/img/Contact.svg);
         background-repeat: no-repeat;
-        margin-top: 80px;
+        margin-top: 40px;
     }
 
     input[type=text] {
@@ -163,7 +163,7 @@
 
     input[type=submit] {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 20px;
         padding-left: 0;
         border-radius: 12px;
         background-color: #00BAC6;
@@ -215,7 +215,7 @@
         color: #3D3D67;
         padding-top: 40px;
         font-family: 'Judson', serif;
-        font-size: 80px;
+        font-size: 60px;
     }
 
     #input-forms {
@@ -241,7 +241,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 100px;
+        margin-top: 40px;
     }
 
     input[type=text] {
@@ -260,7 +260,7 @@
 
     input[type=submit] {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 20px;
         padding-left: 0;
         border-radius: 12px;
         background-color: #00BAC6;

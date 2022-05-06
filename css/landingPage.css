@@ -15,7 +15,7 @@
         grid-template-columns: 85% 15%;
         margin: 0%;
     }
-    
+
     #logo {
         width: 70%;
         height: auto;
@@ -62,79 +62,88 @@
         justify-content: center;
         align-items: center;
     }
-    #menu{
-        display:none;
+
+    #menu {
+        display: none;
         position: relative;
-        top:0%;
-        right:100%;
+        top: 0%;
+        right: 100%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-        height:300px;
-        width:120px;
+        height: 300px;
+        width: 120px;
         background-color: rgb(30, 185, 242);
-        color:white;
+        color: white;
     }
-    p a{
-        color:white;
+
+    p a {
+        color: white;
         text-decoration: none;
     }
-    
+
     #nav1 {
         grid-row: 1;
-        height:20px;
-        display:flex;
+        height: 20px;
+        display: flex;
         justify-content: center;
-        color:white;
+        color: white;
         border: 1px;
-        border-color:rgb(0, 186, 198);
+        border-color: rgb(0, 186, 198);
     }
+
     #nav2 {
         grid-row: 2;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav3 {
         grid-row: 3;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav4 {
         grid-row: 4;
-        height:20px;
-        color:white;
-        display:flex;
+        height: 20px;
+        color: white;
+        display: flex;
         justify-content: center;
     }
+
     #nav5 {
         grid-row: 5;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav6 {
         grid-row: 6;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
-    
-    .hamburgerIcon{
-        height:6%;
-        width:auto;
+
+    .hamburgerIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
-        margin-top: 10%;  
+        margin-top: 10%;
     }
-    .flatIcon{
+
+    .flatIcon {
         height: 70%;
-        width:auto;
+        width: auto;
         filter: invert(100%);
         margin-top: 5%;
     }
+
     .loginButton {
         height: 50%;
         width: 50%;
@@ -173,80 +182,89 @@
         grid-template-columns: auto;
         margin: 0%;
     }
-    #menu{
-        display:none;
+
+    #menu {
+        display: none;
         position: relative;
-        top:0%;
-        right:70%;
+        top: 0%;
+        right: 90%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-        height:300px;
-        width:120px;
+        height: 300px;
+        width: 120px;
         background-color: rgb(30, 185, 242);
-        color:white;
+        color: white;
     }
-    p a{
-        color:white;
+
+    p a {
+        color: white;
         text-decoration: none;
     }
-    
+
     #nav1 {
         grid-row: 1;
-        height:20px;
-        display:flex;
+        height: 20px;
+        display: flex;
         justify-content: center;
-        color:white;
+        color: white;
         border: 1px;
-        border-color:rgb(0, 186, 198);
+        border-color: rgb(0, 186, 198);
     }
+
     #nav2 {
         grid-row: 2;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav3 {
         grid-row: 3;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav4 {
         grid-row: 4;
-        height:20px;
-        color:white;
-        display:flex;
+        height: 20px;
+        color: white;
+        display: flex;
         justify-content: center;
     }
+
     #nav5 {
         grid-row: 5;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav6 {
         grid-row: 6;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
-    
-    .hamburgerIcon{
-        height:6%;
-        width:auto;
+
+    .hamburgerIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
         margin-top: 10%;
-          
+
     }
-    .flatIcon{
+
+    .flatIcon {
         height: 70%;
-        width:auto;
+        width: auto;
         filter: invert(100%);
         margin-top: 5%;
     }
+
     nav {
         background-color: rgb(30, 185, 242);
         grid-row: 1;
@@ -348,81 +366,90 @@
         grid-template-columns: 85% 15%;
         margin: 0%;
     }
-    #menu{
-        display:none;
+
+    #menu {
+        display: none;
         position: relative;
-        top:0%;
-        right:35%;
+        top: 0%;
+        right: 35%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-        height:300px;
-        width:120px;
+        height: 300px;
+        width: 120px;
         background-color: rgb(30, 185, 242);
-        color:white;
+        color: white;
     }
-    p a{
-        color:white;
+
+    p a {
+        color: white;
         text-decoration: none;
     }
-    
+
     #nav1 {
         grid-row: 1;
-        height:20px;
-        display:flex;
+        height: 20px;
+        display: flex;
         justify-content: center;
-        color:white;
+        color: white;
         border: 1px;
-        border-color:rgb(0, 186, 198);
+        border-color: rgb(0, 186, 198);
     }
+
     #nav2 {
         grid-row: 2;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav3 {
         grid-row: 3;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav4 {
         grid-row: 4;
-        height:20px;
-        color:white;
-        display:flex;
+        height: 20px;
+        color: white;
+        display: flex;
         justify-content: center;
     }
+
     #nav5 {
         grid-row: 5;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
+
     #nav6 {
         grid-row: 6;
-        display:flex;
+        display: flex;
         justify-content: center;
-        color:white;
-        height:20px;
+        color: white;
+        height: 20px;
     }
-    
-    .hamburgerIcon{
-        height:6%;
-        width:auto;
+
+    .hamburgerIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
-        margin-top: 10%;  
+        margin-top: 10%;
     }
-    .flatIcon{
+
+    .flatIcon {
         height: 70%;
-        width:auto;
+        width: auto;
         filter: invert(100%);
         margin-top: 5%;
     }
+
     #logo {
-        width: 60%;
+        width: 40%;
         height: auto;
         margin: 0%;
     }
@@ -440,7 +467,7 @@
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 100%;
+        font-size: 200%;
     }
 
     #contentImage {
@@ -515,38 +542,44 @@
         grid-template-columns: 50% 50%;
         margin: 0%;
     }
+
     #hamburgerMenu {
-        display:none;
+        display: none;
         position: relative;
-        justify-content: end; 
+        justify-content: end;
         margin-right: 5%;
         margin-top: 2.5%;
     }
-    .hamburgerIcon{
-        height:6%;
-        width:auto;
+
+    .hamburgerIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
     }
+
     #menu {
         grid-column: 2;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+
     #logoBox {
         grid-column: 1;
         margin-top: 0%;
         height: 100%;
     }
-    nav p{
+
+    nav p {
         margin-top: 5%;
     }
 
-    p a{
-        color:white;
+    p a {
+        color: white;
         text-decoration: none;
         font-size: 1.5em;
-        
+
     }
+
     #nav1 {
         grid-column: 1;
     }
@@ -566,16 +599,19 @@
     #nav5 {
         grid-column: 5;
     }
+
     #nav6 {
         display: none;
     }
-    .flatIcon{
-        height:6%;
-        width:auto;
+
+    .flatIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
         margin-top: 5%;
-        
+
     }
+
     #logo {
         width: 39%;
         height: auto;
@@ -595,7 +631,7 @@
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 3em;
+        font-size: 200%;
     }
 
     #contentImage {
@@ -653,7 +689,7 @@
 
 }
 
-@media screen  and (min-width:700px) and (max-width:1200px){
+@media screen and (min-width:700px) and (max-width:1200px) {
     body {
         height: 100vh;
         display: grid;
@@ -670,40 +706,46 @@
         grid-template-columns: 50% 50%;
         margin: 0%;
     }
+
     #hamburgerMenu {
-        display:none;
+        display: none;
         position: relative;
         justify-content: end;
         margin-right: 5%;
         margin-top: 2.5%;
- 
+
     }
-    .hamburgerIcon{
-        height:6%;
-        width:auto;
-        filter: invert(100%); 
-        
+
+    .hamburgerIcon {
+        height: 6%;
+        width: auto;
+        filter: invert(100%);
+
     }
+
     #menu {
         grid-column: 2;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+
     #logoBox {
         grid-column: 1;
         margin-top: 0%;
         height: 100%;
     }
-    nav p{
+
+    nav p {
         margin-top: 5%;
     }
 
-    p a{
-        color:white;
+    p a {
+        color: white;
         text-decoration: none;
         font-size: 1.5em;
-        
+
     }
+
     #nav1 {
         grid-column: 1;
     }
@@ -723,16 +765,18 @@
     #nav5 {
         grid-column: 5;
     }
+
     #nav6 {
         display: none;
     }
-    .flatIcon{
-        height:6%;
-        width:auto;
+
+    .flatIcon {
+        height: 6%;
+        width: auto;
         filter: invert(100%);
         margin-top: 5%;
-        
     }
+
     #logo {
         width: 39%;
         height: auto;
@@ -747,12 +791,13 @@
 
     #mainImage {
         grid-row: 1;
-        padding-left: 39%;
+        display: inline-block;
+        margin: 0 auto;
     }
 
     figcaption {
         color: rgb(72, 103, 61);
-        font-size: 150%;
+        font-size: 200%;
     }
 
     #contentImage {
@@ -805,10 +850,10 @@
         background-color: rgb(159, 236, 236);
         grid-row: 3;
         font-style: italic;
-        font-size: 2em;
+        font-size: 1em;
     }
+
     .menuText {
         display: none;
-
     }
-} 
+}

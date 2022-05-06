@@ -1,5 +1,1 @@
-$(document).ready(function() {
-    $('#submit-info').click(function() {
-        $('#input-forms').submit();
-    });
-});
+var stuff_inserted_hear;

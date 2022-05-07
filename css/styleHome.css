@@ -1,3 +1,8 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
     .logout-btn {
         font-size: 3 em;
@@ -23,10 +28,12 @@
 
     #welcome-text{
         color: #3D3D67;
+        font-family: 'Judson', serif;
     }
 
     #username-text {
         color: #00BAC6;
+        font-family: 'Judson', serif;
     }
 
     .grid-container {
@@ -87,6 +94,7 @@
         grid-template-rows: 5fr 5fr;
         grid-gap: 10px;
         padding: 10px;
+        font-family: 'Inter', sans-serif;
     }
 
     .voting-poll {
@@ -99,10 +107,26 @@
     .foot-area {
         font-size: 30px;
         background-color: #9FECEC;
+        font-family: 'Inter', sans-serif;
     }
 
     #foot-content {
         padding-left: 15px;
+    }
+
+    button {
+        border-radius: 12px;
+        background-color: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        transition-duration: 0.2s;
+        border-style: none;
+    }
+
+    button:hover {
+        background-color: #148891;
+        color: white;
+        border-style: none;
     }
 
 @media (max-width:700px) {
@@ -188,6 +212,21 @@
         font-size: 40px;
         margin: auto;
         text-align: center;
+    }
+
+    button {
+        border-radius: 12px;
+        background-color: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        transition-duration: 0.2s;
+        border-style: none;
+    }
+
+    button:hover {
+        background-color: #148891;
+        color: white;
+        border-style: none;
     }
 }
 

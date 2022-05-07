@@ -1,5 +1,6 @@
-let hamburgerMenu = document.getElementById("hamburgerMenu");
+let hamburgerMenu = document.getElementById("hamburger-menu");
 let menu = document.getElementById("menu");
+
 
 
 function displayMenu() {
@@ -19,7 +20,7 @@ document.getElementById("login").addEventListener("click", function (e) {
     window.location = "/login_landing" ;
 
 });
-document.getElementById("createuser").addEventListener("click", function (e) {
+document.getElementById("create-user").addEventListener("click", function (e) {
     e.preventDefault();
     window.location = "/createuser" ;
 

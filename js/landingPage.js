@@ -1,6 +1,6 @@
 "use strict";
 
-let hamburgerMenu = document.getElementById("hamburgerMenu");
+let hamburgerMenu = document.getElementById("hamburger-menu");
 let menu = document.getElementById("menu");
 
 

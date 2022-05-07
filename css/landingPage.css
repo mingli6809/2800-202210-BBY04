@@ -4,6 +4,9 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+.menuText {
+    color:white;
+}
 /* iPhone 12 pro */
 @media screen and (max-width:400px) {
     body {
@@ -32,13 +35,17 @@
 
         #menu {
             grid-column: 2;
+            position: relative;
             height: 300px;
             width: 130px;
             display: none;
+            margin-top: 0%;
             grid-template-rows: 1fr 1fr 1fr 1fr;
-            right: 100%;
+            margin-left: 33%;
+            right: 0%;
             top: 0%;
             padding-right: 0px;
+            background: #00ccf9;
         }
 
             .flatIcon{
@@ -193,6 +200,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1;
+            
             height: 100%;
         }
 
@@ -207,6 +215,14 @@
                 display: none;
             }
 
+            #hamburger-icon {
+                height: 6%;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 2%;
+                margin-left: 80%;
+
+            }
             a:link {
                 text-decoration: none;
             }
@@ -344,6 +360,13 @@
                 display: none;
             }
 
+            #hamburger-icon {
+                height: 6%;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 2%;
+                margin-left: 80%;
+            }
             a:link {
                 text-decoration: none;
             }

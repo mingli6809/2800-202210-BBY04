@@ -4,6 +4,11 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+#failedLogin{
+    color:red;
+    display:none;
+}
+
 /* iPhone 12 Pro */
 @media screen and (max-width:400px) {
     body {
@@ -75,13 +80,14 @@
         text-align: center;
         padding-left: 0;
         border-radius: 12px;
-        background-color: #00BAC6;
+        background: #00BAC6;
         font-family: 'Inter', sans-serif;
         color: white;
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -171,7 +177,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -275,7 +282,7 @@
 
     hr {
         border-top: 3px solid #148891;
-        margin-left: -100px;
+        margin-left: -100%;
     }
 
     #footer {

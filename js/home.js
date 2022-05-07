@@ -1,11 +1,10 @@
+"use strict";
+
+
 let hamburgerMenu = document.getElementById("hamburgerMenu");
 let menu = document.getElementById("menu");
 
-// document.getElementById("nav5").addEventListener("click", function (e) {
-//     e.preventDefault();
-//     window.location.replace("/login_landing");
 
-// });
 
 function displayMenu() {
     console.log("Displaying");

@@ -63,6 +63,37 @@ app.get("/profile", function (req, res) {
 
 });
 
+app.get("/admin-table", function (req, res) {
+
+    const mysql = require("mysql2");
+    const connection = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "test1"
+    });
+    let myResults = null;
+    connection.connect();
+    connection.query(
+        "SELECT * FROM customer where code != 123",
+        function (error, results, fields) {
+            myResults = results;
+            if (error) {
+                console.log(error);
+            }
+            let table = "<table><tr><th>User</th></tr>";
+            for (let i = 0; i < results.length; i++) {
+                table += "<tr><td>" + results[i].email + "</td></tr>";
+            }
+            table += "</table>";
+            res.send(table);
+            connection.end();
+        }
+    );
+    
+    console.log("should work");
+});
+
 app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");

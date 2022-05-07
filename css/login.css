@@ -86,7 +86,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -176,7 +177,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -280,7 +282,7 @@
 
     hr {
         border-top: 3px solid #148891;
-        margin-left: -100px;
+        margin-left: -100%;
     }
 
     #footer {

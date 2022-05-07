@@ -58,17 +58,23 @@
     input[type=email] {
         background-image: url(/img/Contact.svg);
         background-repeat: no-repeat;
-        margin-top: 40px;
+        background-position: left;
+        background-position-x: 5px;
+        margin-top: 20px;
     }
 
     input[type=text] {
         background-image: url(/img/Key.svg);
         background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
     }
 
     input[type=password] {
         background-image: url(/img/Pass.svg);
         background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
     }
 
     input[type=submit] {
@@ -81,7 +87,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -148,17 +155,23 @@
     input[type=email] {
         background-image: url(/img/Contact.svg);
         background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
         margin-top: 40px;
     }
 
     input[type=text] {
         background-image: url(/img/Key.svg);
         background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
     }
 
     input[type=password] {
         background-image: url(/img/Pass.svg);
         background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
     }
 
     input[type=submit] {
@@ -172,7 +185,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {
@@ -215,7 +229,7 @@
         color: #3D3D67;
         padding-top: 40px;
         font-family: 'Judson', serif;
-        font-size: 60px;
+        font-size: 80px;
     }
 
     #input-forms {
@@ -275,8 +289,8 @@
     }
 
     hr {
-        border-top: 3px solid black;
-        margin-left: -100px;
+        border-top: 3px solid #00BAC6;
+        margin-left: -100%;
     }
 
     #footer {

@@ -1,15 +1,13 @@
 "use strict";
-
-
 const express = require('express');
 const session = require("express-session");
 const app = express();
 const fs = require("fs");
 const mysql = require('mysql2');
 
-app.use("/img", express.static("img"));
-app.use("/css", express.static("css"));
-app.use("/js", express.static("js"));
+app.use("/img", express.static("./img"));
+app.use("/css", express.static("./css"));
+app.use("/js", express.static("./js"));
 
 
 app.use(session({
@@ -54,7 +52,6 @@ app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
-
     if (req.session.code == "123")
       res.send(doc1);
     else
@@ -67,13 +64,35 @@ app.get("/profile", function (req, res) {
 });
 
 app.get("/createuser", function (req, res) {
-  let doc = fs.readFileSync('./signup.html', "utf8");
-  res.send(doc);
+  if (req.session.loggedIn) {
+    let doc1 = fs.readFileSync('./dashboard.html', "utf8");
+    let doc2 = fs.readFileSync('./home.html', "utf8");
+
+    if (req.session.code == "123")
+      res.send(doc1);
+    else
+      res.send(doc2);
+
+  } else {
+    let doc = fs.readFileSync('./signup.html', "utf8");
+    res.send(doc);
+  }
+
 });
 
 app.get("/login_landing", function (req, res) {
-  let doc = fs.readFileSync('./login.html', "utf8");
-  res.send(doc);
+  if (req.session.loggedIn) {
+    let doc1 = fs.readFileSync('./dashboard.html', "utf8");
+    let doc2 = fs.readFileSync('./home.html', "utf8");
+    if (req.session.code == "123")
+      res.send(doc1);
+    else
+      res.send(doc2);
+  } else {
+    let doc = fs.readFileSync('./login.html', "utf8");
+    res.send(doc);
+  }
+
 });
 
 
@@ -89,30 +108,41 @@ app.use(express.urlencoded({
 
 app.post('/add-customer', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
-
   console.log("password", req.body.password);
   console.log("Email", req.body.email);
   console.log("code", req.body.code);
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'test1'
-  });
-  connection.connect();
-  connection.query('INSERT INTO customer (email, password,code) values (?, ?, ?)',
-    [req.body.email, req.body.password, req.body.code],
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.send({
-        status: "success",
-        msg: "Record added."
+
+  let string = req.body.email;
+  if (string.includes("@my.bcit.ca")) {
+
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'test1'
+    });
+    connection.connect();
+    connection.query('INSERT INTO customer (email, password,code) values (?, ?, ?)',
+      [req.body.email, req.body.password, req.body.code],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "Record added."
+        });
+
       });
 
+
+    connection.end();
+  } else {
+    res.send({
+      status: "fail",
+      msg: "User email domain is not correct."
     });
-  connection.end();
+  }
 });
 
 app.post("/login", function (req, res) {
@@ -155,23 +185,10 @@ app.get("/logout", function (req, res) {
   }
 });
 
-// app.get("/logout1", function (req, res) {
 
-//   if (req.session) {
-//     req.session.destroy(function (error) {
-//       if (error) {
-//         res.status(400).send("Unable to log out")
-//       } else {
-//         let doc = fs.readFileSync('./index1.html', "utf8");
-//         res.send(doc);
-//       }
-//     });
-//   }
-// });
 
 
 function authenticate(email, password, callback) {
-
   const mysql = require("mysql2");
   const connection = mysql.createConnection({
     host: "localhost",

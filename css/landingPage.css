@@ -32,6 +32,13 @@
 
         #menu {
             grid-column: 2;
+            height: 300px;
+            width: 130px;
+            display: none;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            right: 100%;
+            top: 0%;
+            padding-right: 0px;
         }
 
             .flatIcon{
@@ -46,7 +53,7 @@
                 grid-row: 1;
                 display: flex;
                 justify-content: right;
-                padding-right: 40px;
+                margin-right: 40px;
                 padding-top: 25px;
             }
 
@@ -62,19 +69,23 @@
             }
 
             #contact {
-                display: none;
+                display: flex;
+                justify-content: center;
             }
 
             #settings {
-                display: none;
+                display: flex;
+                justify-content: center;
             }
 
             #logout {
-                display: none;
+                display: flex;
+                justify-content: center;
             }
 
             #close {
-                display: none;
+                display: flex;
+                justify-content: center;
             }
 
     #main-content {
@@ -99,14 +110,13 @@
         grid-row: 3;
         background-color: #9FECEC;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1;
+        grid-template-rows: 1fr 1fr;
     }
 
         input {
             display: block;
-            width: 50%;
-            height: 30%;
+            width: 70%;
+            height: 50%;
             border: none;
             font-size: small;
             border-radius: 8px;
@@ -124,13 +134,13 @@
         }
 
         #login {
-            grid-column: 1;
+            grid-row: 1;
             display: block;
             margin: auto;
         }
 
         #create-user {
-            grid-column: 2;
+            grid-row: 2;
             display: block;
             margin: auto;
         }

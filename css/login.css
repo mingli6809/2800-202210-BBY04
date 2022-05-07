@@ -4,8 +4,6 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-
-
 /* iPhone 12 Pro */
 @media screen and (max-width:400px) {
     body {
@@ -186,7 +184,7 @@
 
 }
 
-/* 1080p */
+/* 1440p */
 @media screen and (min-width:1080px) {
     body {
         height: 100vh;
@@ -276,7 +274,7 @@
     }
 
     hr {
-        border-top: 3px solid black;
+        border-top: 3px solid #148891;
         margin-left: -100px;
     }
 

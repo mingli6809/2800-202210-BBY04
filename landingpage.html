@@ -15,41 +15,31 @@
     <!-- Nav Bar -->
     <nav>
 
-        <figure id="logoBox">
-            <img src="/img/StudentVote.png" id="logo" alt="logo">
-        </figure>
+        <img id="logo" src="/img/StudentVote.png">
 
         <div id = "menu">
-            <p id = "nav1"><a href = "#" ><img src = "/img/home.png" class = "flatIcon"> <i class = "menuText">Home</i> </a></p>
-            <p id = "nav2"><a href = "#" ><img src = "/img/vote.png" class = "flatIcon"> <i class = "menuText"> Vote</i></a></p>
-            <p id = "nav3"><a href = "#" > <img src = "/img/contact.png" class = "flatIcon"><i class = "menuText">  Contact</i> </a></p>
-            <p id = "nav4"><a href = "#" > <img src = "/img/settings.png" class = "flatIcon"> <i class = "menuText"> Settings</i></a></p>
-            <p id = "nav5"><a href = "#" > <img src = "/img/power.png" class = "flatIcon"> <i class = "menuText">Logout </i></a></p>
-            <p id = "nav6" onclick = "hideMenu()"><a href = "#" > <img src = "/img/close (1).png" class = "flatIcon"><i class = "menuText"> Close</i> </a></p>
+            <p id = "contact"><a href = "#" > <img src = "/img/contact.png" class = "flatIcon"><i class = "menuText">  Contact</i> </a></p>
+            <p id = "settings"><a href = "#" > <img src = "/img/settings.png" class = "flatIcon"> <i class = "menuText"> Settings</i></a></p>
+            <p id = "logout"><a href = "#" > <img src = "/img/power.png" class = "flatIcon"> <i class = "menuText">Logout </i></a></p>
+            <p id = "close" onclick = "hideMenu()"><a href = "#" > <img src = "/img/close (1).png" class = "flatIcon"><i class = "menuText"> Close</i> </a></p>
         </div>
-        <div id = "hamburgerMenu"><img onclick = "displayMenu()" src = "/img/hamburger.png" class = "hamburgerIcon"> </div>
+        <div id = "hamburger-menu"><img onclick = "displayMenu()" src = "/img/hamburger.png" id="hamburger-icon"> </div>
     </nav>
 
     <!-- Main content of the page -->
-    <div id="mainContent">
-        
-        <figure id="mainImage">
-            <img src="/img/images.jpg" id="contentImage" alt="contentImage">
-            <figcaption>Vote For What Matters</figcaption>
-        </figure>
-        <div id="otherHalf">
-            <div class="button1">
-                <input type="submit" value="Login" class="loginButton" id="login">
-            </div>
-            <div class="button2">
-                <input type="submit" value="Create User" class="loginButton" id="createuser">
-            </div>
+    <div id="main-content">
+        <img src="/img/images.jpg" id="content-image" alt="contentImage">
+        <p id="img-text">Vote For What Matters</p>
+    </div>
 
-        </div>
+    <div id="other-half">
+        <input type="submit" value="Login" id="login">
+
+        <input type="submit" value="Create User" id="create-user">
     </div>
 
     <footer>
-        <hr>
+    <hr>
         Made by BBY-04 &#169;
     </footer>
     <script src = "/js/landingPage.js"></script>

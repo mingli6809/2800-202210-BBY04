@@ -198,9 +198,7 @@
         #menu {
             grid-column: 2;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1;
-            
+            grid-template-columns: 1fr 1fr 1fr;            
             height: 100%;
         }
 
@@ -269,7 +267,6 @@
         background-color: #9FECEC;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1;
     }
 
         input {
@@ -415,7 +412,6 @@
         background-color: #9FECEC;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1;
     }
 
         input {

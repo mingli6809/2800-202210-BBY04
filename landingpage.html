@@ -9,11 +9,16 @@
     <title>Landing Page</title>
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/css/landingPage.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 </head>
 
 <body>
     <!-- Nav Bar -->
-    <nav>
+    <header class = "header">
+        
+    </header>
+    <!-- <nav>
 
         <img id="logo" src="/img/StudentVote.png">
 
@@ -24,7 +29,7 @@
             <p id = "close" onclick = "hideMenu()"><a href = "#" > <img src = "/img/close (1).png" class = "flatIcon"><i class = "menuText"> Close</i> </a></p>
         </div>
         <div id = "hamburger-menu"><img onclick = "displayMenu()" src = "/img/hamburger.png" id="hamburger-icon"> </div>
-    </nav>
+    </nav> -->
 
     <!-- Main content of the page -->
     <div id="main-content">
@@ -33,16 +38,18 @@
     </div>
 
     <div id="other-half">
-        <input type="submit" value="Login" id="login">
+        <input type="submit" value="Login" class = "loginbtn" id="login">
 
-        <input type="submit" value="Create User" id="create-user">
+        <input type="submit" value="Create User" class = "loginbtn" id="create-user">
     </div>
 
     <footer>
     <hr>
         Made by BBY-04 &#169;
     </footer>
+    <script src = "/js/script.js"></script>
     <script src = "/js/landingPage.js"></script>
+
 </body>
 
 </html>

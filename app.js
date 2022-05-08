@@ -24,12 +24,12 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
         use test1;
-        CREATE TABLE IF NOT EXISTS customer (
+        CREATE TABLE IF NOT EXISTS BBY_04_USER (
         ID int NOT NULL AUTO_INCREMENT,
         email varchar(30),
         password varchar(30),
@@ -69,13 +69,13 @@ app.get("/admin-table", function (req, res) {
     const connection = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "",
+        password: "123456",
         database: "test1"
     });
     let myResults = null;
     connection.connect();
     connection.query(
-        "SELECT * FROM customer where code != 123",
+        "SELECT * FROM BBY_04_USER where code != 123",
         function (error, results, fields) {
             myResults = results;
             if (error) {
@@ -149,11 +149,11 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       database: 'test1'
     });
     connection.connect();
-    connection.query('INSERT INTO customer (email, password,code) values (?, ?, ?)',
+    connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
@@ -224,12 +224,12 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "123456",
     database: "test1"
   });
   connection.connect();
   connection.query(
-    "SELECT * FROM customer WHERE email = ? AND password = ?", [email, password],
+    "SELECT * FROM BBY_04_USER WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {
 
       console.log("Results from DB", results);

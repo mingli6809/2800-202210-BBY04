@@ -63,6 +63,11 @@ app.get("/profile", function (req, res) {
 
 });
 
+app.get("/nav", function(req,res){
+  let doc = fs.readFileSync("./common/nav.html", "utf-8");
+  res.send(doc);
+})
+
 app.get("/admin-table", function (req, res) {
 
     const mysql = require("mysql2");
@@ -90,9 +95,9 @@ app.get("/admin-table", function (req, res) {
             connection.end();
         }
     );
-    
-    console.log("should work");
+
 });
+
 
 app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {

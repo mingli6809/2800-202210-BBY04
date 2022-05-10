@@ -77,7 +77,6 @@ footer{
     }
 }
 
-
 @media (min-width:767px){
     body{
         height:100vh;
@@ -120,45 +119,45 @@ footer{
     }
 }
 
-    @media (min-width:1080px){
-        body{
-            height:100vh;
-            display: grid;
-            grid-template-rows: auto 1fr 1fr auto;
-        }
+@media (min-width:1080px){
+    body{
+        height:100vh;
+        display: grid;
+        grid-template-rows: auto 1fr 1fr auto;
+    }
+
+    #main-content {
+        grid-row: 2;
+        margin:0%;
+        margin-top: 5%;
+        background: white;
+    }
     
-        #main-content {
-            grid-row: 2;
-            margin:0%;
-            margin-top: 5%;
-            background: white;
-        }
-        
-        #other-half {
-            grid-row: 3;
-            background-color: #9FECEC;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            padding: 5% 0 5% 0;
-        }
-    
-        .loginbtn{
-            width:30%;
-            height:50%;
-            background-color: #00BAC6;
-            border-radius: 10px;
-            color:white;
-            border: 0px;
-            font-size: 2em;
-        }
-    
-    
-        hr{
-            background-color: #00BAC6; 
-        }
-        footer{
-            background-color: #9FECEC;
-            font-size: 0.9em; 
-        }
+    #other-half {
+        grid-row: 3;
+        background-color: #9FECEC;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 5% 0 5% 0;
+    }
+
+    .loginbtn{
+        width:30%;
+        height:50%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color:white;
+        border: 0px;
+        font-size: 2em;
+    }
+
+
+    hr{
+        background-color: #00BAC6; 
+    }
+    footer{
+        background-color: #9FECEC;
+        font-size: 0.9em; 
+    }
 }

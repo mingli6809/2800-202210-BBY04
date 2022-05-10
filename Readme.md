@@ -21,21 +21,24 @@ Contents of the project folder are:
 '''
 Top level of project folder:
 ├── .vscode                         # Settings for VSCode
-├── common                          # Common folder for frequently used files
+├── common                          # Folder for common files
 ├── css                             # Folder for css
 ├── img                             # Folder for images
 ├── js                              # Folder for js
 ├── .gitattributes                  # Folder for git
+├── .gitignore                      # Git ignore files
 ├── Readme.md                       # Readme file
-├── app.js                          # Primary js file
-├── dashboard.html                  # The dashboard for admins
-├── database.sql                    # The database
-├── home.html                       # The homepage for users
-├── landingpage.html                # The landing page for users and admins
-├── login.html                      # The login page for users and admins
-├── signup.html                     # The signup page for users and admins
+├── app.js                          # Primary JS file
+├── dashboard.html                  # HTML dashboard for admins
+├── database.sql                    # SQL database
+├── home.html                       # HTML homepage for users
+├── landingpage.html                # HTML landing page for users and admins
+├── login.html                      # HTML login page for users and admins
+├── signup.html                     # HTML signup page for users and admins
 
 It has the following subfolders and files:
+├── common                          # Folder for common files
+    ├── nav.html                        # HTML navbar
 ├── css                             # Folder for css
     ├── dashboardStyle.css              # Style for dashboard.html
     ├── landingPage.css                 # Style for landingpage.html
@@ -48,7 +51,7 @@ It has the following subfolders and files:
     ├── Pass.svg                        # Image for "Password" icon
     ├── StudentVote.png                 # Image for logo
     ├── StudentVoterLogoResized.png     # Image for resized logo
-    ├── close (1).png                   # Image for "Close" icon
+    ├── close.png                       # Image for "Close" icon
     ├── contact.png                     # Image for "Contact Us" icon
     ├── download.png                    # Image of hand holding loudspeaker
     ├── hamburger.png                   # Image for hamburger menu

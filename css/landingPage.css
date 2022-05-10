@@ -1,0 +1,465 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.menuText {
+    color:white;
+}
+/* iPhone 12 pro */
+@media screen and (max-width:400px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 40% 40% 10%;
+        margin: 0%;
+    }
+
+    nav {
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        background: #00ccf9;
+        width: 100vw;
+    }
+
+        #logo {
+            width: 100%;
+            height: auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 20px;
+        }
+
+        #menu {
+            grid-column: 2;
+            position: relative;
+            height: 300px;
+            width: 130px;
+            display: none;
+            margin-top: 0%;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            margin-left: 33%;
+            right: 0%;
+            top: 0%;
+            padding-right: 0px;
+            background: #00ccf9;
+        }
+
+            .flatIcon{
+                height: 2em;
+                width:auto;
+                filter: invert(100%);
+                margin-top: 5%;  
+            }
+
+            #hamburger-menu {
+                grid-column: 2;
+                grid-row: 1;
+                display: flex;
+                justify-content: right;
+                margin-right: 40px;
+                padding-top: 25px;
+            }
+
+            #hamburger-icon {
+                height: 6%;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 5%;
+            }
+
+            a:link {
+                text-decoration: none;
+            }
+
+            #contact {
+                display: flex;
+                justify-content: center;
+            }
+
+            #settings {
+                display: flex;
+                justify-content: center;
+            }
+
+            #logout {
+                display: flex;
+                justify-content: center;
+            }
+
+            #close {
+                display: flex;
+                justify-content: center;
+            }
+
+    #main-content {
+        grid-row: 2;
+        text-align: center;
+        background: white;
+    }
+
+        #content-image {
+            width: 50%;
+            height: 50%;
+            padding-top: 40px;
+        }
+
+        #img-text {
+            color: #3D3D67;
+            font-family: 'Judson', serif;
+            font-size: 30px;
+        }
+
+    #other-half {
+        grid-row: 3;
+        background-color: #9FECEC;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+
+        input {
+            display: block;
+            width: 70%;
+            height: 50%;
+            border: none;
+            font-size: small;
+            border-radius: 8px;
+            text-align: center;
+            border-radius: 12px;
+            background-color: #00BAC6;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            transition-duration: 0.2s;
+        }
+
+        input:hover {
+            background-color: #148891;
+            color: white;
+        }
+
+        #login {
+            grid-row: 1;
+            display: block;
+            margin: auto;
+        }
+
+        #create-user {
+            grid-row: 2;
+            display: block;
+            margin: auto;
+        }
+
+    hr {
+        border-top: 3px solid #148891;
+        margin-left: -100px;
+    }
+
+    footer {
+        grid-row: 4;
+        background-color: #9FECEC;
+        padding-top: 40px;
+        padding-left: 10px;
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+/* 1080p */
+@media screen and (min-width:400px) and (max-width:1080px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 40% 40% 10%;
+        margin: 0%;
+    }
+
+    nav {
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr;
+        background: #00ccf9;
+        width: 100vw;
+    }
+
+        #logo {
+            width: 65%;
+            height: auto;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        #menu {
+            grid-column: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1;
+            
+            height: 100%;
+        }
+
+            .flatIcon{
+                height: 2em;
+                width:auto;
+                filter: invert(100%);
+                margin-top: 5%;  
+            }
+
+            #hamburger-menu {
+                display: none;
+            }
+
+            #hamburger-icon {
+                height: 6%;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 2%;
+                margin-left: 80%;
+
+            }
+            a:link {
+                text-decoration: none;
+            }
+
+            #contact {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #settings {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #logout {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #close {
+                display: none;
+            }
+
+    #main-content {
+        grid-row: 2;
+        text-align: center;
+        background: white;
+    }
+
+        #content-image {
+            width: 30%;
+            height: auto;
+            padding-top: 0px;
+        }
+
+        #img-text {
+            color: #3D3D67;
+            font-family: 'Judson', serif;
+            font-size: 2em;
+        }
+
+    #other-half {
+        grid-row: 3;
+        background-color: #9FECEC;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1;
+    }
+
+        input {
+            width: 50%;
+            height: 30%;
+            border: none;
+            font-size: x-large;
+            border-radius: 8px;
+            text-align: center;
+            border-radius: 12px;
+            background-color: #00BAC6;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            transition-duration: 0.2s;
+        }
+        #menuText{
+            display: none;
+        }
+
+        input:hover {
+            background-color: #148891;
+            color: white;
+        }
+
+        #login {
+            grid-column: 1;
+            display: block;
+            margin: auto;
+        }
+
+        #create-user {
+            grid-column: 2;
+            display: inline-block;
+            margin: auto;
+        }
+
+    hr {
+        border-top: 3px solid #148891;
+        margin-left: -100px;
+    }
+
+    footer {
+        grid-row: 4;
+        background-color: #9FECEC;
+        padding-top: 40px;
+        padding-left: 10px;
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+/* 1440p */
+@media screen and (min-width:1080px){
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 40% 40% 10%;
+        margin: 0%;
+    }
+
+    nav {
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        background: #00ccf9;
+        width: 100vw;
+    }
+
+        #logo {
+            max-width: 40%;
+            max-height: 100%;
+            padding-left: 20px; 
+        }
+
+        #menu {
+            grid-column: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+
+            .flatIcon{
+                height: 2em;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 5%;  
+            }
+
+            #hamburger-menu {
+                display: none;
+            }
+
+            #hamburger-icon {
+                height: 6%;
+                width: auto;
+                filter: invert(100%);
+                margin-top: 2%;
+                margin-left: 80%;
+            }
+            a:link {
+                text-decoration: none;
+            }
+
+            #contact {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #settings {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #logout {
+                text-align: center;
+                font-family: 'Inter', sans-serif;
+            }
+
+            #close {
+                display: none;
+            }
+
+    #main-content {
+        grid-row: 2;
+        text-align: center;
+        background: white;
+    }
+
+        #content-image {
+            padding-top:    0px;
+            
+        }
+
+        #img-text {
+            color: #3D3D67;
+            font-family: 'Judson', serif;
+            font-size: 50px;
+        }
+
+    #other-half {
+        grid-row: 3;
+        background-color: #9FECEC;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1;
+    }
+
+        input {
+            width: 40%;
+            height: 40%;
+            border: none;
+            font-size: xx-large;
+            border-radius: 8px;
+            text-align: center;
+            border-radius: 12px;
+            background-color: #00BAC6;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            transition-duration: 0.2s;
+        }
+
+        input:hover {
+            background-color: #148891;
+            color: white;
+        }
+
+        #login {
+            grid-column: 1;
+            display: block;
+            margin: auto;
+        }
+
+        #create-user {
+            grid-column: 2;
+            display: inline-block;
+            margin: auto;
+        }
+
+    hr {
+        border-top: 3px solid #148891;
+        margin-left: -100px;
+    }
+
+    footer {
+        grid-row: 4;
+        background-color: #9FECEC;
+        padding-top: 40px;
+        padding-left: 10px;
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+    }
+} 

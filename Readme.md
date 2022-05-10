@@ -18,7 +18,7 @@ StudentVote is written with care by Team BBY04:
 ## Contents
 Contents of the project folder are:
 
-'''
+```
 Top level of project folder:
 ├── .vscode                         # Settings for VSCode
 ├── common                          # Folder for common files
@@ -68,5 +68,5 @@ It has the following subfolders and files:
     ├── landingPage.js                  # JS for landingpage.html
     ├── login.js                        # JS for login.html
     ├── signup.js                       # JS for signup.html
-    
-'''
+
+```

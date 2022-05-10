@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/home1.css">
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
 
-    <title>StudentVote - Dashboard</title>
+    <title>StudentVote - Home</title>
 
 </head>
 
@@ -21,10 +21,13 @@
             </div>
             <div class="logout-btn">
                 <form action="/logout" method="get">
-
                     <button type="submit" class="block" value="Signout">Log Out</button>
                 </form>
-
+            </div>
+            <div class="profile-btn">
+                <form action="/profilePage" method="get">
+                    <button type="submit" class="block" value="ProfilePage">Profile</button>
+                </form>
             </div>
         </div>
         <div class="content-area">
@@ -33,22 +36,11 @@
         </div>
         <div class="dash-area">
             
-            <div class="dash-function">
-                
-                <div id="input-forms">
-                    <sm>Changing user's email /password:</sm>
-                    <input type="text" placeholder="Email" id="email">
-                    <input type="text" placeholder="Password" id="password">
-                    <input type="button" id="submit" value="Update" />
-        
-                </div>
-               
-            </div>
-            
             <div class="vote-area">
                 <div class="voting-poll">poll placeholder</div>
                 <div class="voting-poll">poll placeholder</div>
             </div>
+
         </div>
         <div class="foot-area">
             <hr>Made by BBY-04 ©</div>

@@ -67,6 +67,10 @@ app.get("/nav", function(req,res){
   let doc = fs.readFileSync("./common/nav.html", "utf-8");
   res.send(doc);
 })
+app.get("/footer", function(req,res){
+  let doc = fs.readFileSync("./common/footer.html", "utf-8");
+  res.send(doc);
+})
 
 app.get("/admin-table", function (req, res) {
 
@@ -142,6 +146,10 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.get("/template", function(req,res){
+  let doc = fs.readFileSync("./template.html", "utf-8");
+  res.send(doc);
+})
 app.post('/add-customer', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log("password", req.body.password);

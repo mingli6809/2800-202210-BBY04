@@ -73,6 +73,13 @@ a{
     background-color: white;
 }
 
+/* footer css */
+footer{
+    background-color: #9FECEC;
+    font-size: 0.9em; 
+    font-family: 'Inter', sans-serif;
+}
+
 @media(max-width:768px){
     .hamburger{
         display:block;

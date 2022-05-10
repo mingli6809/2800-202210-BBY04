@@ -1,4 +1,4 @@
-function ajaxGET(url, callback) {
+function GET(url, callback) {
 
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -13,7 +13,7 @@ function ajaxGET(url, callback) {
     xhr.send();
 }
 
-ajaxGET("/nav", (response) => {
+GET("/nav", (response) => {
     let doc = document.querySelector(".header");
     doc.innerHTML = response;
     const hamburger = document.querySelector(".hamburger");
@@ -22,6 +22,7 @@ ajaxGET("/nav", (response) => {
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active")
         navMenu.classList.toggle("active")
+        
         let landingPage = "http://localhost:8000/#";
         let loginPage = "http://localhost:8000/login_landing";
         let signupPage = "http://localhost:8000/createuser";
@@ -29,14 +30,18 @@ ajaxGET("/nav", (response) => {
             document.querySelector(".logout").style.display = "none";
         }
     })
-    
-        
+
     document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }))
     
     
+})
+
+GET("/footer", (res)=>{
+    let doc = document.querySelector("footer");
+    doc.innerHTML = res;
 })
 
 

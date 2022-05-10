@@ -22,15 +22,20 @@ ajaxGET("/nav", (response) => {
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active")
         navMenu.classList.toggle("active")
+        let landingPage = "http://localhost:8000/#";
+        let loginPage = "http://localhost:8000/login_landing";
+        let signupPage = "http://localhost:8000/createuser";
+        if (window.location.href == landingPage  || window.location.href == loginPage || window.location.href == signupPage ) {
+            document.querySelector(".logout").style.display = "none";
+        }
     })
-
+    
+        
     document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }))
-    if (window.location.href == "http://localhost:8000/#") {
-            document.querySelector(".logout").style.display = "none";
-        }
+    
     
 })
 

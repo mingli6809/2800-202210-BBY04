@@ -12,7 +12,7 @@ app.use("/js", express.static("./js"));
 
 app.use(session({
   secret: "secret words",
-  name: "studentvote_SessionID",
+  name: "wazaSessionID",
   resave: false,
   saveUninitialized: true
 }));
@@ -29,7 +29,7 @@ app.get("/", function (req, res) {
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
         use test1;
-        CREATE TABLE IF NOT EXISTS bby_04_user (
+        CREATE TABLE IF NOT EXISTS BBY_04_USER (
         ID int NOT NULL AUTO_INCREMENT,
         email varchar(30),
         password varchar(30),
@@ -38,9 +38,9 @@ app.get("/", function (req, res) {
     connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
- //       console.log(error);
+        console.log(error);
       }
-//      console.log(results);
+      console.log(results);
     });
     connection.end();
     let doc = fs.readFileSync('./landingpage.html', "utf8");
@@ -81,13 +81,13 @@ app.get("/admin-table", function (req, res) {
     password: "123456",
     database: "test1"
   });
-  var myResults = null;
+  let myResults = null;
   connection.connect();
   connection.query(
     "SELECT * FROM BBY_04_USER where code != 123",
     function (error, results, fields) {
       myResults = results;
-         if (error) {
+      if (error) {
         console.log(error);
       }
       let table = "<table><tr><th>User</th></tr>";
@@ -100,8 +100,8 @@ app.get("/admin-table", function (req, res) {
     }
   );
 
-  console.log("should work");
 });
+
 
 app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {
@@ -146,6 +146,12 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.get("/template", function (req, res) {
+  let doc = fs.readFileSync("./template.html", "utf-8");
+  res.send(doc);
+})
+
+
 app.post('/add-customer', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log("password", req.body.password);
@@ -162,11 +168,11 @@ app.post('/add-customer', function (req, res) {
       database: 'test1'
     });
     connection.connect();
-    connection.query('INSERT INTO bby_04_user (email, password,code) values (?, ?, ?)',
+    connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
-  //        console.log(error);
+          console.log(error);
         }
         res.send({
           status: "success",
@@ -199,7 +205,7 @@ app.post("/login", function (req, res) {
       } else {
         req.session.loggedIn = true;
         req.session.email = userRecord.email;
-        req.session.userid=userRecord.ID;
+
         req.session.code = userRecord.code;
         req.session.save(function (err) {});
         res.send({
@@ -210,6 +216,9 @@ app.post("/login", function (req, res) {
     });
 
 });
+
+
+
 
 app.get("/logout", function (req, res) {
 
@@ -225,7 +234,33 @@ app.get("/logout", function (req, res) {
   }
 });
 
+app.post('/update-customer', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
 
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'test1'
+  });
+  connection.connect();
+  console.log("update values", req.body.email, req.body.password)
+  connection.query('UPDATE bby_04_user SET email = ? , password=? WHERE ID = ?',
+    [req.body.email, req.body.password, req.session.userid],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      //console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
 
 
 function authenticate(email, password, callback) {
@@ -238,7 +273,7 @@ function authenticate(email, password, callback) {
   });
   connection.connect();
   connection.query(
-    "SELECT * FROM bby_04_user WHERE email = ? AND password = ?", [email, password],
+    "SELECT * FROM BBY_04_USER WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {
 
       console.log("Results from DB", results);
@@ -256,32 +291,6 @@ function authenticate(email, password, callback) {
   );
 
 }
-
-
-app.post('/update-customer', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    database: 'test1'
-  });
-  connection.connect();
-console.log("update values", req.body.email, req.body.password)
-  connection.query('UPDATE bby_04_user SET email = ? , password=? WHERE ID = ?',
-        [req.body.email, req.body.password,req.session.userid],
-        function (error, results, fields) {
-    if (error) {
-        console.log(error);
-    }
-    //console.log('Rows returned are: ', results);
-    res.send({ status: "success", msg: "Recorded updated." });
-
-  });
-  connection.end();
-
-});
 
 let port = 8000;
 app.listen(port, function () {

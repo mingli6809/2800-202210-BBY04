@@ -43,19 +43,20 @@
         height: 100vh;
     }
 
-    .header {
+    /* .header {
         background-color: #00CCF9;
         display: grid;
         grid-template-columns: 1fr 1fr;
-    }
+    } */
 
     .logo-image {
         padding-left: 5px;
         margin: auto;
+      
     }
 
     .hamburger-menu {
-        margin: auto;
+        margin:  auto;
     }
 
     .hamburger-menu:hover {
@@ -79,6 +80,7 @@
 
     .hamburgerIcon {
         width: 25px;
+      
     }
 
     .content-area {
@@ -91,7 +93,7 @@
         font-size: 20px;
         background-color: #9FECEC;
         display: grid;
-        grid-template-rows: 5fr 5fr;
+        grid-template-rows: 5fr,5fr;
         grid-gap: 10px;
         padding: 10px;
         font-family: 'Inter', sans-serif;
@@ -101,11 +103,11 @@
         font-size: 35px;
         background-color:bisque;
         border: 2px solid black;
-        margin: auto;
+        margin:  auto;
     }
 
     .foot-area {
-        font-size: 30px;
+        font-size: 18px;
         background-color: #9FECEC;
         font-family: 'Inter', sans-serif;
     }

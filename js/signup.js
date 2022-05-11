@@ -1,8 +1,11 @@
+"use strict";
+
+
 document.getElementById("submit").addEventListener("click", function (e) {
     e.preventDefault();
 
     let formData = {
-
+     
         password: document.getElementById("password").value,
         email: document.getElementById("email").value,
         code: document.getElementById("code").value,
@@ -17,43 +20,34 @@ document.getElementById("submit").addEventListener("click", function (e) {
         if (this.readyState == XMLHttpRequest.DONE) {
             let queryString = "email=" + formData.email + "&password=" + formData.password;
             if (xhr.status === 200) {
-    //            console.log("DB updated.");
-      //          console.log(this.responseText);
-                let dataParsed1 = JSON.parse(this.responseText);
-                if (dataParsed1.status == "fail") {
-                    document.getElementById("errorMsg").innerHTML = dataParsed1
-                        .msg;
-                } else {
-                    ajaxPOST("/login", function (data) {
-                        if (data) {
-                            let dataParsed = JSON.parse(data);
-         //                   console.log(dataParsed);
-                            if (dataParsed.status == "fail") {
-                                document.getElementById("errorMsg").innerHTML = dataParsed
-                                    .msg;
-                            } else {
-                                localStorage.setItem("email", formData.email);
-                                window.location.replace("/profile");
-                            }
+                console.log("DB updated.");
+                ajaxPOST("/login", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+                        console.log(dataParsed);
+                        if (dataParsed.status == "fail") {
+                            document.getElementById("errorMsg").innerHTML = dataParsed
+                                .msg;
+                        } else {
+                            localStorage.setItem("email", formData.email);
+                            window.location.replace("/profile");
                         }
+                    }
 
-                    }, queryString);
-                }
+                }, queryString);
 
             } else {
-     //           console.log(this.status);
+                console.log(this.status);
             }
         } else {
-
-      //      console.log("ERROR", this.status);
-
+            console.log("ERROR", this.status);
         }
     }
     xhr.open("POST", "/add-customer");
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send("email=" + formData.email + "&password=" + formData.password +
-        "&code=" + formData.code);
+    xhr.send( "email=" + formData.email +"&password=" +formData.password + 
+         "&code=" + formData.code);
 })
 
 function ajaxPOST(url, callback, data) {
@@ -69,7 +63,7 @@ function ajaxPOST(url, callback, data) {
             callback(this.responseText);
 
         } else {
-  //          console.log(this.status);
+            console.log(this.status);
         }
     }
     xhr.open("POST", url);

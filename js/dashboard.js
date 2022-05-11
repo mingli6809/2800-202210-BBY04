@@ -1,3 +1,5 @@
+"use strict";
+
 document.getElementById("username-text").innerHTML = localStorage.getItem("email");
 
 function GET(url, callback) {
@@ -16,13 +18,6 @@ function GET(url, callback) {
     xhr.send();
 }
 
-
 GET("/admin-table", (response) =>{
-    
     document.querySelector(".dash-function").innerHTML = response;
-  
-    localStorage.setItem("result", response);
 })
-let result1=localStorage.getItem("result")
-console.log(result1);
-

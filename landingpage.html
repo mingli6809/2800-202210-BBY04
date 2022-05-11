@@ -6,43 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>StudentVote - Landing Page</title>
+    <title>Landing Page</title>
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/css/landingPage.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 </head>
 
 <body>
     <!-- Nav Bar -->
-    <nav>
-
-        <img id="logo" src="/img/StudentVote.png">
-
-        <div id = "menu">
-            <p id = "contact"><a href = "#" > <img src = "/img/contact.png" class = "flatIcon"><i class = "menuText">  Contact</i> </a></p>
-            <p id = "settings"><a href = "#" > <img src = "/img/settings.png" class = "flatIcon"> <i class = "menuText"> Settings</i></a></p>
-            <p id = "logout"><a href = "#" > <img src = "/img/power.png" class = "flatIcon"> <i class = "menuText">Logout </i></a></p>
-            <p id = "close" onclick = "hideMenu()"><a href = "#" > <img src = "/img/close (1).png" class = "flatIcon"><i class = "menuText"> Close</i> </a></p>
-        </div>
-        <div id = "hamburger-menu"><img onclick = "displayMenu()" src = "/img/hamburger.png" id="hamburger-icon"> </div>
-    </nav>
+    <header class = "header">
+        
+    </header>
+    
 
     <!-- Main content of the page -->
     <div id="main-content">
+        <figure>
         <img src="/img/images.jpg" id="content-image" alt="contentImage">
         <figcaption id="img-text">Vote For What Matters</figcaption>
+        </figure>
     </div>
 
     <div id="other-half">
-        <input type="submit" value="Login" id="login">
+        <input type="submit" value="Login" class = "loginbtn" id="login">
 
-        <input type="submit" value="Create User" id="create-user">
+        <input type="submit" value="Create User" class = "loginbtn" id="create-user">
     </div>
 
-    <footer>
-    <hr>
-        Made by BBY-04 &#169;
+    <footer  id = "footer">
+    
     </footer>
+    <script src = "/js/script.js"></script>
     <script src = "/js/landingPage.js"></script>
+
 </body>
 
 </html>

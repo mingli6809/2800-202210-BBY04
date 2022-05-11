@@ -37,5 +37,11 @@
         color:#00BAC6;
         background-color: white;
     }
+    #error{
+        color:red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
 }
 

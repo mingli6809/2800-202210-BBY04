@@ -69,8 +69,7 @@ GET("/allUsers", (response) => {
 
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
-                let email = document.getElementById("email");
-                let pass = document.getElementById("pass");
+                
                 let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
                 console.log(queryString)
                 POST("/updateUser", function (data) {
@@ -80,7 +79,6 @@ GET("/allUsers", (response) => {
                             console.log(dataParsed.msg);
 
                         } else {
-                            localStorage.setItem(`email${response[i].ID}`, response[i].email);
                             location.reload();
                         }
                     }
@@ -110,6 +108,7 @@ GET("/allUsers", (response) => {
         input2.setAttribute("value", "Delete");
         input2.setAttribute("class", "btn");
         input2.setAttribute("id", "delUser");
+        let div2 = document.createElement("div");
         input2.addEventListener("click", function () {
             input2.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -117,12 +116,20 @@ GET("/allUsers", (response) => {
                 POST("/delUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
+                        
                         if (dataParsed.status == "fail") {
-                            console.log(dataParsed.msg);
-
+                            
+                            div2.setAttribute("id", "error");
+                            div2.innerHTML = dataParsed.msg;
+                            
+                            div.appendChild(div2);
+                            setTimeout(function(){
+                                div2.style.display = "none";
+                            }, 5000);
                         } else {
                             localStorage.setItem(`email${response[i].ID}`, response[i].email);
                             location.reload();
+                            div2.innerHTML = "";
                         }
                     }
 
@@ -133,6 +140,7 @@ GET("/allUsers", (response) => {
         div.appendChild(p2);
         div.appendChild(input);
         div.appendChild(input2);
+        
         document.querySelector(".displayUsers").appendChild(div);
     }
 })

@@ -218,7 +218,7 @@ app.post("/delUser",function(req,res){
   if(req.body.email == req.session.email){
     res.send({
       status: "fail",
-      msg: "Same Admin Account"
+      msg: "Cannot Delete your own account"
     }); 
   } else{
     let connection = mysql.createConnection({

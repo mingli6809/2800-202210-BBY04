@@ -18,7 +18,7 @@ menu.style.display = "none";
 hamburgerMenu.style.display = "flex";
 
 }
-document.getElementById("username-text").innerHTML=localStorage.getItem("email");;
+// document.getElementById("username-text").innerHTML=localStorage.getItem("email");;
 
 function ajaxPOST(url, callback, data) {
     let params = typeof data == 'string' ? data : Object.keys(data).map(

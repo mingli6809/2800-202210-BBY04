@@ -79,7 +79,7 @@ app.get("/nav1", function (req, res) {
 
 app.get("/userprofile", function (req, res) {
   if (req.session.loggedIn) {
-    let doc1 = fs.readFileSync('./userprofile.html', "utf8");
+    let doc1 = fs.readFileSync('./profilePage.html', "utf8");
  
       res.send(doc1);
    

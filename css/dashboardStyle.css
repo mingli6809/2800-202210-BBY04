@@ -78,11 +78,11 @@ a:hover {
 .dash-area {
     font-size: 20px;
     background-color: #9FECEC;
-    display: grid;
-    grid-template-rows: 5fr 5fr;
-    grid-template-columns: 5fr 5fr;
-    grid-gap: 10px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:10px;
 }
 
 .dash-function {
@@ -99,6 +99,16 @@ a:hover {
 
 #foot-content {
     padding-left: 15px;
+}
+
+.loginbtn{
+    margin: 5px;
+    width:50%;
+    height:15%;
+    background-color: #00BAC6;
+    border-radius: 10px;
+    color:white;
+    border: 0px;
 }
 
 @media (max-width:700px) {

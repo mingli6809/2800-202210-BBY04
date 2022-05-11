@@ -48,6 +48,8 @@ app.get("/", function (req, res) {
   }
 });
 
+
+
 app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");

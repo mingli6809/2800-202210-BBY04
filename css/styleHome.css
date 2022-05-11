@@ -87,7 +87,7 @@
         text-align: center;
     }
 
-    .vote-area {
+    .buttons {
         font-size: 20px;
         background-color: #9FECEC;
         display: grid;
@@ -135,7 +135,7 @@
         grid-template-columns: 1fr;
     }
 
-    .vote-area {
+    .buttons{
         grid-template-rows: 2fr 2fr;
         grid-template-columns: 1fr;
     }

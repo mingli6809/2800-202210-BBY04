@@ -125,7 +125,7 @@ GET("/allUsers", (response) => {
                             div.appendChild(div2);
                             setTimeout(function(){
                                 div2.style.display = "none";
-                            }, 5000);
+                            }, 5000)
                         } else {
                             localStorage.setItem(`email${response[i].ID}`, response[i].email);
                             location.reload();

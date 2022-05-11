@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
@@ -72,13 +72,31 @@ app.get("/footer", function (req, res) {
   res.send(doc);
 })
 
+app.get("/nav1", function (req, res) {
+  let doc = fs.readFileSync("./common/nav1.html", "utf-8");
+  res.send(doc);
+})
+
+app.get("/userprofile", function (req, res) {
+  if (req.session.loggedIn) {
+    let doc1 = fs.readFileSync('./userprofile.html', "utf8");
+ 
+      res.send(doc1);
+   
+
+  } else {
+    res.redirect("/");
+  }
+
+});
+
 app.get("/admin-table", function (req, res) {
 
   const mysql = require("mysql2");
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "123456",
     database: "test1"
   });
   var myResults = null;
@@ -158,7 +176,7 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       database: 'test1'
     });
     connection.connect();
@@ -233,7 +251,7 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "123456",
     database: "test1"
   });
   connection.connect();
@@ -263,7 +281,7 @@ app.post('/update-customer', function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: '123456',
     database: 'test1'
   });
   connection.connect();

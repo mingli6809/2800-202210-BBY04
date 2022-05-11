@@ -1,3 +1,5 @@
+"use strict";
+
 function GET(url, callback) {
 
     const xhr = new XMLHttpRequest();

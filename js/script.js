@@ -1,3 +1,5 @@
+"use script";
+
 function GET(url, callback) {
 
     const xhr = new XMLHttpRequest();

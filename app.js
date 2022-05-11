@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: '',
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
@@ -78,7 +78,7 @@ app.get("/admin-table", function (req, res) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "",
     database: "test1"
   });
   let myResults = null;
@@ -164,7 +164,7 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: '',
       database: 'test1'
     });
     connection.connect();
@@ -240,7 +240,7 @@ app.post('/update-customer', function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123456',
+    password: '',
     database: 'test1'
   });
   connection.connect();
@@ -268,7 +268,7 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "",
     database: "test1"
   });
   connection.connect();

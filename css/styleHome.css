@@ -66,7 +66,7 @@
     #menu {
         font-size: 25px;
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         grid-template-rows: 1fr;
     }
 
@@ -138,8 +138,14 @@
     }
 
     .vote-area {
-        grid-template-rows: 2fr 2fr;
-        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .voting-poll {
+        font-size: 25px;
+        background-color:bisque;
+        border: 2px solid black;
+        margin:  auto;
     }
 
     #menu{

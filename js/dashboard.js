@@ -21,3 +21,7 @@ function GET(url, callback) {
 GET("/admin-table", (response) =>{
     document.querySelector(".dash-function").innerHTML = response;
 })
+
+document.getElementById("allUsers").addEventListener("click", function(){
+   window.location = "/adminUsers";
+});

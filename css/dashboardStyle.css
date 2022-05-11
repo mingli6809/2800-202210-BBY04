@@ -14,10 +14,13 @@ a:hover {
 }
 
 #welcome-text{
+    font-size: 50%;
     color: #3D3D67;
 }
 
 #username-text {
+    font-size: 50%;
+    margin-top: 20px;
     color: #00BAC6;
 }
 
@@ -26,13 +29,6 @@ a:hover {
     grid-template-rows: 1fr 2fr 6fr 1fr;
     grid-template-columns: 10fr;
     height: 100vh;
-}
-
-.header {
-    background-color: #00CCF9;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
 }
 
 .logout-btn {
@@ -70,13 +66,13 @@ a:hover {
 }
 
 .content-area {
-    font-size: 80px;
+    font-size: 110px;
     margin: auto;
     text-align: center;
 }
 
 .dash-area {
-    font-size: 20px;
+    font-size: 10px;
     background-color: #9FECEC;
     display: flex;
     flex-direction: column;
@@ -102,13 +98,17 @@ a:hover {
 }
 
 .loginbtn{
-    margin: 5px;
-    width:50%;
+    margin: 0px;
+    width:20%;
     height:15%;
     background-color: #00BAC6;
     border-radius: 10px;
     color:white;
     border: 0px;
+}
+.loginbtn:hover{
+    color:#00BAC6;
+    background-color: white;
 }
 
 @media (max-width:700px) {
@@ -128,14 +128,19 @@ a:hover {
     }
 
     .content-area {
-        font-size: 40px;
+        font-size: 50px;
         grid-template-columns: 1fr;
         margin: auto;
         text-align: center;
     }
-
-    .header {
-        grid-template-columns: 1fr 1fr;
+    .loginbtn{
+        margin: 0px;
+        width:50%;
+        height:15%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color:white;
+        border: 0px;
     }
     
 }

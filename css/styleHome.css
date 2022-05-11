@@ -43,11 +43,11 @@
         height: 100vh;
     }
 
-    .header {
+    /* .header {
         background-color: #00CCF9;
         display: grid;
         grid-template-columns: 1fr 1fr;
-    }
+    } */
 
     .logo-image {
         padding-left: 5px;

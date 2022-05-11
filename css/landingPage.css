@@ -57,11 +57,6 @@ footer{
     hr {
         background-color: #00BAC6;
     }
-
-    footer{
-        background-color: #9FECEC; 
-        font-family: 'Inter', sans-serif;
-    }
 }
 
 @media (min-width:420px){
@@ -113,10 +108,7 @@ footer{
     hr{
         background-color: #00BAC6; 
     }
-    footer{
-        background-color: #9FECEC;
-        font-size: 0.9em; 
-    }
+    
 }
 
 @media (min-width:1080px){
@@ -156,8 +148,5 @@ footer{
     hr{
         background-color: #00BAC6; 
     }
-    footer{
-        background-color: #9FECEC;
-        font-size: 0.9em; 
-    }
+    
 }

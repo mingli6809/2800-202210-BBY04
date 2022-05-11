@@ -48,7 +48,15 @@ app.get("/", function (req, res) {
   }
 });
 
+app.get("/adminUsers", function (req, res) {
+  if (req.session.loggedIn) {
+    let doc = fs.readFileSync("./adminUsers.html", "utf-8");
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
 
+})
 
 app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
@@ -65,44 +73,36 @@ app.get("/profile", function (req, res) {
 
 });
 
-app.get("/nav", function(req,res){
+app.get("/nav", function (req, res) {
   let doc = fs.readFileSync("./common/nav.html", "utf-8");
   res.send(doc);
 })
-app.get("/footer", function(req,res){
+app.get("/footer", function (req, res) {
   let doc = fs.readFileSync("./common/footer.html", "utf-8");
   res.send(doc);
 })
 
-app.get("/admin-table", function (req, res) {
+app.get("/allUsers", function (req, res) {
 
-    const mysql = require("mysql2");
-    const connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "test1"
-    });
-    let myResults = null;
-    connection.connect();
-    connection.query(
-        "SELECT * FROM BBY_04_USER where code != 123",
-        function (error, results, fields) {
-            myResults = results;
-            if (error) {
-                console.log(error);
-            }
-            let table = "<table><tr><th>User</th></tr>";
-            for (let i = 0; i < results.length; i++) {
-                table += "<tr><td>" + results[i].email + "</td></tr>";
-            }
-            table += "</table>";
-            res.send(table);
-            connection.end();
-        }
-    );
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "test1"
+  });
+  let myResults = null;
+  connection.connect();
+  connection.query(
+    "SELECT * FROM BBY_04_USER",
+    function (error, results, fields) {
+      res.send(results);
+    }
+  );
 
 });
+
+
 
 
 app.get("/createuser", function (req, res) {
@@ -148,7 +148,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.get("/template", function(req,res){
+app.get("/template", function (req, res) {
   let doc = fs.readFileSync("./template.html", "utf-8");
   res.send(doc);
 })
@@ -190,6 +190,60 @@ app.post('/add-customer', function (req, res) {
     });
   }
 });
+
+app.post("/updateUser", function(req,res){
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'test1'
+  });
+  connection.connect();
+  console.log(req.body.email, req.body.password, req.body.ID)
+  connection.query('UPDATE BBY_04_USER SET email = ? , password = ? WHERE ID = ?',
+    [req.body.email, req.body.password, req.body.ID],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record updated."
+      });
+
+    });
+})
+
+app.post("/delUser",function(req,res){
+  if(req.body.email == req.session.email){
+    res.send({
+      status: "fail",
+      msg: "Same Admin Account"
+    }); 
+  } else{
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'test1'
+    });
+    connection.connect();
+    connection.query('DELETE FROM BBY_04_USER WHERE email = ?',
+      [req.body.email],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "Record deleted."
+        });
+  
+      });
+  }
+  
+    
+})
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");

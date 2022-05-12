@@ -62,7 +62,7 @@ input[type=password]{
 }
 
 /* iPhone 12 Pro*/
-@media  (max-width:400px){
+@media  (max-width:476px){
 
     .displayUsers{
         background-color:white;
@@ -113,8 +113,53 @@ input[type=password]{
 }
 
 /* 1080p */
-@media screen and (min-width:400px) and (max-width:1080px){
+@media screen and (min-width:476px) and (max-width:1080px){
 
+    .displayUsers{
+        background-color:white;
+        height:100vh;
+        grid-template-columns: repeat(1fr 1fr 1fr);
+        grid-template-rows: repeat(auto-fill, 1fr);
+        grid-gap: 1rem;
+        display: flex;
+        margin: 5px;
+    }
+    
+    .userCards{
+        border-radius: 20px;
+        background-color: #9FECEC;
+        width:300px;
+        height:300px;
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.2em;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        color: #3D3D67;
+    }
+    
+    .btn{
+        margin:0 2px 2px 2px;
+        width:50%;
+        height:20%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color:white;
+        border: 0px;
+        font-size: large;
+    }
+    .btn:hover{
+        color:#00BAC6;
+        background-color: white;
+    }
+    .error{
+        color:red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
 }
 
 /* 1440p */

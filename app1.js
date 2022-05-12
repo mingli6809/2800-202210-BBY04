@@ -4,7 +4,10 @@ const session = require("express-session");
 const app = express();
 const fs = require("fs");
 const mysql = require('mysql2');
-
+const {
+  JSDOM
+} = require('jsdom');
+const multer = require("multer");
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
@@ -16,6 +19,28 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "./img")
+  },
+  filename: function (req, file, callback) {
+    callback(null, "my" + req.session.email + ".png");
+  }
+});
+const upload = multer({
+  storage: storage
+});
+
+app.post('/upload-images', upload.array("files"), function (req, res) {
+  console.log(req.files);
+  for (let i = 0; i < req.files.length; i++) {
+    req.files[i].filename = req.files[i].originalname;
+  }
+});
+
 
 app.get("/", function (req, res) {
   if (req.session.loggedIn) {
@@ -38,9 +63,9 @@ app.get("/", function (req, res) {
     connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
- //       console.log(error);
+        //       console.log(error);
       }
-//      console.log(results);
+      //      console.log(results);
     });
     connection.end();
     let doc = fs.readFileSync('./landingpage.html', "utf8");
@@ -52,11 +77,19 @@ app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
+    let dom = new JSDOM(doc2);
+    let n = req.session.email;
+    let name1 = "my" + n + ".png";
+    console.log(name1);
+    let page = ' <img src="img/' + name1 + '">';
+    dom.window.document.querySelector("#im").innerHTML = page;
     if (req.session.code == "123")
       res.send(doc1);
-    else
-      res.send(doc2);
-
+    else {
+      res.set('Server', 'Wazubi Engine');
+      res.set('X-Powered-By', 'Wazubi');
+      res.send(dom.serialize());
+    }
   } else {
     res.redirect("/");
   }
@@ -77,21 +110,24 @@ app.get("/nav1", function (req, res) {
   res.send(doc);
 })
 
+app.get("/change_logo", function (req, res) {
+  let doc = fs.readFileSync("./ProfilePage_icon.html", "utf-8");
+  res.send(doc);
+})
+
 app.get("/userprofile", function (req, res) {
   if (req.session.loggedIn) {
-    let doc1 = fs.readFileSync('./profilePage.html', "utf8");
- 
-      res.send(doc1);
-   
+    let doc2 = fs.readFileSync('./profilePage.html', "utf8");
 
+    res.set('Server', 'Wazubi Engine');
+    res.set('X-Powered-By', 'Wazubi');
+    res.send(doc2);
   } else {
     res.redirect("/");
   }
-
 });
 
 app.get("/admin-table", function (req, res) {
-
   const mysql = require("mysql2");
   const connection = mysql.createConnection({
     host: "localhost",
@@ -105,7 +141,7 @@ app.get("/admin-table", function (req, res) {
     "SELECT * FROM BBY_04_USER where code != 123",
     function (error, results, fields) {
       myResults = results;
-         if (error) {
+      if (error) {
         console.log(error);
       }
       let table = "<table><tr><th>User</th></tr>";
@@ -125,12 +161,10 @@ app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
-
     if (req.session.code == "123")
       res.send(doc1);
     else
       res.send(doc2);
-
   } else {
     let doc = fs.readFileSync('./signup.html', "utf8");
     res.send(doc);
@@ -154,10 +188,6 @@ app.get("/login_landing", function (req, res) {
 });
 
 
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -184,7 +214,7 @@ app.post('/add-customer', function (req, res) {
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
-  //        console.log(error);
+          //        console.log(error);
         }
         res.send({
           status: "success",
@@ -208,7 +238,6 @@ app.post("/login", function (req, res) {
   console.log("What was sent", req.body.email, req.body.password);
   let results = authenticate(req.body.email, req.body.password,
     function (userRecord) {
-
       if (userRecord == null) {
         res.send({
           status: "fail",
@@ -217,7 +246,7 @@ app.post("/login", function (req, res) {
       } else {
         req.session.loggedIn = true;
         req.session.email = userRecord.email;
-        req.session.userid=userRecord.ID;
+        req.session.userid = userRecord.ID;
         req.session.code = userRecord.code;
         req.session.save(function (err) {});
         res.send({
@@ -230,7 +259,6 @@ app.post("/login", function (req, res) {
 });
 
 app.get("/logout", function (req, res) {
-
   if (req.session) {
     req.session.destroy(function (error) {
       if (error) {
@@ -285,17 +313,20 @@ app.post('/update-customer', function (req, res) {
     database: 'test1'
   });
   connection.connect();
-console.log("update values", req.body.email, req.body.password)
+  console.log("update values", req.body.email, req.body.password)
   connection.query('UPDATE bby_04_user SET email = ? , password=? WHERE ID = ?',
-        [req.body.email, req.body.password,req.session.userid],
-        function (error, results, fields) {
-    if (error) {
+    [req.body.email, req.body.password, req.session.userid],
+    function (error, results, fields) {
+      if (error) {
         console.log(error);
-    }
-    //console.log('Rows returned are: ', results);
-    res.send({ status: "success", msg: "Recorded updated." });
+      }
+      //console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
 
-  });
+    });
   connection.end();
 
 });

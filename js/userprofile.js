@@ -20,6 +20,7 @@ hamburgerMenu.style.display = "flex";
 }
 // document.getElementById("username-text").innerHTML=localStorage.getItem("email");;
 
+
 function ajaxPOST(url, callback, data) {
     let params = typeof data == 'string' ? data : Object.keys(data).map(
         function (k) {
@@ -60,4 +61,10 @@ document.getElementById("submit").addEventListener("click", function (e) {
         }
 
     }, queryString);
+});
+
+document.getElementById("avatar-div").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location = "/change_logo" ;
+
 });

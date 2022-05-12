@@ -34,13 +34,14 @@ footer{
 
     .loginbtn{
         margin: 10%;
+        padding-top: -5%;
         width:50%;
         height:60%;
         background-color: #00BAC6;
         border-radius: 10px;
         color:white;
         border: 0px;
-        font-weight: bold;
+        font-size: large;
     }
 
     .loginbtn:hover{
@@ -69,6 +70,7 @@ footer{
         border-radius: 10px;
         color:white;
         border: 0px;
+        font-size: large;
     }
 }
 
@@ -76,7 +78,7 @@ footer{
     body{
         height:100vh;
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: auto 1fr 1fr auto;
     }
 
     #main-content {
@@ -102,6 +104,7 @@ footer{
         border-radius: 10px;
         color:white;
         border: 0px;
+        font-size: x-large;
     }
 
 

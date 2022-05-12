@@ -11,8 +11,8 @@ app.use("/js", express.static("./js"));
 
 
 app.use(session({
-  secret: "secret words",
-  name: "wazaSessionID",
+  secret: "coocookachew",
+  name: "Patrick",
   resave: false,
   saveUninitialized: true
 }));

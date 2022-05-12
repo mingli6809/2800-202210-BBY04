@@ -9,7 +9,7 @@
 }
 
 /* iPhone 12 Pro*/
-@media  (min-width:400px){
+@media  (max-width:400px){
 
     .displayUsers{
         background-color:white;
@@ -56,3 +56,96 @@
     }
 }
 
+/* 1080p */
+@media screen and (min-width:400px) and (max-width:1080px){
+    .displayUsers{
+        background-color:white;
+        height:100vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 10%;
+        overflow: scroll;
+    }
+    
+    .userCards{
+        border-radius: 20px;
+        margin: 5px;
+        background-color: #9FECEC;
+        width:300px;
+        height:300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.5em;
+    }
+    
+    .btn{
+        margin:0 2px 2px 2px;
+        width:50%;
+        height:20%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color:white;
+        border: 0px;
+        font-weight: bold;
+    }
+    .btn:hover{
+        color:#00BAC6;
+        background-color: white;
+    }
+    .error{
+        color:red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
+}
+
+/* 1440p */
+@media screen and (min-width:1080px){
+    .displayUsers{
+        background-color:white;
+        height:100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10%;
+        overflow: scroll;
+    }
+    
+    .userCards{
+        border-radius: 20px;
+        margin: 5px;
+        background-color: #9FECEC;
+        width:300px;
+        height:300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.5em;
+    }
+    
+    .btn{
+        margin:0 2px 2px 2px;
+        width:50%;
+        height:20%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color:white;
+        border: 0px;
+        font-weight: bold;
+    }
+    .btn:hover{
+        color:#00BAC6;
+        background-color: white;
+    }
+    .error{
+        color:red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
+}

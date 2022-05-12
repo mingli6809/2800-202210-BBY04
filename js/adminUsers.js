@@ -82,6 +82,16 @@ GET("/allUsers", (response) => {
                     let message = document.createTextNode("You have left an input blank. Please try again.");
                     errormsg.appendChild(message);
                     editProfile.appendChild(errormsg);
+
+                    document.getElementById("email").style.width = "80%";
+                    document.getElementById("email").style.display = "initial";
+                    document.getElementById("pass").style.width = "80%";
+                    document.getElementById("pass").style.display = "initial";
+                    document.getElementById("submit").style.width = "20%";
+                    document.getElementById("submit").style.height = "20%";
+                    document.getElementById("back").style.width = "20%";
+                    document.getElementById("back").style.height = "20%";
+
                 } else {
                     let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
                     POST("/updateUser", function (data) {

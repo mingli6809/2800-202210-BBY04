@@ -16,6 +16,7 @@
         display: grid;
         grid-template-rows: 10% 30% 60%;
         margin: 0%;
+        overflow: hidden;
     }
 
     #navbar {

@@ -46,4 +46,11 @@ GET("/nav", (response) => {
 GET("/footer", (res)=>{
     let doc = document.querySelector(".footer");
     doc.innerHTML = res;
+
+    if (window.location.href == "http://localhost:8000/adminUsers") {
+        document.getElementById("footer").style.position = "relative";
+        console.log("help");
+    } else {
+
+    }
 })

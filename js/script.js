@@ -54,7 +54,7 @@ GET("/footer", (res)=>{
     doc.innerHTML = res;
 
     if (window.location.href == "http://localhost:8000/adminUsers") {
-        document.getElementById("footer").style.position = "relative";
+        document.getElementById("footer").style.position = "sticky";
     } else {
 
     }

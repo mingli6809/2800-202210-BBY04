@@ -50,7 +50,7 @@ GET("/allUsers", (response) => {
         // edit button
         let input = document.createElement("input");
         input.setAttribute("type", "submit");
-        input.setAttribute("value", "edit");
+        input.setAttribute("value", "Edit");
         input.setAttribute("class", "btn");
         input.setAttribute("id", "editUser");
         input.addEventListener("click", function () {
@@ -59,7 +59,7 @@ GET("/allUsers", (response) => {
             p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
-            emailInput.setAttribute("placeholder", "email");
+            emailInput.setAttribute("placeholder", "Email");
             emailInput.setAttribute("id", "email");
             
             let passInput = document.createElement("input");
@@ -104,7 +104,8 @@ GET("/allUsers", (response) => {
             
             let back = document.createElement("input");
             back.setAttribute("type", "submit");
-            back.setAttribute("value", "back");
+            back.setAttribute("value", "Back");
+            back.setAttribute("id", "back");
             back.addEventListener("click", function(){
                 location.reload();
             })

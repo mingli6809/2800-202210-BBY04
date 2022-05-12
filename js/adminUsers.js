@@ -65,29 +65,40 @@ GET("/allUsers", (response) => {
             let passInput = document.createElement("input");
             passInput.setAttribute("type","Password");
             passInput.setAttribute("placeholder", "Password");
-            emailInput.setAttribute("id", "pass");
+            passInput.setAttribute("id", "pass");
 
             let submit = document.createElement("input");
             submit.setAttribute("type", "submit");
             submit.setAttribute("value", "Submit");
+            submit.setAttribute("id", "submit");
 
 
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
-                
-                let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
-                console.log(queryString)
-                POST("/updateUser", function (data) {
+
+                if (emailInput.value == "" | passInput.value == "") {
+                    let errormsg = document.createElement("p");
+                    errormsg.setAttribute("id", "error");
+                    let message = document.createTextNode("You have left an input blank. Please try again.");
+                    errormsg.appendChild(message);
+                    editProfile.appendChild(errormsg);
+                } else {
+                    let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
+                    POST("/updateUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
                         if (dataParsed.status == "fail") {
-                            p.innerHTML = dataParsed.msg;
+                            let errormsg = document.createElement("p");
+                            errormsg.setAttribute("id", "error");
+                            let message = document.createTextNode("Something went wrong, try again");
+                            errormsg.appendChild(message);
+                            editProfile.appendChild(errormsg);
                         } else {
                             location.reload();
                         }
                     }
-
-                }, queryString);
+                    }, queryString);
+                }
             });
        
             

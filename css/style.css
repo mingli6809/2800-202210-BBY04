@@ -58,7 +58,9 @@ a{
 }
 
 .nav-link:hover{
-    color:dodgerblue;
+    color: #3D3D67;
+    font-weight: 1000;
+    font-family: 'Inter', sans-serif;
 }
 
 .hamburger{

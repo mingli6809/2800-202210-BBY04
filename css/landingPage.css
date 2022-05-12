@@ -134,7 +134,7 @@ footer{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        padding: 5% 0 5% 0;
+        padding: 5% 0% 5% 0%;
     }
 
     .loginbtn{

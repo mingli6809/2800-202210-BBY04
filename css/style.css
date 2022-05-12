@@ -81,8 +81,7 @@ footer{
     background-color: #9FECEC;
     font-size: 0.9em; 
     font-family: 'Inter', sans-serif;
-    position: relative;
-    bottom: 0%;
+    position: static;
     width: 100%;
 }
 

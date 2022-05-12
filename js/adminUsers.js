@@ -55,6 +55,8 @@ GET("/allUsers", (response) => {
         input.setAttribute("id", "editUser");
         input.addEventListener("click", function () {
             let editProfile = document.createElement("div");
+            let p = document.createElement("p");
+            p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
             emailInput.setAttribute("placeholder", "email");
@@ -69,6 +71,7 @@ GET("/allUsers", (response) => {
             submit.setAttribute("type", "submit");
             submit.setAttribute("value", "Submit");
 
+
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
                 
@@ -78,8 +81,7 @@ GET("/allUsers", (response) => {
                     if (data) {
                         let dataParsed = JSON.parse(data);
                         if (dataParsed.status == "fail") {
-                            console.log(dataParsed.msg);
-
+                            p.innerHTML = dataParsed.msg;
                         } else {
                             location.reload();
                         }
@@ -100,6 +102,7 @@ GET("/allUsers", (response) => {
             editProfile.appendChild(passInput);
             editProfile.appendChild(submit);
             editProfile.appendChild(back);
+            editProfile.appendChild(p);
             div.innerHTML = "";
             div.appendChild(editProfile);
         });
@@ -121,7 +124,7 @@ GET("/allUsers", (response) => {
                         
                         if (dataParsed.status == "fail") {
                             
-                            div2.setAttribute("id", "error");
+                            div2.setAttribute("class", "error");
                             div2.innerHTML = dataParsed.msg;
                             
                             div.appendChild(div2);

@@ -82,7 +82,15 @@ app.get("/profile", function (req, res) {
     let name1 = "my" + n + ".png";
     console.log(name1);
     let page = ' <img src="img/' + name1 + '">';
-    dom.window.document.querySelector("#im").innerHTML = page;
+    let page1 = ' <img src="img/default.png">';
+
+    const path = "./img/"+name1;
+    if (fs.existsSync(path))
+      dom.window.document.querySelector("#im").innerHTML = page;
+    else {
+      dom.window.document.querySelector("#im").innerHTML = page1;
+    }
+
     if (req.session.code == "123")
       res.send(doc1);
     else {
@@ -99,7 +107,8 @@ app.get("/profile", function (req, res) {
 app.get("/nav", function (req, res) {
   let doc = fs.readFileSync("./common/nav.html", "utf-8");
   res.send(doc);
-})
+});
+
 app.get("/footer", function (req, res) {
   let doc = fs.readFileSync("./common/footer.html", "utf-8");
   res.send(doc);

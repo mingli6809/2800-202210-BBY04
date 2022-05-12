@@ -1,4 +1,15 @@
-@media  (min-width:319px){
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+#error-text {
+    color: red;
+}
+
+/* iPhone 12 Pro*/
+@media  (min-width:400px){
 
     .displayUsers{
         background-color:rgba(248, 232, 212, 0.797);

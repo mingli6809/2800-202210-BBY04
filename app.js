@@ -105,7 +105,7 @@ app.get("/allUsers", function (req, res) {
 
 
 
-app.get("/createuser", function (req, res) {
+app.get("/signup", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
@@ -121,6 +121,15 @@ app.get("/createuser", function (req, res) {
   }
 
 });
+
+app.get("/createUser", function(req,res){
+  if(req.session.loggedIn && req.session.code == "123"){
+    let doc = fs.readFileSync("./createUser.html", "utf-8");
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
+})
 
 app.get("/login_landing", function (req, res) {
   if (req.session.loggedIn) {
@@ -148,10 +157,55 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.get("/template", function (req, res) {
-  let doc = fs.readFileSync("./template.html", "utf-8");
-  res.send(doc);
-})
+app.post('/add-user', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log("password", req.body.password);
+  console.log("Email", req.body.email);
+  console.log("code", req.body.code);
+
+  let string = req.body.email;
+  if (string.includes("@my.bcit.ca")) {
+
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'test1'
+    });
+    connection.connect();
+    connection.query('Select * from BBY_04_USER where email = ? AND password = ?',[req.body.email, req.body.password],function(error,result1s,fields){
+      if(result1s.length == 0){
+        connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
+      [req.body.email, req.body.password, req.body.code],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "User Created"
+        });
+
+      });
+
+
+    connection.end();
+      } else {
+        res.send({
+          status:"fail",
+          msg: "User already exists"
+        })
+      }
+    })
+    
+  } else {
+    res.send({
+      status: "fail",
+      msg: "User email domain is not correct."
+    });
+  }
+});
+
 app.post('/add-customer', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log("password", req.body.password);
@@ -176,7 +230,7 @@ app.post('/add-customer', function (req, res) {
         }
         res.send({
           status: "success",
-          msg: "Record added."
+          msg: "User Created"
         });
 
       });

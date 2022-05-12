@@ -9,7 +9,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 30% 60%;
         margin: 0%;
     }
 
@@ -91,13 +91,7 @@
         margin-left: -100%;
     }
 
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 10px;
-        padding-left: 10px;
-        text-align: left;
-    }
+    
 
 }
 
@@ -106,8 +100,9 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 35% 65%;
         margin: 0%;
+        padding:0%;
     }
 
     #navbar {
@@ -188,14 +183,7 @@
         border-top: 3px solid #00BAC6;
         margin-left: -100%;
     }
-
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 30px;
-        padding-left: 10px;
-        text-align: left;
-    }
+    
 
 }
 
@@ -204,7 +192,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 25% 65% ;
         margin: 0%;
     }
 
@@ -238,6 +226,7 @@
         text-align: center;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
+        overflow: hidden;
     }
 
     input {
@@ -293,12 +282,10 @@
         margin-left: -100%;
     }
 
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 40px;
-        padding-left: 10px;
-        text-align: left;
-    }
 
+}
+
+#error{
+    color:red;
+    font-weight: bold;
 }

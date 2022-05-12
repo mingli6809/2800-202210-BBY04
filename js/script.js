@@ -33,7 +33,6 @@ GET("/nav", (response) => {
     }))
     
     window.addEventListener("load", function(){
-        console.log("running");
         let landingPage = "http://localhost:8000/";
         let loginPage = "http://localhost:8000/login_landing";
         let signupPage = "http://localhost:8000/createuser";

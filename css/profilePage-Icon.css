@@ -183,8 +183,6 @@ a:hover {
     font-size: 20px;
 }
 
-#submit {}
-
 @media (max-width:700px) {
     .grid-container {
         grid-template-rows: 0.25fr 2fr 0.25fr;
@@ -193,7 +191,7 @@ a:hover {
 
     .Profile-Info {
         grid-gap: 32px;
-        padding: 9px;
+        padding: 4px;
     }
 
     #avatar-div {

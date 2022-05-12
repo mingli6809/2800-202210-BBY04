@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
     callback(null, "./img")
   },
   filename: function (req, file, callback) {
-    callback(null, "my" + req.session.email + ".png");
+    callback(null, "my" + req.session.userid + ".png");
   }
 });
 const upload = multer({
@@ -78,7 +78,7 @@ app.get("/profile", function (req, res) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
     let dom = new JSDOM(doc2);
-    let n = req.session.email;
+    let n = req.session.userid;
     let name1 = "my" + n + ".png";
     console.log(name1);
     let page = ' <img src="img/' + name1 + '">';

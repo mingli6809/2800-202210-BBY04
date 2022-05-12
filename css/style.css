@@ -33,7 +33,7 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
+    padding: 0 24px ;
     max-height: 70px;
 }
 
@@ -45,7 +45,7 @@ a{
 }
 
 .nav-branding{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .nav-link{

@@ -49,7 +49,7 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: '',
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
@@ -81,8 +81,8 @@ app.get("/profile", function (req, res) {
     let n = req.session.userid;
     let name1 = "my" + n + ".png";
     console.log(name1);
-    let page = ' <img src="img/' + name1 + '">';
-    let page1 = ' <img src="img/default.png">';
+    let page = ' <img class = "avatar" src="img/' + name1 + '">';
+    let page1 = ' <img class = "avatar" src="img/default.png">';
 
     const path = "./img/"+name1;
     if (fs.existsSync(path))
@@ -139,9 +139,9 @@ app.get("/userprofile", function (req, res) {
 app.get("/admin-table", function (req, res) {
   const mysql = require("mysql2");
   const connection = mysql.createConnection({
-    host: "localhost",
+    host: 'localhost',
     user: "root",
-    password: "123456",
+    password: "",
     database: "test1"
   });
   var myResults = null;
@@ -215,7 +215,7 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: '',
       database: 'test1'
     });
     connection.connect();
@@ -286,9 +286,9 @@ app.get("/logout", function (req, res) {
 function authenticate(email, password, callback) {
   const mysql = require("mysql2");
   const connection = mysql.createConnection({
-    host: "localhost",
+    host: 'localhost',
     user: "root",
-    password: "123456",
+    password: "",
     database: "test1"
   });
   connection.connect();
@@ -318,7 +318,7 @@ app.post('/update-customer', function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123456',
+    password: '',
     database: 'test1'
   });
   connection.connect();
@@ -339,6 +339,8 @@ app.post('/update-customer', function (req, res) {
   connection.end();
 
 });
+
+//host: '127.0.0.1' is required - M1 Macbook
 
 let port = 8000;
 app.listen(port, function () {

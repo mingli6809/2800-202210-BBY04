@@ -9,6 +9,8 @@ body {
     margin: 0px;
     overflow-y: hidden;
     overflow-x: hidden;
+    height: 100vh;
+    
 }
 
 input[type="text"]{
@@ -23,8 +25,7 @@ a:hover {
 
 .grid-container {
     display: grid;
-    grid-template-rows: 1fr 6fr 2fr 1fr;
-    grid-template-columns: 10fr;
+    grid-template-rows: 1fr 6fr 0.5fr;
     height: 100vh;
 }
 
@@ -100,6 +101,12 @@ a:hover {
     background-color:#9fecec;
 }
 
+#submit {
+    background-color: #00c2ed;
+    float: left;
+    width: 200px;
+}
+
 #info-description {
     padding: 10px;
     width: auto;
@@ -118,7 +125,7 @@ a:hover {
     font-size: 20px;
     background-color: #9FECEC;
     display: grid;
-    grid-template-rows: 0.25fr 0.5fr 0.5fr 1.5fr;
+    grid-template-rows: 0.25fr 1fr ;
     grid-gap: 10px;
     padding: 26px;
     font-family: 'Inter', sans-serif;
@@ -129,10 +136,6 @@ a:hover {
     width: 150px;
 }
 
-#submit {
-    background-color: #00c2ed;
-}
-
 #avatar-div{
     padding: 60px;
     padding-left: 115px;
@@ -141,7 +144,8 @@ a:hover {
 
 #avatar {
     border-radius: 50%;
-    max-width: 75%;
+    width: 400px;
+    height: auto;
 }
 
 #avatar:hover {
@@ -169,20 +173,33 @@ a:hover {
     background-color: #00BAC6;
 }
 
+#upload-images-form {
+    display: grid;
+    grid-template-rows: 0.5fr 2fr;
+    grid-gap: 200px;
+}
+
+#image-upload {
+    font-size: 20px;
+}
+
+#submit {}
+
 @media (max-width:700px) {
     .grid-container {
-        grid-template-rows: 0.5fr 2fr 1fr 0.5fr;
+        grid-template-rows: 0.25fr 2fr 0.25fr;
         grid-template-columns: 1fr;
+    }
+
+    .Profile-Info {
+        grid-gap: 32px;
+        padding: 9px;
     }
 
     #avatar-div {
         padding: 0px;
         padding-top: 35px;
-        padding-left: 90px;
-    }
-    
-    .Profile-Info {
-        grid-template-rows: 0.25fr 0.5fr 0.5fr 0.25fr;
+        padding-left: 45px;
     }
 
     .profile-btn {
@@ -208,12 +225,25 @@ a:hover {
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .submit-button {
         padding-top: 20px;
         width: 120px;
+    }
+
+    .submit-div {
+        padding-bottom: 30px;
+    }
+
+    #image-upload {
+        font-size: 20px;
+    }
+
+    #submit {
+        padding: 15px;
+        font-size: 25px;
     }
 
     .dash-area {
@@ -232,14 +262,10 @@ a:hover {
         margin: auto;
         text-align: center;
     }
-
-    /* .header {
-        grid-template-columns: 1fr 1fr;
-    } */
     
     #avatar {
-        height: 200px;
-        width: 200px;
+        height: 300px;
+        width: 300px;
         border-radius: 50%;
     }
 
@@ -252,9 +278,15 @@ a:hover {
         border-radius: 10px;
         cursor: pointer;
         text-align: center;
+        width: 200px;
+        height: auto;
     }
     
-    
+    #upload-images-form {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: 1fr 1fr;
+    }
 }
 
 table {
@@ -270,15 +302,7 @@ td {
     padding-bottom: 1%;
     border: 1px solid;
 }
-/* .Profile-Info {
-    font-size: 20px;
-    background-color: #9FECEC;
-    display: grid;
-    grid-template-rows: 5fr 5fr;
-    grid-gap: 10px;
-    padding: 10px;
-    font-family: 'Inter', sans-serif;
-} */
+
 .voting-poll {
     font-size: 35px;
     background-color:bisque;

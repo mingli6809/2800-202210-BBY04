@@ -41,6 +41,12 @@ GET("/nav", (response) => {
             document.querySelector(".profilePage").style.display = "none";
         }
     })
+
+    if (window.location.href == "http://localhost:8000/adminUsers") {
+        document.getElementById("header").style.position = "sticky";
+        document.getElementById("header").style.top = "0";
+
+    } else {}
 })
 
 GET("/footer", (res)=>{

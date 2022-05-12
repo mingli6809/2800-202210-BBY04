@@ -7,6 +7,8 @@
 #failedLogin{
     color:red;
     display:none;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
 }
 
 /* iPhone 12 Pro */
@@ -61,7 +63,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 70px;
+        margin-top: 50px;
     }
     
     input[type=password] {
@@ -69,7 +71,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     input[type=submit] {
@@ -79,7 +81,7 @@
         background: #00BAC6;
         font-family: 'Inter', sans-serif;
         color: white;
-        margin-top: 50px;
+        margin-top: 30px;
     }
     
     #footer {

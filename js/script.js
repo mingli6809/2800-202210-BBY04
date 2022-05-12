@@ -35,7 +35,7 @@ GET("/nav", (response) => {
     window.addEventListener("load", function(){
         let landingPage = "http://localhost:8000/";
         let loginPage = "http://localhost:8000/login_landing";
-        let signupPage = "http://localhost:8000/createuser";
+        let signupPage = "http://localhost:8000/signup";
         if (window.location.href == landingPage  || window.location.href == loginPage || window.location.href == signupPage ) {
             document.querySelector(".logout").style.display = "none";
             document.querySelector(".profilePage").style.display = "none";

@@ -174,7 +174,7 @@ app.post('/add-user', function (req, res) {
       database: 'test1'
     });
     connection.connect();
-    connection.query('Select * from BBY_04_USER where email = ? AND password = ?',[req.body.email, req.body.password],function(error,result1s,fields){
+    connection.query('Select * from BBY_04_USER where email = ?',[req.body.email],function(error,result1s,fields){
       if(result1s.length == 0){
         connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],

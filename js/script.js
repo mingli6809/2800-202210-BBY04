@@ -36,8 +36,15 @@ GET("/nav", (response) => {
         navMenu.classList.remove("active");
     }))
     
+    document.querySelector(".logout").addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location = "/logout" ;
+    
+    });
     
 })
+
+
 
 GET("/footer", (res)=>{
     let doc = document.querySelector("#footer");

@@ -2,7 +2,6 @@
 
 const upLoadForm = document.getElementById("upload-images-form");
 upLoadForm.addEventListener("submit", uploadImages);
-console.log("icon page");
 
 function uploadImages(e) {
     e.preventDefault();
@@ -20,7 +19,6 @@ function uploadImages(e) {
     };
 
     fetch("/upload-images", options).then(function (res) {
-        console.log(res);
 
     }).catch(function (err) {
         ("Error:", err)

@@ -1,15 +1,12 @@
 "use strict";
 
-// document.getElementById("username-text").innerHTML=localStorage.getItem("email");;
-
-
 function ajaxPOST(url, callback, data) {
     let params = typeof data == 'string' ? data : Object.keys(data).map(
         function (k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
         }
     ).join('&');
-    // console.log("params in ajaxPOST", params);
+
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {

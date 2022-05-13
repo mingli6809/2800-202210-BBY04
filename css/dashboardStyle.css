@@ -30,18 +30,18 @@
         justify-content: center;
         align-items: center;
         font-family: 'Judson', serif;
+        flex-direction: column;
     }
 
     #welcome-text {
-        color: #103613;
-        font-size: larger;
-        width: fit-content;
+        color: #3D3D67;
+        font-size: xx-large;
     }
 
     #username-text {
-        color: #3D3D67;
-        font-size: larger;
-        width: fit-content;
+        color: #00BAC6;
+        font-size: xx-large;
+        margin-top: 10%;
     }
 
     #dash-area {

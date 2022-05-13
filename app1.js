@@ -149,7 +149,7 @@ app.get("/allUsers", function (req, res) {
       res.send(results);
     }
   );
-
+  });
 app.get("/userprofile", function (req, res) {
   if (req.session.loggedIn) {
     let doc2 = fs.readFileSync('./profilePage.html', "utf8");

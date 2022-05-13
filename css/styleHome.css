@@ -38,27 +38,24 @@
 
     .grid-container {
         display: grid;
-        grid-template-rows: 1fr 3fr 5fr 1fr;
+        grid-template-rows: 1fr 2fr 6fr 1fr;
         grid-template-columns: 10fr;
         height: 100vh;
     }
 
-
-
-    /* .header {
+    .header {
         background-color: #00CCF9;
         display: grid;
         grid-template-columns: 1fr 1fr;
-    } */
+    }
 
     .logo-image {
         padding-left: 5px;
         margin: auto;
-      
     }
 
     .hamburger-menu {
-        margin:  auto;
+        margin: auto;
     }
 
     .hamburger-menu:hover {
@@ -68,7 +65,7 @@
     #menu {
         font-size: 25px;
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 1fr;
     }
 
@@ -82,7 +79,6 @@
 
     .hamburgerIcon {
         width: 25px;
-      
     }
 
     .content-area {
@@ -91,11 +87,11 @@
         text-align: center;
     }
 
-    .buttons {
+    .vote-area {
         font-size: 20px;
         background-color: #9FECEC;
         display: grid;
-        grid-template-rows: 2fr 2fr 2fr 2fr;
+        grid-template-rows: 5fr 5fr;
         grid-gap: 10px;
         padding: 10px;
         font-family: 'Inter', sans-serif;
@@ -105,11 +101,11 @@
         font-size: 35px;
         background-color:bisque;
         border: 2px solid black;
-        margin:  auto;
+        margin: auto;
     }
 
     .foot-area {
-        font-size: 18px;
+        font-size: 30px;
         background-color: #9FECEC;
         font-family: 'Inter', sans-serif;
     }
@@ -133,34 +129,13 @@
         border-style: none;
     }
 
-    .avatar {
-        width: 75px;
-        height: 75px;
-        margin-bottom: 2px;
-    }
-
 @media (max-width:700px) {
     .grid-container {
         grid-template-rows: 1fr 2fr 6fr 1fr;
         grid-template-columns: 1fr;
     }
 
-    .avatar {
-        width: 70px;
-        height: 70px;
-    }
-
     .vote-area {
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-    }
-
-    .voting-poll {
-        font-size: 25px;
-        background-color:bisque;
-        border: 2px solid black;
-        margin:  auto;
-    }
-    .buttons{
         grid-template-rows: 2fr 2fr;
         grid-template-columns: 1fr;
     }

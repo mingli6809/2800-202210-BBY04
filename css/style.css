@@ -12,8 +12,7 @@
 }
 
 #logo{
-    width:60%;
-    padding-top: 2%;
+    width:70%;
     height:auto;
 }
 
@@ -22,7 +21,6 @@ header{
 }
 li{
     list-style: none;
-    text-align: center;
 }
 a{
     color: white;
@@ -43,7 +41,6 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
     gap: 60px;
 }
 
@@ -58,9 +55,7 @@ a{
 }
 
 .nav-link:hover{
-    color: #3D3D67;
-    font-weight: 1000;
-    font-family: 'Inter', sans-serif;
+    color:dodgerblue;
 }
 
 .hamburger{
@@ -83,17 +78,9 @@ footer{
     background-color: #9FECEC;
     font-size: 0.9em; 
     font-family: 'Inter', sans-serif;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
-hr {
-    border-top: 3px solid #00BAC6;
-    margin-left: -100%;
-}
-
-@media(max-width:820px){
+@media(max-width:768px){
     .hamburger{
         display:block;
     }
@@ -129,26 +116,10 @@ hr {
         left:0;
 
     }
-
-    #logo{
-        padding-top: 8%;
-        width:200px;
-    }
-}
-
-@media (min-width:820px) and (max-width:1080px) {
-    #logo {
-        padding-top: 8%;
-        padding-right: 5%;
-        width: 180px;
-    }
 }
 
 @media (min-width:1080px){
     #logo{
-        padding-top: 8%;
-        width:250px;
+        width:200px;
     }
-
-
 }

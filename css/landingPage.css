@@ -34,14 +34,13 @@ footer{
 
     .loginbtn{
         margin: 10%;
-        padding-top: -5%;
         width:50%;
         height:60%;
         background-color: #00BAC6;
         border-radius: 10px;
         color:white;
         border: 0px;
-        font-size: large;
+        font-weight: bold;
     }
 
     .loginbtn:hover{
@@ -58,6 +57,11 @@ footer{
     hr {
         background-color: #00BAC6;
     }
+
+    footer{
+        background-color: #9FECEC; 
+        font-family: 'Inter', sans-serif;
+    }
 }
 
 @media (min-width:420px){
@@ -70,7 +74,6 @@ footer{
         border-radius: 10px;
         color:white;
         border: 0px;
-        font-size: large;
     }
 }
 
@@ -78,7 +81,7 @@ footer{
     body{
         height:100vh;
         display: grid;
-        grid-template-rows: auto 1fr 1fr auto;
+        grid-template-rows: 1fr;
     }
 
     #main-content {
@@ -104,14 +107,16 @@ footer{
         border-radius: 10px;
         color:white;
         border: 0px;
-        font-size: x-large;
     }
 
 
     hr{
         background-color: #00BAC6; 
     }
-    
+    footer{
+        background-color: #9FECEC;
+        font-size: 0.9em; 
+    }
 }
 
 @media (min-width:1080px){
@@ -134,7 +139,7 @@ footer{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        padding: 5% 0% 5% 0%;
+        padding: 5% 0 5% 0;
     }
 
     .loginbtn{
@@ -151,5 +156,8 @@ footer{
     hr{
         background-color: #00BAC6; 
     }
-    
+    footer{
+        background-color: #9FECEC;
+        font-size: 0.9em; 
+    }
 }

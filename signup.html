@@ -6,32 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="/css/signup.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
 </head>
 <body>
     
-    <header class = "header"></header>
+    <div id="navbar">
+        <img id="logo" src="/img/StudentVote.png" alt="logo">
+    </div>
 
     <div id="sign-up">
         <p id="sign-up-text">
-            Sign up
+            Sign Up
         </p>
     </div>
 
-    <form id="input-forms">
-        <p id = "error"> </p>
+    <div id="input-forms">
         <input type="email" placeholder="Email" id="email">
         <input type="text" placeholder="Admin Code" id="code">
-        <input type="password" autocomplete="off" placeholder="Password" id="password">
+        <input type="text" placeholder="Password" id="password">
         <input type="submit" id="submit" value="Submit" />
-        
-    </form>
+    </div>
 
-    <footer class="footer">
-        
-    </footer>
+    <div id="footer">
+        <hr>
+        <p>
+            Made by BBY-04©
+        </p>
+    </div>
     <script src="/js/signup.js"></script>
-    <script src="/js/script.js"></script>
 </body>
 </html>

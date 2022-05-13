@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/dashboardStyle.css">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
 
     <title>StudentVote - Dashboard</title>
@@ -14,27 +13,33 @@
 </head>
 
 <body>
-   
-    <header class = "header"></header>
-    
-    <div id="content-area">
-        <p id="welcome-text"><b>Welcome,</b></p>
-        <p id="username-text"><em><b>Admin: User Name</b></em></p>
+
+    <div class="grid-container">
+        <div class="header">
+            <div class="logo-image">
+                <img id="studentvote-logo" alt="logo" src="/img/StudentVoterLogoResized.png">
+            </div>
+            <div class="logout-btn">
+                <form action="/logout" method="get">
+
+                    <button type="submit" class="block" value="Signout">Log Out</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="content-area">
+            <p id="welcome-text"><b>Welcome,</b></p>
+            <p id="username-text"><em><b>Admin: User Name</b></em></p>
+        </div>
+        <div class="dash-area">
+            <div class="dash-function">dashboard function area</div>
+            
+        </div>
+        <div class="foot-area">
+            <hr>Made by BBY-04 ©</div>
     </div>
-
-    <div id="dash-area">
-        <input type="submit" value="All Users" class="loginbtn" id = "allUsers">
-
-        <input type="submit" value="Create User" class="loginbtn" id="create-user">
-
-        <input type="submit" value="All Polls" class="loginbtn" id="allPolls">
-    </div>
-
-    <footer class="footer"></footer>
-
-    <script src="js/dashboard.js">
+    <script src = "js/dashboard.js">
     </script>
-    <script src="js/script.js"></script>
 </body>
 
 </html>

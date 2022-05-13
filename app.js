@@ -50,9 +50,9 @@ app.get("/", function (req, res) {
       password: dbPass,
       multipleStatements: true
     });
-    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
-        use test1;
-        CREATE TABLE IF NOT EXISTS bby_04_user (
+    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
+        use COMP2800;
+        CREATE TABLE IF NOT EXISTS BBY-4-user (
         ID int NOT NULL AUTO_INCREMENT,
         email varchar(30),
         password varchar(30),
@@ -124,12 +124,12 @@ app.get("/allUsers", function (req, res) {
     host: "localhost",
     user: "root",
     password: "",
-    database: "test1"
+    database: "COMP2800"
   });
   let myResults = null;
   connection.connect();
   connection.query(
-    "SELECT * FROM BBY_04_USER",
+    "SELECT * FROM BBY-4-user",
     function (error, results, fields) {
       res.send(results);
     }
@@ -210,12 +210,12 @@ app.post('/add-user', function (req, res) {
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'test1'
+      database: 'COMP2800'
     });
     connection.connect();
-    connection.query('Select * from BBY_04_USER where email = ?',[req.body.email],function(error,result1s,fields){
+    connection.query('Select * from BBY-4-user where email = ?',[req.body.email],function(error,result1s,fields){
       if(result1s.length == 0){
-        connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
+        connection.query('INSERT INTO BBY-4-user (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
@@ -256,10 +256,10 @@ app.post('/add-user', function (req, res) {
       host: 'localhost',
       user: 'root',
       password: dbPass,
-      database: 'test1'
+      database: 'COMP2800'
     });
     connection.connect();
-    connection.query('INSERT INTO bby_04_user (email, password,code) values (?, ?, ?)',
+    connection.query('INSERT INTO BBY-4-user (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
@@ -285,12 +285,12 @@ app.post("/updateUser", function(req,res){
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'test1'
+    database: 'COMP2800'
   });
   connection.connect();
   
   if(req.body.email.includes("@my.bcit.ca")){
-    connection.query('UPDATE BBY_04_USER SET email = ? , password = ? WHERE ID = ?',
+    connection.query('UPDATE BBY-4-user SET email = ? , password = ? WHERE ID = ?',
     [req.body.email, req.body.password, req.body.ID],
     function (error, results, fields) {
       if (error) {
@@ -323,10 +323,10 @@ app.post("/delUser",function(req,res){
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'test1'
+      database: 'COMP2800'
     });
     connection.connect();
-    connection.query('DELETE FROM BBY_04_USER WHERE email = ?',
+    connection.query('DELETE FROM BBY-4-user WHERE email = ?',
       [req.body.email],
       function (error, results, fields) {
         if (error) {
@@ -388,11 +388,11 @@ function authenticate(email, password, callback) {
     host: "localhost",
     user: "root",
     password: "",
-    database: "test1"
+    database: "COMP2800"
   });
   connection.connect();
   connection.query(
-    "SELECT * FROM bby_04_user WHERE email = ? AND password = ?", [email, password],
+    "SELECT * FROM BBY-4-user WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {
       if (error) {
         console.log(error);
@@ -416,10 +416,10 @@ app.post('/update-customer', function (req, res) {
     host: 'localhost',
     user: 'root',
     password: dbPass,
-    database: 'test1'
+    database: 'COMP2800'
   });
   connection.connect();
-  connection.query('UPDATE bby_04_user SET email = ? , password=? WHERE ID = ?',
+  connection.query('UPDATE BBY-4-user SET email = ? , password=? WHERE ID = ?',
     [req.body.email, req.body.password, req.session.userid],
     function (error, results, fields) {
       if (error) {

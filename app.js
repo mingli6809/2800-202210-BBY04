@@ -11,7 +11,7 @@ const multer = require("multer");
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
-
+app.use("/img1", express.static("./img1"));
 
 app.use(session({
   secret: "secret words",

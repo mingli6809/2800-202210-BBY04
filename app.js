@@ -4,7 +4,10 @@ const session = require("express-session");
 const app = express();
 const fs = require("fs");
 const mysql = require('mysql2');
-
+const {
+  JSDOM
+} = require('jsdom');
+const multer = require("multer");
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
@@ -29,7 +32,7 @@ app.get("/", function (req, res) {
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
         use test1;
-        CREATE TABLE IF NOT EXISTS BBY_04_USER (
+        CREATE TABLE IF NOT EXISTS bby_04_user (
         ID int NOT NULL AUTO_INCREMENT,
         email varchar(30),
         password varchar(30),
@@ -52,6 +55,20 @@ app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
+    let dom = new JSDOM(doc2);
+    let n = req.session.userid;
+    let name1 = "my" + n + ".png";
+    console.log(name1);
+    let page = ' <img class = "avatar" src="img/' + name1 + '">';
+    let page1 = ' <img class = "avatar" src="img/default.png">';
+
+    const path = "./img/"+name1;
+    if (fs.existsSync(path))
+      dom.window.document.querySelector("#im").innerHTML = page;
+    else {
+      dom.window.document.querySelector("#im").innerHTML = page1;
+    }
+
     if (req.session.code == "123")
       res.send(doc1);
     else
@@ -63,45 +80,37 @@ app.get("/profile", function (req, res) {
 
 });
 
-app.get("/nav", function(req,res){
+app.get("/nav", function (req, res) {
   let doc = fs.readFileSync("./common/nav.html", "utf-8");
   res.send(doc);
-})
-app.get("/footer", function(req,res){
+});
+
+app.get("/footer", function (req, res) {
   let doc = fs.readFileSync("./common/footer.html", "utf-8");
   res.send(doc);
 })
 
-app.get("/admin-table", function (req, res) {
+app.get("/nav1", function (req, res) {
+  let doc = fs.readFileSync("./common/nav1.html", "utf-8");
+  res.send(doc);
+})
 
-    const mysql = require("mysql2");
-    const connection = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "test1"
-    });
-    let myResults = null;
-    connection.connect();
-    connection.query(
-        "SELECT * FROM BBY_04_USER where code != 123",
-        function (error, results, fields) {
-            myResults = results;
-            if (error) {
-                console.log(error);
-            }
-            let table = "<table><tr><th>User</th></tr>";
-            for (let i = 0; i < results.length; i++) {
-                table += "<tr><td>" + results[i].email + "</td></tr>";
-            }
-            table += "</table>";
-            res.send(table);
-            connection.end();
-        }
-    );
+app.get("/change_logo", function (req, res) {
+  let doc = fs.readFileSync("./ProfilePage_icon.html", "utf-8");
+  res.send(doc);
+})
 
+app.get("/userprofile", function (req, res) {
+  if (req.session.loggedIn) {
+    let doc2 = fs.readFileSync('./profilePage.html', "utf8");
+
+    res.set('Server', 'Wazubi Engine');
+    res.set('X-Powered-By', 'Wazubi');
+    res.send(doc2);
+  } else {
+    res.redirect("/");
+  }
 });
-
 
 app.get("/admin-table", function (req, res) {
   const mysql = require("mysql2");
@@ -133,17 +142,14 @@ app.get("/admin-table", function (req, res) {
   console.log("should work");
 });
 
-
 app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
-
     if (req.session.code == "123")
       res.send(doc1);
     else
       res.send(doc2);
-
   } else {
     let doc = fs.readFileSync('./signup.html', "utf8");
     res.send(doc);
@@ -167,10 +173,6 @@ app.get("/login_landing", function (req, res) {
 });
 
 
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -197,11 +199,11 @@ app.post('/add-customer', function (req, res) {
       database: 'test1'
     });
     connection.connect();
-    connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
+    connection.query('INSERT INTO bby_04_user (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {
-          console.log(error);
+          //        console.log(error);
         }
         res.send({
           status: "success",
@@ -234,7 +236,7 @@ app.post("/login", function (req, res) {
       } else {
         req.session.loggedIn = true;
         req.session.email = userRecord.email;
-
+        req.session.userid = userRecord.ID;
         req.session.code = userRecord.code;
         req.session.save(function (err) {});
         res.send({
@@ -268,12 +270,12 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "",
     database: "test1"
   });
   connection.connect();
   connection.query(
-    "SELECT * FROM BBY_04_USER WHERE email = ? AND password = ?", [email, password],
+    "SELECT * FROM bby_04_user WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {
 
       console.log("Results from DB", results);

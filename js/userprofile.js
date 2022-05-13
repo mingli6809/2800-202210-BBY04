@@ -27,19 +27,17 @@ document.getElementById("submit").addEventListener("click", function (e) {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let queryString = "email=" + email.value + "&password=" + password.value;
-    ajaxPOST("/update-customer", function (data) {
+    ajaxPOST("/updateUser", function (data) {
         if (data) {
             let dataParsed = JSON.parse(data);
-
             if (dataParsed.status == "fail") {
-                document.getElementById("errorMsg").innerHTML = dataParsed.msg;
+                
+                document.getElementById("err").innerHTML="email domain is not correct, try again";
             } else {
-                localStorage.setItem("email", email.value);
-                window.location.replace("/profile");
+                location.reload();
             }
         }
-
-    }, queryString);
+        }, queryString);
 });
 
 document.getElementById("avatar-div").addEventListener("click", function (e) {

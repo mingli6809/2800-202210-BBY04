@@ -9,7 +9,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 30% 60%;
         margin: 0%;
     }
 
@@ -17,17 +17,14 @@
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
         text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
@@ -91,13 +88,7 @@
         margin-left: -100%;
     }
 
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 10px;
-        padding-left: 10px;
-        text-align: left;
-    }
+    
 
 }
 
@@ -106,25 +97,23 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 35% 65%;
         margin: 0%;
+        padding:0%;
     }
 
     #navbar {
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
         text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
@@ -188,14 +177,7 @@
         border-top: 3px solid #00BAC6;
         margin-left: -100%;
     }
-
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 30px;
-        padding-left: 10px;
-        text-align: left;
-    }
+    
 
 }
 
@@ -204,7 +186,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 25% 65% ;
         margin: 0%;
     }
 
@@ -212,17 +194,14 @@
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
         text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
@@ -238,6 +217,7 @@
         text-align: center;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
+        overflow: hidden;
     }
 
     input {
@@ -255,7 +235,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 40px;
+        margin-top: 60px;
     }
 
     input[type=text] {
@@ -293,12 +273,10 @@
         margin-left: -100%;
     }
 
-    #footer {
-        grid-row: 4;
-        background-color: #9FECEC;
-        padding-top: 40px;
-        padding-left: 10px;
-        text-align: left;
-    }
 
+}
+
+#error{
+    color:red;
+    font-weight: bold;
 }

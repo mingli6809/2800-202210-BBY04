@@ -1,6 +1,6 @@
 "use strict";
 
-function ajaxPOST(url, callback, data) {
+function POST(url, callback, data) {
     let params = typeof data == 'string' ? data : Object.keys(data).map(
         function (k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
@@ -21,21 +21,31 @@ function ajaxPOST(url, callback, data) {
     xhr.send(params);
 }
 
-document.getElementById("submit").addEventListener("click", function (e) {
+let submit = document.getElementById("submit");
+submit.addEventListener("click", function (e) {
     e.preventDefault();
-    let email = document.getElementById("email");
-    let password = document.getElementById("password");
-    let queryString = "email=" + email.value + "&password=" + password.value;
-    ajaxPOST("/login", function (data) {
+    let emailInput = document.getElementById("email");
+    let passInput = document.getElementById("password");
+    let code = document.getElementById("code");
+    
+    let queryString = "email=" + emailInput.value + "&password=" + passInput.value + "&code=" + code.value;
+    POST("/add-user", function (data) {
         if (data) {
             let dataParsed = JSON.parse(data);
+            let error = document.getElementById("error");
+            
+            error.innerHTML = dataParsed.msg;
             if (dataParsed.status == "fail") {
-                document.getElementById("failedLogin").style.display = "block";
-                
+                error.style.color = "red";
+
             } else {
-                localStorage.setItem("email", email.value);
-                window.location.replace("/profile");
+                error.style.color = "green";
             }
+            setInterval(function(){
+                error.style.display = "none";
+                window.location.reload();
+            }, 2000)
+
         }
 
     }, queryString);

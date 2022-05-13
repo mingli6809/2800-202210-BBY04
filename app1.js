@@ -73,6 +73,16 @@ app.get("/", function (req, res) {
   }
 });
 
+app.get("/adminUsers", function (req, res) {
+  if (req.session.loggedIn && req.session.code == "123") {
+    let doc = fs.readFileSync("./adminUsers.html", "utf-8");
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
+
+})
+
 app.get("/profile", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
@@ -107,8 +117,7 @@ app.get("/profile", function (req, res) {
 app.get("/nav", function (req, res) {
   let doc = fs.readFileSync("./common/nav.html", "utf-8");
   res.send(doc);
-});
-
+})
 app.get("/footer", function (req, res) {
   let doc = fs.readFileSync("./common/footer.html", "utf-8");
   res.send(doc);
@@ -123,6 +132,23 @@ app.get("/change_logo", function (req, res) {
   let doc = fs.readFileSync("./ProfilePage_icon.html", "utf-8");
   res.send(doc);
 })
+app.get("/allUsers", function (req, res) {
+
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "test1"
+  });
+  let myResults = null;
+  connection.connect();
+  connection.query(
+    "SELECT * FROM BBY_04_USER",
+    function (error, results, fields) {
+      res.send(results);
+    }
+  );
 
 app.get("/userprofile", function (req, res) {
   if (req.session.loggedIn) {
@@ -166,7 +192,9 @@ app.get("/admin-table", function (req, res) {
   console.log("should work");
 });
 
-app.get("/createuser", function (req, res) {
+
+
+app.get("/signup", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
@@ -180,6 +208,15 @@ app.get("/createuser", function (req, res) {
   }
 
 });
+
+app.get("/createUser", function(req,res){
+  if(req.session.loggedIn && req.session.code == "123"){
+    let doc = fs.readFileSync("./createUser.html", "utf-8");
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
+})
 
 app.get("/login_landing", function (req, res) {
   if (req.session.loggedIn) {
@@ -202,6 +239,56 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
+
+// for the create user admin page
+app.post('/add-user', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  console.log("password", req.body.password);
+  console.log("Email", req.body.email);
+  console.log("code", req.body.code);
+
+  let string = req.body.email;
+  if (string.includes("@my.bcit.ca")) {
+
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'test1'
+    });
+    connection.connect();
+    connection.query('Select * from BBY_04_USER where email = ?',[req.body.email],function(error,result1s,fields){
+      if(result1s.length == 0){
+        connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
+      [req.body.email, req.body.password, req.body.code],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "User Created"
+        });
+
+      });
+
+
+    connection.end();
+      } else {
+        res.send({
+          status:"fail",
+          msg: "User already exists"
+        })
+      }
+    })
+    
+  } else {
+    res.send({
+      status: "fail",
+      msg: "User email domain is not correct. Use my.bcit.ca"
+    });
+  }
+});
 
 app.post('/add-customer', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -227,7 +314,7 @@ app.post('/add-customer', function (req, res) {
         }
         res.send({
           status: "success",
-          msg: "Record added."
+          msg: "User Created"
         });
 
       });
@@ -241,6 +328,69 @@ app.post('/add-customer', function (req, res) {
     });
   }
 });
+
+app.post("/updateUser", function(req,res){
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'test1'
+  });
+  connection.connect();
+  
+  if(req.body.email.includes("@my.bcit.ca")){
+    connection.query('UPDATE BBY_04_USER SET email = ? , password = ? WHERE ID = ?',
+    [req.body.email, req.body.password, req.body.ID],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record updated."
+      });
+      
+    });
+    connection.end();
+  } else {
+    res.send({
+      status:"fail",
+      msg:"User email domain is not correct. Use my.bcit.ca"
+    })
+  }
+  
+})
+
+app.post("/delUser",function(req,res){
+  if(req.body.email == req.session.email){
+    res.send({
+      status: "fail",
+      msg: "Cannot Delete your own account"
+    }); 
+  } else{
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'test1'
+    });
+    connection.connect();
+    connection.query('DELETE FROM BBY_04_USER WHERE email = ?',
+      [req.body.email],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "Record deleted."
+        });
+  
+      });
+  }
+  
+    
+})
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");

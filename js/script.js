@@ -47,7 +47,7 @@ GET("/nav", (response) => {
 
 
 GET("/footer", (res)=>{
-    let doc = document.querySelector("#footer");
+    let doc = document.querySelector(".footer");
     doc.innerHTML = res;
 })
 

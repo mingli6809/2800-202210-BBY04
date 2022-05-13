@@ -20,6 +20,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+let dbPass = '';
+
 app.get("/", function (req, res) {
   if (req.session.loggedIn) {
     res.redirect("/profile");
@@ -27,7 +29,7 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: dbPass,
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
@@ -62,7 +64,7 @@ app.get("/profile", function (req, res) {
     let page = ' <img class = "avatar" src="img/' + name1 + '">';
     let page1 = ' <img class = "avatar" src="img/default.png">';
 
-    const path = "./img/"+name1;
+    const path = "./img/"+ name1;
     if (fs.existsSync(path))
       dom.window.document.querySelector("#im").innerHTML = page;
     else {
@@ -117,7 +119,7 @@ app.get("/admin-table", function (req, res) {
   const connection = mysql.createConnection({
     host: 'localhost',
     user: "root",
-    password: "123456",
+    password: dbPass,
     database: "test1"
   });
   var myResults = null;
@@ -195,7 +197,7 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456',
+      password: dbPass,
       database: 'test1'
     });
     connection.connect();
@@ -301,7 +303,7 @@ app.post('/update-customer', function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123456',
+    password: dbPass,
     database: 'test1'
   });
   connection.connect();

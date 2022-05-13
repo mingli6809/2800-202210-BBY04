@@ -49,7 +49,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/adminUsers", function (req, res) {
-  if (req.session.loggedIn) {
+  if (req.session.loggedIn && req.session.code == "123") {
     let doc = fs.readFileSync("./adminUsers.html", "utf-8");
     res.send(doc);
   } else {
@@ -157,6 +157,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+// for the create user admin page
 app.post('/add-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   console.log("password", req.body.password);
@@ -173,7 +174,7 @@ app.post('/add-user', function (req, res) {
       database: 'test1'
     });
     connection.connect();
-    connection.query('Select * from BBY_04_USER where email = ? AND password = ?',[req.body.email, req.body.password],function(error,result1s,fields){
+    connection.query('Select * from BBY_04_USER where email = ?',[req.body.email],function(error,result1s,fields){
       if(result1s.length == 0){
         connection.query('INSERT INTO BBY_04_USER (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
@@ -201,7 +202,7 @@ app.post('/add-user', function (req, res) {
   } else {
     res.send({
       status: "fail",
-      msg: "User email domain is not correct."
+      msg: "User email domain is not correct. Use my.bcit.ca"
     });
   }
 });
@@ -253,8 +254,9 @@ app.post("/updateUser", function(req,res){
     database: 'test1'
   });
   connection.connect();
-  console.log(req.body.email, req.body.password, req.body.ID)
-  connection.query('UPDATE BBY_04_USER SET email = ? , password = ? WHERE ID = ?',
+  
+  if(req.body.email.includes("@my.bcit.ca")){
+    connection.query('UPDATE BBY_04_USER SET email = ? , password = ? WHERE ID = ?',
     [req.body.email, req.body.password, req.body.ID],
     function (error, results, fields) {
       if (error) {
@@ -264,8 +266,16 @@ app.post("/updateUser", function(req,res){
         status: "success",
         msg: "Record updated."
       });
-
+      
     });
+    connection.end();
+  } else {
+    res.send({
+      status:"fail",
+      msg:"User email domain is not correct. Use my.bcit.ca"
+    })
+  }
+  
 })
 
 app.post("/delUser",function(req,res){

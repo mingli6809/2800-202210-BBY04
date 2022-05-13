@@ -1,47 +1,229 @@
-@media  (min-width:319px){
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
 
-    .displayUsers{
-        background-color:rgba(248, 232, 212, 0.797);
-        height:100vh;
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.userCards {
+    min-width: 30vw;
+    min-height: 50vh;
+    max-width: 32vw;
+    max-height: 50vh;
+}
+
+#error {
+    color: red;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+input[type=email] {
+    width: 100%;
+    border: none;
+    font-size: large;
+    padding: 10px;
+    padding-left: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input[type=password] {
+    width: 100%;
+    border: none;
+    font-size: large;
+    padding: 10px;
+    padding-left: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#back {
+    margin: 0 2px 2px 2px;
+    width: 35%;
+    height: 35%;
+    background-color: #00BAC6;
+    border-radius: 10px;
+    color: white;
+    border: 0px;
+    margin-right: 40px;
+    font-size: large;
+
+}
+
+#submit {
+    margin: 0 2px 2px 2px;
+    width: 35%;
+    height: 35%;
+    background-color: #00BAC6;
+    border-radius: 10px;
+    color: white;
+    border: 0px;
+    margin-left: 50px;
+    font-size: large;
+}
+
+/* iPhone 12 Pro*/
+@media (max-width:741px) {
+
+    .displayUsers {
+        background-color: white;
+        height: 89vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        margin: 1px 0px ;
         overflow: scroll;
     }
-    
-    .userCards{
+
+    .userCards {
         border-radius: 20px;
         margin: 5px;
         background-color: #9FECEC;
-        width:300px;
-        height:300px;
+        min-width: 300px;
+        min-height: 300px;
+        max-width: 300px;
+        max-height: 300px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        font-size: 1.5em;
+        font-size: 1.2em;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        color: #3D3D67;
     }
-    
-    .btn{
-        margin:0 2px 2px 2px;
-        width:50%;
-        height:20%;
+
+    .btn {
+        margin: 0 2px 2px 2px;
+        width: 50%;
+        height: 20%;
         background-color: #00BAC6;
         border-radius: 10px;
-        color:white;
+        color: white;
         border: 0px;
-        font-weight: bold;
+        font-size: large;
     }
-    .btn:hover{
-        color:#00BAC6;
+
+    .btn:hover {
+        color: #00BAC6;
         background-color: white;
     }
-    #error{
-        color:red;
+
+    .error {
+        color: red;
         font-weight: bold;
         font-size: 0.5em;
         text-align: center;
     }
 }
 
+/* 1080p */
+@media screen and (min-width:741px) and (max-width:1080px) {
+
+    .displayUsers {
+        background-color: white;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        grid-template-rows: auto;
+        grid-gap: 1rem;
+        margin: 5px;
+    }
+
+    .userCards {
+        border-radius: 20px;
+        background-color: #9FECEC;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.2em;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        color: #3D3D67;
+    }
+
+    .btn {
+        margin: 0 2px 2px 2px;
+        width: 50%;
+        height: 20%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color: white;
+        border: 0px;
+        font-size: large;
+    }
+
+    .btn:hover {
+        color: #00BAC6;
+        background-color: white;
+    }
+
+    .error {
+        color: red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
+}
+
+/* 1440p */
+@media screen and (min-width:1080px) {
+    .displayUsers {
+        background-color: white;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        grid-template-rows: auto;
+        grid-gap: 1rem;
+        margin: 5px;
+    }
+
+    .userCards {
+        border-radius: 20px;
+        background-color: #9FECEC;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 1.2em;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        color: #3D3D67;
+    }
+
+    .btn {
+        margin: 0 2px 2px 2px;
+        width: 50%;
+        height: 20%;
+        background-color: #00BAC6;
+        border-radius: 10px;
+        color: white;
+        border: 0px;
+        font-size: large;
+    }
+
+    .btn:hover {
+        color: #00BAC6;
+        background-color: white;
+    }
+
+    .error {
+        color: red;
+        font-weight: bold;
+        font-size: 0.5em;
+        text-align: center;
+    }
+}

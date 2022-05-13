@@ -50,48 +50,72 @@ GET("/allUsers", (response) => {
         // edit button
         let input = document.createElement("input");
         input.setAttribute("type", "submit");
-        input.setAttribute("value", "edit");
+        input.setAttribute("value", "Edit");
         input.setAttribute("class", "btn");
         input.setAttribute("id", "editUser");
         input.addEventListener("click", function () {
             let editProfile = document.createElement("div");
+            let p = document.createElement("p");
+            p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
-            emailInput.setAttribute("placeholder", "email");
+            emailInput.setAttribute("placeholder", "Email");
             emailInput.setAttribute("id", "email");
             
             let passInput = document.createElement("input");
             passInput.setAttribute("type","Password");
             passInput.setAttribute("placeholder", "Password");
-            emailInput.setAttribute("id", "pass");
+            passInput.setAttribute("id", "pass");
 
             let submit = document.createElement("input");
             submit.setAttribute("type", "submit");
             submit.setAttribute("value", "Submit");
+            submit.setAttribute("id", "submit");
+
 
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
-                
-                let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
-                console.log(queryString)
-                POST("/updateUser", function (data) {
+
+                if (emailInput.value == "" | passInput.value == "") {
+                    let errormsg = document.createElement("p");
+                    errormsg.setAttribute("id", "error");
+                    let message = document.createTextNode("You have left an input blank. Please try again.");
+                    errormsg.appendChild(message);
+                    editProfile.appendChild(errormsg);
+
+                    document.getElementById("email").style.width = "80%";
+                    document.getElementById("email").style.display = "initial";
+                    document.getElementById("pass").style.width = "80%";
+                    document.getElementById("pass").style.display = "initial";
+                    document.getElementById("submit").style.width = "20%";
+                    document.getElementById("submit").style.height = "20%";
+                    document.getElementById("back").style.width = "20%";
+                    document.getElementById("back").style.height = "20%";
+
+                } else {
+                    let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
+                    POST("/updateUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
                         if (dataParsed.status == "fail") {
-                            console.log(dataParsed.msg);
-
+                            let errormsg = document.createElement("p");
+                            errormsg.setAttribute("id", "error");
+                            let message = document.createTextNode("Something went wrong, try again");
+                            errormsg.appendChild(message);
+                            editProfile.appendChild(errormsg);
                         } else {
                             location.reload();
                         }
                     }
-
-                }, queryString);
+                    }, queryString);
+                }
             });
        
             
             let back = document.createElement("input");
             back.setAttribute("type", "submit");
-            back.setAttribute("value", "back");
+            back.setAttribute("value", "Back");
+            back.setAttribute("id", "back");
             back.addEventListener("click", function(){
                 location.reload();
             })
@@ -100,6 +124,7 @@ GET("/allUsers", (response) => {
             editProfile.appendChild(passInput);
             editProfile.appendChild(submit);
             editProfile.appendChild(back);
+            editProfile.appendChild(p);
             div.innerHTML = "";
             div.appendChild(editProfile);
         });
@@ -121,7 +146,7 @@ GET("/allUsers", (response) => {
                         
                         if (dataParsed.status == "fail") {
                             
-                            div2.setAttribute("id", "error");
+                            div2.setAttribute("class", "error");
                             div2.innerHTML = dataParsed.msg;
                             
                             div.appendChild(div2);

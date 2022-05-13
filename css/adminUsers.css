@@ -177,7 +177,7 @@ input[type=password] {
 }
 
 /* 1440p */
-@media screen and (min-width:900px) and (max-width: 1080px) {
+@media screen and (min-width:900px) and (max-width: 3000px) {
     .displayUsers {
         background-color: white;
         height: 100vh;

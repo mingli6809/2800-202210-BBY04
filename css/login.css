@@ -14,7 +14,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 30% 60%;
         margin: 0%;
     }
 
@@ -22,22 +22,17 @@
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
-        text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
         color: #3D3D67;
-        padding-top: 20px;
         font-family: 'Judson', serif;
         font-size: 64px;
     }
@@ -65,7 +60,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 40px;
+        margin-top: 70px;
     }
     
     input[type=password] {
@@ -73,7 +68,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 40px;
+        margin-top: 30px;
     }
 
     input[type=submit] {
@@ -83,13 +78,9 @@
         background: #00BAC6;
         font-family: 'Inter', sans-serif;
         color: white;
+        margin-top: 50px;
     }
-
-    hr {
-        border-top: 3px solid #00BAC6;
-        margin-left: -100%;
-    }
-
+    
     #footer {
         grid-row: 4;
         background-color: #9FECEC;
@@ -105,7 +96,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 30% 60%;
         margin: 0%;
     }
 
@@ -113,17 +104,13 @@
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
-        text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
@@ -156,7 +143,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 40px;
+        margin-top: 80px;
     }
 
     input[type=password] {
@@ -174,11 +161,7 @@
         background-color: #00BAC6;
         font-family: 'Inter', sans-serif;
         color: white;
-    }
-
-    hr {
-        border-top: 3px solid #00BAC6;
-        margin-left: -100%;
+        margin-top: 30px;
     }
 
     #footer {
@@ -196,7 +179,7 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 10% 30% 50% 10%;
+        grid-template-rows: 10% 30% 60%;
         margin: 0%;
     }
 
@@ -204,24 +187,20 @@
         grid-row: 1;
         background: #00ccf9;
     }
-    #logo {
-        max-width: 65%;
-        max-height: 100%;
-        padding-left: 20px;
-        padding-top: 5px;
-    }
 
     #sign-up {
         grid-row: 2;
-        text-align: center;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     #sign-up-text {
         color: #3D3D67;
         padding-top: 40px;
         font-family: 'Judson', serif;
-        font-size: 60px;
+        font-size: 100px;
     }
 
     #input-forms {
@@ -247,7 +226,7 @@
         background-repeat: no-repeat;
         background-position: left;
         background-position-x: 5px;
-        margin-top: 40px;
+        margin-top: 100px;
     }
 
     input[type=text] {
@@ -273,16 +252,12 @@
         font-family: 'Inter', sans-serif;
         color: white;
         transition-duration: 0.2s;
+        margin-top: 50px;
     }
 
     input[type=submit]:hover {
         background-color: #148891;
         color: white;
-    }
-
-    hr {
-        border-top: 3px solid #148891;
-        margin-left: -100%;
     }
 
     #footer {

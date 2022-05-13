@@ -1,4 +1,63 @@
-body {
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* iPhone 12 */
+@media screen and (max-width:400px) {
+    body {
+        display: grid;
+        grid-template-rows: 10% 30% 60%;
+        margin: 0px;
+        overflow-y: hidden; 
+        overflow-x: hidden;
+        height: 100vh;
+    }
+
+    header {
+        grid-row: 1;
+    }
+
+    #content-area {
+        grid-row: 2;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Judson', serif;
+    }
+
+    #welcome-text {
+        color: #103613;
+        font-size: larger;
+        width: fit-content;
+    }
+
+    #username-text {
+        color: #3D3D67;
+        font-size: larger;
+        width: fit-content;
+    }
+
+    #dash-area {
+        grid-row: 3;
+        display: inline;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        background-color: #9FECEC;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* body {
     padding: 0px;
     margin: 0px;
     overflow-y: hidden; 
@@ -20,7 +79,7 @@ a:hover {
 
 #username-text {
     font-size: 50%;
-    margin-top: 20px;
+    margin-top: 40px;
     color: #00BAC6;
 }
 
@@ -111,6 +170,20 @@ a:hover {
     background-color: white;
 }
 
+table {
+    width:100%;
+    height: auto;
+    border: 1px solid;
+    text-align: center;
+}
+
+td {
+    padding-left: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: 1px solid;
+}
+
 @media (max-width:700px) {
     .grid-container {
         grid-template-rows: 1fr 2fr 6fr ;
@@ -143,18 +216,4 @@ a:hover {
         border: 0px;
     }
     
-}
-
-table {
-    width:100%;
-    height: auto;
-    border: 1px solid;
-    text-align: center;
-}
-
-td {
-    padding-left: 0%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border: 1px solid;
-}
+} */

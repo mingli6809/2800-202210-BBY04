@@ -47,9 +47,3 @@ GET("/footer", (res)=>{
     let doc = document.querySelector(".footer");
     doc.innerHTML = res;
 })
-
-
-   
-
-
-

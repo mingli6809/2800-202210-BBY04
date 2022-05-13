@@ -1,5 +1,8 @@
 "use strict";
 
+function errorDisappear() {
+    document.getElementById("error").innerHTML = "";
+}
 
 document.getElementById("submit").addEventListener("click", function (e) {
     e.preventDefault();
@@ -20,14 +23,12 @@ document.getElementById("submit").addEventListener("click", function (e) {
         if (this.readyState == XMLHttpRequest.DONE) {
             let queryString = "email=" + formData.email + "&password=" + formData.password;
             if (xhr.status === 200) {
-                console.log("DB updated.");
                 ajaxPOST("/login", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
-                        console.log(dataParsed);
                         if (dataParsed.status == "fail") {
-                            document.getElementById("errorMsg").innerHTML = dataParsed
-                                .msg;
+                            document.getElementById("error").innerHTML = dataParsed.msg;
+                            setTimeout(errorDisappear, 4000);
                         } else {
                             localStorage.setItem("email", formData.email);
                             window.location.replace("/profile");

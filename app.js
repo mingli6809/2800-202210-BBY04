@@ -246,7 +246,7 @@ app.post('/add-user', function (req, res) {
   }
 });
 
-app.post('/add-customer', function (req, res) {
+app.post('/add-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   let string = req.body.email;

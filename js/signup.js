@@ -41,7 +41,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
             console.log("ERROR", this.status);
         }
     }
-    xhr.open("POST", "/add-customer");
+    xhr.open("POST", "/add-user");
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send( "email=" + formData.email +"&password=" +formData.password + 

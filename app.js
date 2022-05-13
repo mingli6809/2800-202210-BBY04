@@ -92,11 +92,6 @@ app.get("/footer", function (req, res) {
   res.send(doc);
 })
 
-app.get("/nav1", function (req, res) {
-  let doc = fs.readFileSync("./common/nav1.html", "utf-8");
-  res.send(doc);
-})
-
 app.get("/change_logo", function (req, res) {
   let doc = fs.readFileSync("./ProfilePage_icon.html", "utf-8");
   res.send(doc);

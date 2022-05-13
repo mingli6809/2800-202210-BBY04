@@ -8,7 +8,7 @@ const mysql = require('mysql2');
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
-
+app.use("/img1", express.static("./img1"));
 
 app.use(session({
   secret: "secret words",
@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       multipleStatements: true
     });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test1;
@@ -103,6 +103,37 @@ app.get("/admin-table", function (req, res) {
 });
 
 
+app.get("/admin-table", function (req, res) {
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: "root",
+    password: "123456",
+    database: "test1"
+  });
+  var myResults = null;
+  connection.connect();
+  connection.query(
+    "SELECT * FROM BBY_04_USER where code != 123",
+    function (error, results, fields) {
+      myResults = results;
+      if (error) {
+        console.log(error);
+      }
+      let table = "<table><tr><th>User</th></tr>";
+      for (let i = 0; i < results.length; i++) {
+        table += "<tr><td>" + results[i].email + "</td></tr>";
+      }
+      table += "</table>";
+      res.send(table);
+      connection.end();
+    }
+  );
+
+  console.log("should work");
+});
+
+
 app.get("/createuser", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
@@ -162,7 +193,7 @@ app.post('/add-customer', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: '123456',
       database: 'test1'
     });
     connection.connect();
@@ -237,7 +268,7 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "123456",
     database: "test1"
   });
   connection.connect();
@@ -260,6 +291,38 @@ function authenticate(email, password, callback) {
   );
 
 }
+
+
+app.post('/update-customer', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'test1'
+  });
+  connection.connect();
+  console.log("update values", req.body.email, req.body.password)
+  connection.query('UPDATE bby_04_user SET email = ? , password=? WHERE ID = ?',
+    [req.body.email, req.body.password, req.session.userid],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      //console.log('Rows returned are: ', results);
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
+
+//host: '127.0.0.1' is required - M1 Macbook
+
 
 let port = 8000;
 app.listen(port, function () {

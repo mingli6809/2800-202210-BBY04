@@ -45,8 +45,8 @@ input[type=password] {
 
 #back {
     margin: 0 2px 2px 2px;
-    width: 30%;
-    height: 30%;
+    width: 35%;
+    height: 35%;
     background-color: #00BAC6;
     border-radius: 10px;
     color: white;
@@ -58,8 +58,8 @@ input[type=password] {
 
 #submit {
     margin: 0 2px 2px 2px;
-    width: 30%;
-    height: 30%;
+    width: 35%;
+    height: 35%;
     background-color: #00BAC6;
     border-radius: 10px;
     color: white;
@@ -124,7 +124,7 @@ input[type=password] {
 }
 
 /* 1080p */
-@media screen and (min-width:741px) and (max-width:900px) {
+@media screen and (min-width:741px) and (max-width:1080px) {
 
     .displayUsers {
         background-color: white;
@@ -177,7 +177,7 @@ input[type=password] {
 }
 
 /* 1440p */
-@media screen and (min-width:900px) and (max-width: 3000px) {
+@media screen and (min-width:1080px) {
     .displayUsers {
         background-color: white;
         height: 100vh;

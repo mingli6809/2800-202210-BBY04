@@ -6,7 +6,7 @@ email varchar(30),
 password varchar(30),
 code varchar(30),
 PRIMARY KEY (ID));
-INSERT INTO BBY-4-user (email, password,code) values ("mingli6809@my.bcit.ca", "333", "123");
-INSERT INTO BBY-4-user (email, password,code) values ("melody@my.bcit.ca", "333", null);
-INSERT INTO BBY-4-user (email, password,code) values ("sylvie@my.bcit.ca", "333", "123");
-INSERT INTO BBY-4-user (email, password,code) values ("tom@my.bcit.ca", "333", "456");
+INSERT INTO BBY04_user (email, password,code) values ("mingli6809@my.bcit.ca", "333", "123");
+INSERT INTO BBY04_user (email, password,code) values ("melody@my.bcit.ca", "333", null);
+INSERT INTO BBY04_user (email, password,code) values ("sylvie@my.bcit.ca", "333", "123");
+INSERT INTO BBY04_user (email, password,code) values ("tom@my.bcit.ca", "333", "456");

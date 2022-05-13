@@ -1,24 +1,5 @@
 "use strict";
 
-
-let hamburgerMenu = document.getElementById("hamburgerMenu");
-let menu = document.getElementById("menu");
-
-
-
-function displayMenu() {
-    console.log("Displaying");
-    menu.style.display = "grid";
-    hamburgerMenu.style.display = "none";
-}
-
-function hideMenu() {
-    console.log("Hiding");
-    menu.style.display = "none";
-    hamburgerMenu.style.display = "flex";
-
-}
-
 const upLoadForm = document.getElementById("upload-images-form");
 upLoadForm.addEventListener("submit", uploadImages);
 console.log("icon page");

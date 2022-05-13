@@ -42,8 +42,10 @@ GET("/allUsers", (response) => {
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");
         let p1 = document.createElement("p");
+        p1.setAttribute("class", "card-text");
         p1.innerHTML = "Email: " + response[i].email;
         let p2 = document.createElement("p");
+        p2.setAttribute("class", "card-text");
         p2.innerHTML = "Password: " + response[i].password;
 
         // edit button

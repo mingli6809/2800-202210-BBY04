@@ -4,6 +4,7 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+
 .userCards {
     min-width: 30vw;
     min-height: 50vh;
@@ -19,6 +20,7 @@
 
 input[type=email] {
     width: 100%;
+    font-family: 'Judson';
     border: none;
     font-size: large;
     padding: 10px;
@@ -43,6 +45,7 @@ input[type=password] {
     flex-direction: column;
 }
 
+
 #back {
     margin: 0 2px 2px 2px;
     width: 35%;
@@ -51,7 +54,7 @@ input[type=password] {
     border-radius: 10px;
     color: white;
     border: 0px;
-    margin-right: 40px;
+    margin-right: 10px;
     font-size: large;
 
 }
@@ -81,6 +84,10 @@ input[type=password] {
         overflow: scroll;
     }
 
+    #submit{
+        padding:0%;
+        margin: 12px;
+    }
     .userCards {
         border-radius: 20px;
         margin: 5px;
@@ -202,6 +209,7 @@ input[type=password] {
         font-family: 'Inter', sans-serif;
         text-align: center;
         color: #3D3D67;
+        font-weight: 1000;
     }
 
     .btn {
@@ -226,4 +234,10 @@ input[type=password] {
         font-size: 0.5em;
         text-align: center;
     }
+}
+.card-text{
+    font-family: 'Inter', sans-serif;
+    color: #3D3D67;
+    font-weight: 900;
+    font-size: larger;
 }

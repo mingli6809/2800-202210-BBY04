@@ -20,7 +20,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-let dbPass = '123456';
+let dbPass = '';
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "./img")

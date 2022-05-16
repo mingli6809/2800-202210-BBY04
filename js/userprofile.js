@@ -6,6 +6,7 @@ function ajaxPOST(url, callback, data) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
         }
     ).join('&');
+
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
@@ -26,17 +27,21 @@ document.getElementById("submit").addEventListener("click", function (e) {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let queryString = "email=" + email.value + "&password=" + password.value;
-    ajaxPOST("/login", function (data) {
+    ajaxPOST("/updateUser", function (data) {
         if (data) {
             let dataParsed = JSON.parse(data);
             if (dataParsed.status == "fail") {
-                document.getElementById("failedLogin").style.display = "block";
                 
+                document.getElementById("err").innerHTML="email domain is not correct, try again";
             } else {
-                localStorage.setItem("email", email.value);
-                window.location.replace("/profile");
+                location.reload();
             }
         }
+        }, queryString);
+});
 
-    }, queryString);
+document.getElementById("avatar-div").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location = "/change_logo" ;
+
 });

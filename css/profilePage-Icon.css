@@ -1,0 +1,302 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 100vh;
+    
+}
+
+input[type="text"]{
+    border-radius: 5px;
+    height: 40px;
+    width: 300px;
+}
+
+a:hover {
+    color: azure;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 6fr 0.5fr;
+    height: 100vh;
+}
+
+.logout-btn {
+    margin: auto;
+    position: absolute;
+    right: 0px;
+    padding: 19px;
+}
+
+.profile-btn {
+    margin: auto;
+    position: absolute;
+    right: 170px;
+    padding: 19px;
+
+}
+
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #cbcbcb;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    height: auto;
+  }
+
+.block:hover {
+    color: rgb(0, 0, 0);
+    background-color: #9FECEC;
+}
+
+.logo-image {
+    margin: auto;
+}
+
+#studentvote-logo {
+    width: 100%;
+    height: auto;
+}
+
+.content-area {
+    font-size: 80px;
+    margin: auto;
+    text-align: center;
+}
+
+.dash-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:#9fecec;
+}
+
+.dash-function {
+    font-size: 35px;
+    background-color:#9fecec;
+    border: 2px solid black;
+    margin: auto;
+}
+
+.profile-details-area {
+    background-color:#9fecec;
+}
+
+#submit {
+    background-color: #00c2ed;
+    float: left;
+    width: 200px;
+}
+
+#info-description {
+    padding: 10px;
+    width: auto;
+}
+
+.foot-area {
+    font-size: 30px;
+    background-color: #9FECEC;
+}
+
+#foot-content {
+    padding-left: 15px;
+}
+
+.Profile-Info {
+    font-size: 20px;
+    background-color: #9FECEC;
+    display: grid;
+    grid-template-rows: 0.25fr 1fr ;
+    grid-gap: 10px;
+    padding: 26px;
+    font-family: 'Inter', sans-serif;
+}
+
+.submit-button {
+    padding-top: 70px;
+    width: 150px;
+}
+
+#avatar-div{
+    padding: 60px;
+    padding-left: 115px;
+    
+}
+
+#avatar {
+    border-radius: 50%;
+    width: 400px;
+    height: auto;
+}
+
+#avatar:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+#profile-desc {
+    font-size: 25px;
+}
+
+.block2 {
+    display: block;
+    border: none;
+    background-color: #cbcbcb;
+    padding: 14px 28px;
+    font-size: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+.block2:hover {
+    color: rgb(0, 0, 0);
+    background-color: #00BAC6;
+}
+
+#upload-images-form {
+    display: grid;
+    grid-template-rows: 0.5fr 2fr;
+    grid-gap: 200px;
+}
+
+#image-upload {
+    font-size: 20px;
+}
+
+@media (max-width:700px) {
+    .grid-container {
+        grid-template-rows: 0.25fr 2fr 0.25fr;
+        grid-template-columns: 1fr;
+    }
+
+    .Profile-Info {
+        grid-gap: 32px;
+        padding: 4px;
+    }
+
+    #avatar-div {
+        padding: 0px;
+        padding-top: 35px;
+        padding-left: 45px;
+    }
+
+    .profile-btn {
+        padding: 0;
+        right: 0;
+        padding-top: 26px;
+        padding-right: 100px; 
+    
+    }
+
+    .logout-btn {
+        padding-top: 26px;
+        padding-right: 15px;
+    }
+
+    .profile-details-area {
+        background-color: #9fecec;
+        font-size: 10px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .submit-button {
+        padding-top: 20px;
+        width: 120px;
+    }
+
+    .submit-div {
+        padding-bottom: 30px;
+    }
+
+    #image-upload {
+        font-size: 20px;
+    }
+
+    #submit {
+        padding: 15px;
+        font-size: 25px;
+    }
+
+    .dash-area {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .dash-function {
+        font-size: 25px;
+        border: 1px solid black;
+    }
+
+    .content-area {
+        font-size: 40px;
+        grid-template-columns: 1fr;
+        margin: auto;
+        text-align: center;
+    }
+    
+    #avatar {
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+    }
+
+    .block {
+        display: block;
+        border: none;
+        background-color: #cbcbcb;
+        padding: 10px 14px;
+        font-size: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: center;
+        width: 200px;
+        height: auto;
+    }
+    
+    #upload-images-form {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+table {
+    width:100%;
+    height: auto;
+    border: 1px solid;
+    text-align: center;
+}
+
+td {
+    padding-left: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: 1px solid;
+}
+
+.voting-poll {
+    font-size: 35px;
+    background-color:bisque;
+    border: 2px solid black;
+    margin: auto;
+}

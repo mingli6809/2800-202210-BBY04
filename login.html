@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
     <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
 </head>
 <body>
-    
-    <div id="navbar">
-        <img id="logo" src="/img/StudentVote.png">
-    </div>
+    <header class ="header"></header>
+   
 
     <div id="sign-up">
         <p id="sign-up-text">
@@ -20,19 +20,16 @@
         </p>
     </div>
 
-    <div id="input-forms">
+    <form id="input-forms">
         <p id = "failedLogin"> Could not find the account you are looking for.</p>
         <input type="email" placeholder="Email" id="email">
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" autocomplete = "off" placeholder="Password" id="password">
         <input type="submit" id="submit" value="Submit" />
-    </div>
+    </form>
 
-    <div id="footer">
-        <hr>
-        <p>
-            Made by BBY-04©
-        </p>
-    </div>
+    <footer class="footer"></footer>
+    
     <script src="/js/login.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>

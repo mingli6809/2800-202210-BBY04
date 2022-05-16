@@ -123,7 +123,7 @@ app.get("/allUsers", function (req, res) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: dbPass,
     database: "COMP2800"
   });
   let myResults = null;
@@ -209,7 +209,7 @@ app.post('/add-user', function (req, res) {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: dbPass,
       database: 'COMP2800'
     });
     connection.connect();
@@ -284,7 +284,7 @@ app.post("/updateUser", function(req,res){
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: dbPass,
     database: 'COMP2800'
   });
   connection.connect();
@@ -322,7 +322,7 @@ app.post("/delUser",function(req,res){
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: dbPass,
       database: 'COMP2800'
     });
     connection.connect();
@@ -387,7 +387,7 @@ function authenticate(email, password, callback) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: dbPass,
     database: "COMP2800"
   });
   connection.connect();

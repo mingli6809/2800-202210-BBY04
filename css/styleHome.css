@@ -1,0 +1,247 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.logout-btn {
+    font-size: 3em;
+    margin: auto;
+    position: absolute;
+    right: 0px;
+    padding: 25px;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+}
+
+p {
+    line-height: 20px;
+}
+
+a:hover {
+    color: azure;
+}
+
+#welcome-text{
+    color: #3D3D67;
+    font-family: 'Judson', serif;
+}
+
+#username-text {
+    color: #00BAC6;
+    font-family: 'Judson', serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 3fr 5fr 1fr;
+    grid-template-columns: 10fr;
+    height: 100vh;
+}
+
+.logo-image {
+    padding-left: 5px;
+    margin: auto;
+    
+}
+
+.hamburger-menu {
+    margin:  auto;
+}
+
+.hamburger-menu:hover {
+    cursor: pointer;
+}
+
+#menu {
+    font-size: 25px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+}
+
+#menu > p {
+    position: relative;
+}
+
+.flatIcon {
+    width: 25px;
+}
+
+.hamburgerIcon {
+    width: 25px;
+    
+}
+
+.content-area {
+    font-size: 80px;
+    margin: auto;
+    text-align: center;
+}
+
+.vote-area {
+    font-size: 20px;
+    background-color: #9FECEC;
+    display: grid;
+    grid-template-rows: 2fr 2fr 2fr 2fr;
+    grid-gap: 10px;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.voting-poll {
+    font-size: 35px;
+    background-color:bisque;
+    border: 2px solid black;
+    margin:  auto;
+}
+
+.foot-area {
+    font-size: 18px;
+    background-color: #9FECEC;
+    font-family: 'Inter', sans-serif;
+}
+
+#foot-content {
+    padding-left: 15px;
+}
+
+button {
+    border-radius: 12px;
+    background-color: #00BAC6;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    transition-duration: 0.2s;
+    border-style: none;
+}
+
+button:hover {
+    background-color: #148891;
+    color: white;
+    border-style: none;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 2px;
+}
+
+@media (max-width:700px) {
+    .grid-container {
+        grid-template-rows: 1fr 2fr 6fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .vote-area {
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .voting-poll {
+        font-size: 25px;
+        background-color:bisque;
+        border: 2px solid black;
+        margin:  auto;
+    }
+
+    #menu{
+        display:none;
+        position: relative;
+        top:0%;
+        right:70%;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        height:300px;
+        width:120px;
+        background-color: rgb(92, 182, 214);
+        color:white;
+    }
+
+    #nav1 {
+        grid-row: 1;
+        height:20px;
+        display:flex;
+        justify-content: center;
+        color:white;
+        border: 1px;
+        border-color:rgb(0, 186, 198);
+    }
+    #nav2 {
+        grid-row: 2;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav3 {
+        grid-row: 3;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav4 {
+        grid-row: 4;
+        height:20px;
+        color:white;
+        display:flex;
+        justify-content: center;
+    }
+    #nav5 {
+        grid-row: 5;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+    #nav6 {
+        grid-row: 6;
+        display:flex;
+        justify-content: center;
+        color:white;
+        height:20px;
+    }
+
+    .hamburgerIcon{
+        width: 25px;
+        margin: auto;
+            
+    }
+    .flatIcon{
+        height: 70%;
+        width:auto;
+        margin-top: 5%;
+    }
+
+    .content-area {
+        font-size: 40px;
+        margin: auto;
+        text-align: center;
+    }
+
+    button {
+        border-radius: 12px;
+        background-color: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        transition-duration: 0.2s;
+        border-style: none;
+    }
+
+    button:hover {
+        background-color: #148891;
+        color: white;
+        border-style: none;
+    }
+}
+
+
+

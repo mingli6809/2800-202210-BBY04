@@ -5,6 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 /* navbar css */
+.invert{
+    filter: invert(100%);
+}
+.rotate{
+    transform:rotate(360deg);
+    transition-duration:8s;
+}
 *{
     padding:0%;
     margin: 0%;

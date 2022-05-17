@@ -62,3 +62,24 @@ if (window.location.href == "http://localhost:8000/adminUsers") {
     document.getElementById("footer").style.position = "sticky";
 } else {
 }
+
+let invert = false;
+let footer = document.querySelector(".footer");
+footer.addEventListener("click",function(){
+    footer.addEventListener("click",function(){
+        footer.addEventListener("click",function(){
+            if(document.body.classList.contains("invert")){
+                invert = false;
+            } else{
+                invert = true;
+                document.body.classList.add("invert");
+                document.body.classList.add("rotate");
+            }
+        });
+    });
+});
+
+window.addEventListener("load",function(){
+    if(invert){
+    document.body.classList.add("invert");
+}});

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/allEvent.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class = "header"></header>
+
+    <div class="mainContent">
+
+      <div class="addEvent">
+          <span class = "plusBar"></span>
+          <span class = "plusBar" id = "rotateBar"></span>
+      </div>
+      
+
+      <h1>Events</h1>
+      <div id = "events"></div>
+    </div>
+    
+
+    <footer class = "footer"></footer>
+    <form id = "addingEvent">
+        <h2>Add Event</h2>
+        <input type = "text" placeholder="Institute Name" id = "instituteName">
+        <input type = "text" placeholder="Event Name" id = "eventName">
+        <input type = "Date" placeholder="Start Date" id = "startDate">
+        <input type = "Date" placeholder="End Date" id = "endDate">
+        <input type = "text" placeholder="Description" id = "description">
+        <div id = "buttons">
+          <input type = "submit" value = "back" id = "back">
+          <input type = "submit" value = "create" id = "create">
+        </div>
+        
+    </form>
+    <script src = "/js/script.js"></script>
+    <script src = "/js/allEvents.js"></script>
+</body>
+</html>

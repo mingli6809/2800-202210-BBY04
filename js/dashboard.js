@@ -9,3 +9,7 @@ document.getElementById("allUsers").addEventListener("click", function(){
 document.getElementById("create-user").addEventListener("click", function(){
    window.location = "/createUser";
 });
+
+document.getElementById("allEvents").addEventListener("click", function(){
+   window.location = "/events";
+});

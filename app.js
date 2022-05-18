@@ -78,7 +78,7 @@ app.get("/", function (req, res) {
       EndDate    DATE,
       Description  longtext,
       PRIMARY KEY (ID));`;
-          connection.connect();
+    connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
         console.log(error);
@@ -171,10 +171,10 @@ app.get("/allevents", function (req, res) {
   connection.query(
     "SELECT * FROM BBY04_events",
     function (error, results, fields) {
-      if(results.length == 0){
+      if (results.length == 0) {
         res.send = {
           status: "fail",
-          msg:"No events found"
+          msg: "No events found"
         }
       } else {
         res.send(results);
@@ -274,9 +274,7 @@ app.post('/add-user', function (req, res) {
               status: "success",
               msg: "User Created"
             });
-
           });
-
 
         connection.end();
       } else {
@@ -392,25 +390,25 @@ app.post("/delUser", function (req, res) {
 })
 
 app.post("/delEvent", function (req, res) {
-    let connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: dbPass,
-      database: 'COMP2800'
-    });
-    connection.connect();
-    connection.query('DELETE FROM BBY04_events WHERE EventName = ? AND InstituteName = ?',
-      [req.body.eventName,req.body.instituteName],
-      function (error, results, fields) {
-        if (error) {
-          console.log(error);
-        }
-        res.send({
-          status: "success",
-          msg: "Record deleted."
-        });
-
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('DELETE FROM BBY04_events WHERE EventName = ? AND InstituteName = ?',
+    [req.body.eventName, req.body.instituteName],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record deleted."
       });
+
+    });
 })
 
 app.post("/addEvent", function (req, res) {
@@ -422,7 +420,7 @@ app.post("/addEvent", function (req, res) {
   });
   connection.connect();
   connection.query('INSERT INTO bby04_events (InstituteName,EventName,StartDate,EndDate,Description) values (?,?,?,?,?);',
-    [req.body.instituteName,req.body.eventName,req.body.strtDate,req.body.endDate,req.body.des],
+    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des],
     function (error, results, fields) {
       if (error) {
         console.log(error);
@@ -433,6 +431,30 @@ app.post("/addEvent", function (req, res) {
       });
 
     });
+})
+
+app.post("/updateEvent", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('UPDATE BBY04_events SET InstituteName = ? , EventName = ? , StartDate = ? , EndDate = ? , Description = ? WHERE ID = ?',
+    [req.body.instituteName, req.body.eventName, req.body.strtDate,req.body.endDate,req.body.des,req.body.ID],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send({
+          status: "success",
+          msg: "Record update"
+        });
+      }
+
+
+    })
 })
 
 app.post("/login", function (req, res) {

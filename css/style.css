@@ -44,6 +44,7 @@ a{
     align-items: center;
     padding: 0 24px;
     max-height: 70px;
+   
 }
 
 .nav-menu{
@@ -52,6 +53,7 @@ a{
     align-items: center;
     text-align: center;
     gap: 60px;
+    z-index: 20;
 }
 
 .nav-branding{

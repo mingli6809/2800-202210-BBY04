@@ -36,12 +36,14 @@ function POST(url, callback, data) {
     xhr.send(params);
 }
 
+// shows the modal and makes the background blur
 let addEvent = document.querySelector(".addEvent");
 addEvent.addEventListener("click", function () {
     document.getElementById("addingEvent").style.display = "flex";
     document.querySelector(".mainContent").classList.add("is-blurred");
 })
 
+//reverts the changes made by the modal
 let back = document.getElementById("back");
 back.addEventListener("click", function () {
     if (document.getElementById("addingEvent").style.display == "flex") {
@@ -65,9 +67,8 @@ create.addEventListener("click", function () {
                 let dataParsed = JSON.parse(data);
 
                 if (dataParsed.status == "fail") {
-
+                    document.getElementById("error").innerHTML = dataParsed.msg;
                 } else {
-                    location.reload();
                     document.getElementById("addingEvent").style.display = "none";
                     document.querySelector(".mainContent").classList.remove("is-blurred");
 
@@ -93,19 +94,66 @@ GET("/allevents", (response) => {
         //formatting the end date
         let endingDate = Date.parse(data.EndDate);
         endingDate = new Date(endingDate).toDateString();
+
+        //The cards that are showing the events
         let div = document.createElement("div");
         div.setAttribute("class", "eventCard");
+        
+        //institute name
         let p1 = document.createElement("p");
         p1.innerHTML = "Institute Name: " + data.InstituteName;
+
+        //event name
         let p2 = document.createElement("h3");
         p2.innerHTML = data.EventName;
+
+        // start date
         let p3 = document.createElement("p");
         p3.innerHTML = "Start Date: " + strtingDate;
+
+        //ending date
         let p4 = document.createElement("p");
         p4.innerHTML = "End Date: " + endingDate;
-        let p5 = document.createElement("p");
 
+        //description
+        let p5 = document.createElement("p");
         p5.innerHTML = "Description: " + data.Description;
+
+        // edit button
+        let input1 = document.createElement("input");
+        input1.setAttribute("type", "submit");
+        input1.setAttribute("value","Edit");
+        input1.addEventListener("click", function(){
+            document.getElementById("editingEvent").style.display = "flex";
+            let edit = document.getElementById("edit");
+            edit.addEventListener("click", function(){
+                let newInstitute = document.getElementById("editInstitute").value;
+                let newEventName = document.getElementById("editEvent").value;
+                let newSDate = document.getElementById("editSDate").value;
+                let newEDate = document.getElementById("editEDate").value;
+                let newdes = document.getElementById("editDescription").value;
+                let id = data.ID;
+
+                let queryString = "instituteName=" + newInstitute + "&eventName=" + newEventName +
+            "&strtDate=" + newSDate + "&endDate=" + newEDate + "&des=" + newdes + "&ID=" + id;
+            POST("/updateEvent", function (data) {
+                if (data) {
+                    let dataParsed = JSON.parse(data);
+
+                    if (dataParsed.status == "fail") {
+
+                    } else {
+                        location.reload();
+                        console.log(response.msg)
+                    }
+                }
+
+            }, queryString);
+            })
+        })
+    
+
+        // delete button
         let input = document.createElement("input");
         input.setAttribute("type", "submit");
         input.setAttribute("value", "Delete");
@@ -131,6 +179,7 @@ GET("/allevents", (response) => {
         div.appendChild(p3);
         div.appendChild(p4);
         div.appendChild(p5);
+        div.appendChild(input1);
         div.appendChild(input);
         document.getElementById("events").appendChild(div);
     }

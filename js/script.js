@@ -1,4 +1,5 @@
 "use script";
+
 function GET(url, callback) {
 
     const xhr = new XMLHttpRequest();
@@ -23,11 +24,11 @@ GET("/nav", (response) => {
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active")
         navMenu.classList.toggle("active")
-        
+
         let landingPage = "http://localhost:8000/#";
         let loginPage = "http://localhost:8000/login_landing";
         let signupPage = "http://localhost:8000/createuser";
-        if (window.location.href == landingPage  || window.location.href == loginPage || window.location.href == signupPage ) {
+        if (window.location.href == landingPage || window.location.href == loginPage || window.location.href == signupPage) {
             document.querySelector(".logout").style.display = "none";
         }
     })
@@ -36,11 +37,11 @@ GET("/nav", (response) => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }))
-    window.addEventListener("load", function(){
+    window.addEventListener("load", function () {
         let landingPage = "http://localhost:8000/";
         let loginPage = "http://localhost:8000/login_landing";
         let signupPage = "http://localhost:8000/signup";
-        if (window.location.href == landingPage  || window.location.href == loginPage || window.location.href == signupPage ) {
+        if (window.location.href == landingPage || window.location.href == loginPage || window.location.href == signupPage) {
             document.querySelector(".logout").style.display = "none";
             document.querySelector(".profilePage").style.display = "none";
         }
@@ -50,15 +51,26 @@ GET("/nav", (response) => {
         document.getElementById("header").style.position = "sticky";
         document.getElementById("header").style.top = "0";
 
-    } else {}     
+    } else {}
 })
 
-GET("/footer", (res)=>{
+GET("/footer", (res) => {
     let doc = document.querySelector(".footer");
     doc.innerHTML = res;
+    document.getElementById("secret").addEventListener("click",function(){
+        document.querySelector(".eastegg").setAttribute("class","EG");
+        document.getElementById("secret").addEventListener("click",function(){
+            location.reload();
+           
+        })
+    })
+   
 })
 
-if (window.location.href == "http://localhost:8000/adminUsers") {
-    document.getElementById("footer").style.position = "sticky";
-} else {
-}
+
+
+
+// if (window.location.href == "http://localhost:8000/adminUsers") {
+//     document.getElementById("footer").style.position = "sticky";
+// } else {
+// }

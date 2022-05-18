@@ -4,7 +4,25 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+.card-text1{
+    font-family: 'Inter', sans-serif;
+    color: #3D3D67;
+    font-weight: 900;
+    font-size: large;
+    text-align: center;
+}
 
+.avatar3 {
+    display:block;
+    margin: 0 auto;
+
+}
+
+.avatar4 {
+    display:block;
+    margin: 0 auto;
+
+}
 
 #welcome-text{
     color: #3D3D67;
@@ -75,6 +93,29 @@ input[type=password] {
     font-size: medium;
 }
 
+#back3 {
+    margin: 0 2px 2px 2px;
+    width: 25%;
+    height: 20%;
+    background-color: #00BAC6;
+    border-radius: 10px;
+    color: white;
+    border: 0px;
+    margin-left: 110px;
+    font-size: medium;
+}
+#back4 {
+    display:block;
+    margin: 0 auto;
+    width: 25%;
+    height: 20%;
+    background-color: #00BAC6;
+    border-radius: 10px;
+    color: white;
+    border: 0px;
+   
+    font-size: medium;
+}
 #back1 {
     margin: 0 2px 2px 2px;
     width: 50%;
@@ -327,9 +368,5 @@ input[type=password] {
     font-weight: 900;
     font-size: medium;
 }
-.card-text1{
-    font-family: 'Inter', sans-serif;
-    color: #3D3D67;
-    font-weight: 900;
-    font-size: large;
-}
+
+

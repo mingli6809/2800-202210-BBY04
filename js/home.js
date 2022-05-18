@@ -41,19 +41,45 @@ function ajaxPOST(url, callback, data) {
 GET("/allEvents", (response) => {
     response = JSON.parse(response);
     for (let i = 0; i < response.length; i++) {
+        let eventid = response[i].ID;
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");
+        let name = "img/event" + eventid + ".png";
+        // let CHECK;
+        // fetch("/CHECKIMG?eventid=" + eventid).then(response=>{
+        //     if (response.text() == "1") {
+        //        console.log(response);
+        //         localStorage.setItem("IMG", 1);
+
+        //     }else{
+        //         localStorage.setItem("IMG", 0);
+        //     }
+
+
+        // })
+
+        //  CHECK=localStorage.getItem("IMG");
+
+        // let name1;
+        // if (CHECK == 1)
+        //     name1 = name;
+
+        // else {
+        //     name1 = "/img/vote1.png"
+        // }
+
+
         let img = document.createElement("img");
         img.setAttribute("class", "avatar1");
-        img.setAttribute("src", "img/vote1.png");
+        img.setAttribute("src", name);
 
         let img2 = document.createElement("img");
         img2.setAttribute("class", "avatar1");
-        img2.setAttribute("src", "img/vote2.png");
+        img2.setAttribute("src", name);
         let p1 = document.createElement("p");
         p1.setAttribute("class", "card-text");
         p1.innerHTML = "Event Name: " + response[i].EventName;
-        let eventid = response[i].ID;
+
 
         let input_D = document.createElement("input");
         input_D.setAttribute("type", "submit");
@@ -77,18 +103,36 @@ GET("/allEvents", (response) => {
             let p2 = document.createElement("p");
             p2.setAttribute("class", "card-text");
             p2.innerHTML = "Description: " + localStorage.getItem("description");
+
+            let p9 = document.createElement("h2");
+            p9.setAttribute("class", "card-text1");
+            p9.innerHTML = "Event Name: " + response[i].EventName;
+
+
             let back1 = document.createElement("input");
             back1.setAttribute("type", "submit");
             back1.setAttribute("value", "Back");
-            back1.setAttribute("id", "back1");
+            back1.setAttribute("id", "back4");
             back1.addEventListener("click", function () {
                 location.reload();
             })
-            editProfile.appendChild(p1);
+            let p7 = document.createElement("br");
+            let p6 = document.createElement("br");
+            let img4 = document.createElement("img");
+            img4.setAttribute("class", "avatar4");
+            img4.setAttribute("src", name);
+            editProfile.appendChild(img4);
+            editProfile.appendChild(p9);
+            editProfile.appendChild(p7);
             editProfile.appendChild(p2);
+            editProfile.appendChild(p6);
             editProfile.appendChild(back1);
-            div.innerHTML = "";
-            div.appendChild(editProfile);
+            // div.innerHTML = "";
+            // div.appendChild(editProfile);
+            document.querySelector(".displayUsers").innerHTML = "";
+            document.querySelector(".displayUsers").appendChild(editProfile);
+
+
         });
         let input = document.createElement("input");
         input.setAttribute("type", "submit");
@@ -185,6 +229,10 @@ GET("/allEvents", (response) => {
             editProfile.appendChild(submit);
             div.innerHTML = "";
             div.appendChild(editProfile);
+            // document.querySelector(".displayUsers").innerHTML="";
+            // document.querySelector(".displayUsers").appendChild(editProfile);
+
+
         });
         let input2 = document.createElement("input");
         input2.setAttribute("type", "submit");
@@ -209,25 +257,47 @@ GET("/allEvents", (response) => {
                 let R1 = parseInt(Ratio) / 100;
                 let R2 = 100 - R1;
                 let p2 = document.createElement("p");
-                p2.setAttribute("class", "card-text");
+                p2.setAttribute("class", "card-text1");
                 p2.innerHTML = "Support Ratio: " + R1 + "%";
+
                 let p3 = document.createElement("p");
-                p3.setAttribute("class", "card-text");
+                p3.setAttribute("class", "card-text1");
                 p3.innerHTML = "Against Ratio: " + R2 + "%";
+
                 let back = document.createElement("input");
                 back.setAttribute("type", "submit");
                 back.setAttribute("value", "Back");
-                back.setAttribute("id", "back");
+                back.setAttribute("id", "back3");
                 back.addEventListener("click", function () {
                     location.reload();
                 })
-                editProfile1.appendChild(img);
+
+                let p4 = document.createElement("h2");
+                p4.setAttribute("class", "card-text1");
+                p4.innerHTML = "Thank you! Your opinion is being heard."
+                let p5 = document.createElement("br");
+                let p6 = document.createElement("br");
+
+                let img3 = document.createElement("img");
+                img3.setAttribute("class", "avatar3");
+                img3.setAttribute("src", name);
+
+                editProfile1.appendChild(img3);
+                editProfile1.appendChild(p5);
+                editProfile1.appendChild(p4);
                 editProfile1.appendChild(p1);
+
+                editProfile1.appendChild(p6);
                 editProfile1.appendChild(p2);
                 editProfile1.appendChild(p3);
+                editProfile1.appendChild(p5);
                 editProfile1.appendChild(back);
-                div.innerHTML = "";
-                div.appendChild(editProfile1);
+                // div.innerHTML = "";
+                // div.appendChild(editProfile1);
+
+                document.querySelector(".displayUsers").innerHTML = "";
+                document.querySelector(".displayUsers").appendChild(editProfile1);
+
             })
             GET("/EVENTRESULT1?eventid=" + eventid, function (data) {
                 if (data) {
@@ -239,13 +309,19 @@ GET("/allEvents", (response) => {
                     localStorage.setItem("FENZI", data);
                 }
             });
+            let p6 = document.createElement("br");
             editProfile.appendChild(img);
+
             editProfile.appendChild(p1);
+            editProfile.appendChild(p6);
             editProfile.appendChild(input3);
             div.innerHTML = "";
             div.appendChild(editProfile);
         });
+
+
         div.appendChild(img);
+
         div.appendChild(p1);
         div.appendChild(input);
         div.appendChild(input2);

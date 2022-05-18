@@ -8,6 +8,10 @@ const {
   JSDOM
 } = require('jsdom');
 const multer = require("multer");
+const {
+  getEventListeners
+} = require('events');
+const req = require('express/lib/request');
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
@@ -109,6 +113,21 @@ app.get("/adminUsers", function (req, res) {
   } else {
     res.redirect("/");
   }
+
+})
+
+app.get("/CHECKIMG", function (req, res) {
+  let n = req.query.eventid;
+  let name1 = "event" + n + ".png";
+  console.log(name1);
+  const path = "./img/" + name1;
+  if (fs.existsSync(path))
+    res.send("1");
+  else
+    {res.send("0");
+    console.log("101");}
+
+
 
 })
 

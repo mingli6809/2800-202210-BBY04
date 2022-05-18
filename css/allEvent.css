@@ -71,6 +71,7 @@
 
     #addingEvent{
         position: fixed;
+        top:20%;
         display: none;
         width:100vw;
         flex-direction: column;

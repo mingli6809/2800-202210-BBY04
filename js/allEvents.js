@@ -85,6 +85,14 @@ GET("/allevents", (response) => {
     for (let i = 0; i < response.length; i++) {
 
         let data = response[i];
+        
+        //formatting the start date
+        let strtingDate = Date.parse(data.StartDate);
+        strtingDate = new Date(strtingDate).toDateString();
+        
+        //formatting the end date
+        let endingDate = Date.parse(data.EndDate);
+        endingDate = new Date(endingDate).toDateString();
         let div = document.createElement("div");
         div.setAttribute("class", "eventCard");
         let p1 = document.createElement("p");
@@ -92,9 +100,9 @@ GET("/allevents", (response) => {
         let p2 = document.createElement("h3");
         p2.innerHTML = data.EventName;
         let p3 = document.createElement("p");
-        p3.innerHTML = "Start Date: " + data.StartDate;
+        p3.innerHTML = "Start Date: " + strtingDate;
         let p4 = document.createElement("p");
-        p4.innerHTML = "End Date: " + data.EndDate;
+        p4.innerHTML = "End Date: " + endingDate;
         let p5 = document.createElement("p");
 
         p5.innerHTML = "Description: " + data.Description;

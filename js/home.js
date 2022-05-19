@@ -105,7 +105,7 @@ GET("/allEvents", (response) => {
             p2.innerHTML = "Description: " + localStorage.getItem("description");
 
             let p9 = document.createElement("h2");
-            p9.setAttribute("class", "card-text1");
+            p9.setAttribute("class", "result-text");
             p9.innerHTML = "Event Name: " + response[i].EventName;
 
 
@@ -257,11 +257,11 @@ GET("/allEvents", (response) => {
                 let R1 = parseInt(Ratio) / 100;
                 let R2 = 100 - R1;
                 let p2 = document.createElement("p");
-                p2.setAttribute("class", "card-text1");
+                p2.setAttribute("class", "result-text");
                 p2.innerHTML = "Support Ratio: " + R1 + "%";
 
                 let p3 = document.createElement("p");
-                p3.setAttribute("class", "card-text1");
+                p3.setAttribute("class", "result-text");
                 p3.innerHTML = "Against Ratio: " + R2 + "%";
 
                 let back = document.createElement("input");
@@ -273,7 +273,7 @@ GET("/allEvents", (response) => {
                 })
 
                 let p4 = document.createElement("h2");
-                p4.setAttribute("class", "card-text1");
+                p4.setAttribute("class", "result-text");
                 p4.innerHTML = "Thank you! Your opinion is being heard."
                 let p5 = document.createElement("br");
                 let p6 = document.createElement("br");

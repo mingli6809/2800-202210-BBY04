@@ -27,7 +27,7 @@ app.use(session({
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: "123456",
+  password: "",
   database: "COMP2800",
   multipleStatements: true
 });

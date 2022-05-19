@@ -3,7 +3,18 @@
 
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+}
 
+#im1 {
+    color:darkblue;
+    display:block;
+    margin:0 auto;
+}
 .card-text1{
     font-family: 'Inter', sans-serif;
     color: #3D3D67;
@@ -41,10 +52,11 @@
 }
 
 .userCards {
-    min-width: 30vw;
-    min-height: 41vh;
-    max-width: 32vw;
-    max-height: 41vh;
+    min-width: 30.7vw;
+    min-height: 22vh;
+    max-width: 36vw;
+    max-height: 28vh;
+    border: 2px black;
 }
 
 #error {
@@ -52,34 +64,6 @@
     font-family: 'Inter', sans-serif;
     text-align: center;
 }
-
-input[type=email] {
-    width: 100%;
-    font-family: 'Judson';
-    border: none;
-    font-size: large;
-    padding: 10px;
-    padding-left: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-input[type=password] {
-    width: 100%;
-    border: none;
-    font-size: large;
-    padding: 10px;
-    padding-left: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
 
 #back {
     margin: 0 2px 2px 2px;
@@ -178,13 +162,6 @@ input[type=password] {
     font-size: large;
 }
 
-
-
-
-
-
-
-
 /* iPhone 12 Pro*/
 @media (max-width:741px) {
 
@@ -196,7 +173,7 @@ input[type=password] {
 
     .displayUsers {
         background-color: #00ccf9;
-        height: 89vh;
+        height: 67vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -260,14 +237,15 @@ input[type=password] {
     }
     .displayUsers {
         background-color: #00ccf9;
-        height: 89vh;
+        height: 71.3vh;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
-        margin: 5px;
         overflow: scroll;
+        padding: 20px;
+
     }
 
     .userCards {
@@ -313,14 +291,15 @@ input[type=password] {
 @media screen and (min-width:1080px) {
     .displayUsers {
         background-color: #00ccf9;
-        height: 90vh;
+        height: 71.6vh;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
-        margin: 5px;
         overflow: scroll;
+        overflow-x: hidden;
+        padding: 20px;
     }
 
     .userCards {

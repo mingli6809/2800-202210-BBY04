@@ -10,3 +10,4 @@ INSERT INTO bby04_user (email, password,code) values ("mingli6809@my.bcit.ca", "
 INSERT INTO bby04_user (email, password,code) values ("melody@my.bcit.ca", "333", null);
 INSERT INTO bby04_user (email, password,code) values ("sylvie@my.bcit.ca", "333", "123");
 INSERT INTO bby04_user (email, password,code) values ("tom@my.bcit.ca", "333", "456");
+INSERT INTO bby04_user (email, password,code) values ("t2@my.bcit.ca", null, "123");

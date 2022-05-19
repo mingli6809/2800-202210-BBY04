@@ -38,8 +38,8 @@ a:hover {
 
 .grid-container {
     display: grid;
-    grid-template-rows: 1fr 3fr 5fr 1fr;
-    grid-template-columns: 10fr;
+    grid-template-rows: 1fr 3fr 5fr 0.15fr;
+    grid-template-columns: 1fr;
     height: 100vh;
 }
 
@@ -89,8 +89,9 @@ a:hover {
     display: grid;
     grid-template-rows: 2fr 2fr 2fr 2fr;
     grid-gap: 10px;
-    padding: 10px;
     font-family: 'Inter', sans-serif;
+    height: 250vh;
+    overflow: auto;
 }
 
 .voting-poll {
@@ -129,6 +130,10 @@ button:hover {
     width: 75px;
     height: 75px;
     margin-bottom: 2px;
+}
+
+.displayUsers {
+    overflow: auto;
 }
 
 @media (max-width:700px) {

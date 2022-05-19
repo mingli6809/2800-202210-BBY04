@@ -9,3 +9,8 @@ EndDate    DATE,
 Description  longtext,
 PRIMARY KEY (ID));
 INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "VOTING_TEST", "2022-05-10","2022-06-05","FOR TESTING");
+INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "TEST2", "2022-05-18","2022-06-05","TESTING!");
+INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "TEST2", "2022-05-18","2022-06-05","TESTING!");
+INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "TEST2", "2022-05-18","2022-06-05","TESTING!");
+INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "TEST2", "2022-05-18","2022-06-05","TESTING!");
+INSERT INTO bby04_event (InstituteName,EventName,StartDate,EndDate,Description) values ("BCIT", "TEST2", "2022-05-18","2022-06-05","TESTING!");

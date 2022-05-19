@@ -10,6 +10,20 @@ body {
     overflow-x: hidden; 
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #9FECEC;
+    border-radius: 10px;
+  }
+
 #im1 {
     color:darkblue;
     display:block;
@@ -179,6 +193,7 @@ body {
         align-items: center;
         margin: 1px 0px;
         overflow: scroll;
+        overflow-x: hidden;
     }
 
     #submit{
@@ -188,7 +203,6 @@ body {
     .userCards {
         border-radius: 20px;
         margin: 5px;
-        background-color: #9FECEC;
         min-width: 300px;
         min-height: 300px;
         max-width: 300px;
@@ -246,6 +260,7 @@ body {
         grid-gap: 2.25rem;
         overflow: scroll;
         padding: 20px;
+        overflow-x: hidden;
     }
 
     .userCards {
@@ -299,7 +314,7 @@ body {
 @media screen and (min-width:1080px) {
     .displayUsers {
         background-color: #00ccf9;
-        height: 65vh;
+        height: 61vh;
         display: grid;
         grid-template-columns: 30% 30% 30%;
         align-items: center;

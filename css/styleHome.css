@@ -185,6 +185,10 @@ body {
         text-align: center;
     }
 
+    ::-webkit-scrollbar {
+        width: 7px;
+      }
+
     .displayUsers {
         background-color: #00ccf9;
         height: 67.6vh;
@@ -203,6 +207,7 @@ body {
     .userCards {
         border-radius: 20px;
         margin: 5px;
+        background-color: #9FECEC;
         min-width: 300px;
         min-height: 300px;
         max-width: 300px;
@@ -250,9 +255,13 @@ body {
         text-align: center;
     }
 
+    ::-webkit-scrollbar {
+        width: 10px;
+      }
+
     .displayUsers {
         background-color: #00ccf9;
-        height: 68.1vh;
+        height: 63.1vh;
         display: grid;
         grid-template-columns: 30% 30% 30%;
         align-items: center;
@@ -280,9 +289,9 @@ body {
 
     .userCards {
         min-width: 26.7vw;
-        min-height: 22vh;
+        min-height: 38vh;
         max-width: 30vw;
-        max-height: 28vh;
+        max-height: 43vh;
     }
     
 
@@ -325,6 +334,10 @@ body {
         padding: 20px;
     }
 
+    ::-webkit-scrollbar {
+        width: 15px;
+      }
+
     .userCards {
         border-radius: 20px;
         background-color: #9FECEC;
@@ -343,9 +356,9 @@ body {
 
     .userCards {
         min-width: 26.7vw;
-        min-height: 22vh;
+        min-height: 38vh;
         max-width: 30vw;
-        max-height: 28vh;
+        max-height: 43vh;
         border: 2px black;
     }
 

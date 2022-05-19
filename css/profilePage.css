@@ -23,7 +23,7 @@ a:hover {
 
 .grid-container {
     display: grid;
-    grid-template-rows: 1fr 6fr 2fr 1fr;
+    grid-template-rows: 1fr 6fr 2fr;
     grid-template-columns: 10fr;
     height: 100vh;
 }
@@ -164,7 +164,7 @@ a:hover {
 
 @media (max-width:700px) {
     .grid-container {
-        grid-template-rows: 0.5fr 2fr 1fr 0.5fr;
+        grid-template-rows: 0.25fr 2fr 1fr;
         grid-template-columns: 1fr;
     }
 

@@ -8,11 +8,6 @@ const {
   JSDOM
 } = require('jsdom');
 const multer = require("multer");
-const {
-  getEventListeners
-} = require('events');
-const req = require('express/lib/request');
-const { connect } = require('http2');
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
@@ -25,11 +20,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
-//password for the database
 let dbPass = '';
-
-//upload files to profile page
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "./img")
@@ -43,17 +34,22 @@ const upload = multer({
 });
 
 app.post('/upload-images', upload.array("files"), function (req, res) {
-
+  console.log(req.files);
   for (let i = 0; i < req.files.length; i++) {
     req.files[i].filename = req.files[i].originalname;
   }
 });
 
-//landing page
 app.get("/", function (req, res) {
   if (req.session.loggedIn) {
     res.redirect("/profile");
   } else {
+    const connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: dbPass,
+      multipleStatements: true
+    });
     const createDBAndTables = `CREATE DATABASE IF NOT EXISTS COMP2800;
         use COMP2800;
         CREATE TABLE IF NOT EXISTS BBY04_user (
@@ -61,58 +57,29 @@ app.get("/", function (req, res) {
         email varchar(30),
         password varchar(30),
         code varchar(30),
-        PRIMARY KEY (ID));`;
-    const createDBAndTables1 = `CREATE DATABASE IF NOT EXISTS COMP2800;
-        use COMP2800;
-        CREATE TABLE IF NOT EXISTS BBY04_Events (
-        ID int NOT NULL AUTO_INCREMENT,
-        InstituteName varchar(30),
-        EventName varchar(30),
-        StartDate  DATE,
-        EndDate    DATE,
-        Description  longtext
-        ImagePath varChar(50),
-        PRIMARY KEY (ID));`;
-    const createDBAndTables2 = `CREATE DATABASE IF NOT EXISTS COMP2800;
-        use COMP2800;
-        CREATE TABLE IF NOT EXISTS BBY04_VoteResult (
-        EVENTID int NOT NULL ,
-        USERID  INT NOT NULL,
-        Result INT,
-        PRIMARY KEY (EVENTID,USERID),
-        FOREIGN KEY(EVENTID) REFERENCES bby04_event(ID)
-        ON DELETE CASCADE,
-        FOREIGN KEY(USERID)  REFERENCES bby04_user(ID)
-        ON DELETE CASCADE
-        );`;
-        const connection = mysql.createConnection({
-          host: "localhost",
-          user: "root",
-          password: dbPass,
-          database: "COMP2800"
-        });
-        connection.connect();
+        PRIMARY KEY (ID));
+        
+        CREATE TABLE IF NOT EXISTS BBY04_events (
+          ID int NOT NULL AUTO_INCREMENT,
+          InstituteName varchar(30),
+          EventName varchar(30),
+          StartDate  DATE,
+          EndDate    DATE,
+          Description  longtext,
+          ImagePath varChar(50),
+          PRIMARY KEY (ID));`;
+    connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
         console.log(error);
       }
-    });
-    connection.query(createDBAndTables1, function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-    });
-    connection.query(createDBAndTables2, function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-    });
 
+    });
+    connection.end();
     let doc = fs.readFileSync('./landingpage.html', "utf8");
     res.send(doc);
   }
 });
-
 app.get("/adminUsers", function (req, res) {
   if (req.session.loggedIn && req.session.code == "123") {
     let doc = fs.readFileSync("./adminUsers.html", "utf-8");
@@ -121,18 +88,6 @@ app.get("/adminUsers", function (req, res) {
     res.redirect("/");
   }
 
-})
-
-app.get("/CHECKIMG", function (req, res) {
-  let n = req.query.eventid;
-  let name1 = "event" + n + ".png";
-  console.log(name1);
-  const path = "./img/" + name1;
-  if (fs.existsSync(path))
-    res.send("1");
-  else
-    {res.send("0");
-    console.log("101");}
 })
 
 app.get("/profile", function (req, res) {
@@ -144,12 +99,14 @@ app.get("/profile", function (req, res) {
     let name1 = "my" + n + ".png";
     let page = ' <img class = "avatar" src="img/' + name1 + '">';
     let page1 = ' <img class = "avatar" src="img/default.png">';
+
     const path = "./img/" + name1;
     if (fs.existsSync(path))
       dom.window.document.querySelector("#im").innerHTML = page;
     else {
       dom.window.document.querySelector("#im").innerHTML = page1;
     }
+
     if (req.session.code == "123")
       res.send(doc1);
     else
@@ -157,6 +114,7 @@ app.get("/profile", function (req, res) {
   } else {
     res.redirect("/");
   }
+
 });
 
 app.get("/nav", function (req, res) {
@@ -169,8 +127,6 @@ app.get("/footer", function (req, res) {
   res.send(doc);
 });
 
-
-//returns all the users to the admin page
 app.get("/allUsers", function (req, res) {
 
   const mysql = require("mysql2");
@@ -188,86 +144,8 @@ app.get("/allUsers", function (req, res) {
       res.send(results);
     }
   );
+
 });
-
-app.get("/allEvents", function (req, res) {
-  connection.query(
-    "SELECT * FROM BBY04_event",
-    function (error, results, fields) {
-      res.send(results);
-    }
-  );
-});
-
-app.get("/EVENTRESULT", function (req, res) {
-  let a = req.session.userid;
-  let b = req.query.eventid;
-  connection.query("SELECT Result FROM  BBY04_VOTERESULT WHERE USERID = ? AND   EVENTID= ? ",
-    [a, b],
-    function (error, results, fields) {
-      if (results != null) {
-        res.send(results);
-        console.log(results);
-      } else
-        res.send(3);
-    });
-})
-
-
-app.get("/EVENTRESULT1", function (req, res) {
-  let b = req.query.eventid;
-  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE  EVENTID= ? ",
-    [b],
-    function (error, results, fields) {
-      let string = results[0].count.toString();
-      res.send(string);
-    })
-
-})
-
-app.get("/EVENTRESULT2", function (req, res) {
-  let b = req.query.eventid;
-  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE Result=1 AND EVENTID= ? ",
-    [b],
-    function (error, results, fields) {
-      let string = results[0].count.toString();
-      res.send(string);
-    })
-
-})
-
-
-app.get("/EVENTDES", function (req, res) {
-  let b = req.query.eventid
-  connection.query("SELECT Description FROM  BBY04_EVENT WHERE ID= ? ",
-    [b],
-    function (error, results, fields) {
-      res.send(results);
-    });
-})
-
-
-app.get("/updatevent", function (req, res) {
-  let a = req.session.userid;
-  let b = req.query.eventid
-  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
-    [b, a, 1],
-    function (error, results, fields) {
-      res.send(results);
-      console.log(results);
-    });
-})
-
-app.get("/updatevent1", function (req, res) {
-  let a = req.session.userid;
-  let b = req.query.eventid
-  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
-    [b, a, 0],
-    function (error, results, fields) {
-      res.send(results);
-    });
-})
-
 
 app.get("/change_logo", function (req, res) {
   let doc = fs.readFileSync("./ProfilePage_icon.html", "utf-8");
@@ -296,8 +174,8 @@ app.get("/signup", function (req, res) {
     let doc = fs.readFileSync('./signup.html', "utf8");
     res.send(doc);
   }
-});
 
+});
 app.get("/createUser", function (req, res) {
   if (req.session.loggedIn && req.session.code == "123") {
     let doc = fs.readFileSync("./createUser.html", "utf-8");
@@ -319,11 +197,18 @@ app.get("/login_landing", function (req, res) {
     let doc = fs.readFileSync('./login.html', "utf8");
     res.send(doc);
   }
+
 });
 
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 
-
-
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 // for the create user admin page
 app.post('/add-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -350,7 +235,9 @@ app.post('/add-user', function (req, res) {
               status: "success",
               msg: "User Created"
             });
+
           });
+
 
         connection.end();
       } else {
@@ -360,6 +247,7 @@ app.post('/add-user', function (req, res) {
         })
       }
     })
+
   } else {
     res.send({
       status: "fail",
@@ -368,19 +256,32 @@ app.post('/add-user', function (req, res) {
   }
 });
 
+app.post('/add-user', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
 
-app.post("/updateUser", function (req, res) {
-  if (req.body.email.includes("@my.bcit.ca")) {
-    connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
-      [req.body.email, req.body.password, req.body.ID],
+  let string = req.body.email;
+  if (string.includes("@my.bcit.ca")) {
+
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: dbPass,
+      database: 'COMP2800'
+    });
+    connection.connect();
+    connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
+      [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
         if (error) {}
         res.send({
           status: "success",
-          msg: "Record updated."
+          msg: "User Created"
         });
+
       });
 
+
+    connection.end();
   } else {
     res.send({
       status: "fail",
@@ -388,8 +289,6 @@ app.post("/updateUser", function (req, res) {
     });
   }
 });
-
-//request from admin to change the user details from the admin dashboard
 app.post("/updateUser", function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
@@ -422,7 +321,6 @@ app.post("/updateUser", function (req, res) {
 
 })
 
-//request from admin to delete the user
 app.post("/delUser", function (req, res) {
   if (req.body.email == req.session.email) {
     res.send({
@@ -436,7 +334,7 @@ app.post("/delUser", function (req, res) {
       password: dbPass,
       database: 'COMP2800'
     });
-    
+    connection.connect();
     connection.query('DELETE FROM BBY04_user WHERE email = ?',
       [req.body.email],
       function (error, results, fields) {
@@ -450,140 +348,15 @@ app.post("/delUser", function (req, res) {
 
       });
   }
+
+
 })
-
-//returns all events to event page
-app.get("/allevents", function (req, res) {
-
-  const mysql = require("mysql2");
-  const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: dbPass,
-    database: "COMP2800"
-  });
-  let myResults = null;
-  connection.connect();
-  connection.query(
-    "SELECT * FROM BBY04_events",
-    function (error, results, fields) {
-
-      if (results.length == 0) {
-        res.send = {
-          status: "fail",
-          msg: "No events found"
-        }
-      } else {
-        res.send(results);
-      }
-    }
-  );
-});
-
-//deletes events 
-app.post("/delEvent", function (req, res) {
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: dbPass,
-    database: 'COMP2800'
-  });
-  connection.connect();
-  connection.query('DELETE FROM BBY04_events WHERE EventName = ? AND InstituteName = ?',
-    [req.body.eventName, req.body.instituteName],
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.send({
-        status: "success",
-        msg: "Record deleted."
-      });
-
-    });
-})
-
-//uploads images for events
-const storage2 = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, "./img")
-  },
-  filename: function (req, file, callback) {
-    callback(null, "event" + Date.now() + ".png");
-  }
-});
-const upload2 = multer({
-  storage: storage2
-});
-
-app.post("/uploadEventImage", upload2.single("files"), function (req, res) {
-  return res.json({
-    path: req.file.path
-  })
-});
-
-//Events page
-app.get('/events', function (req, res) {
-  if (req.session.loggedIn && req.session.code == "123") {
-    let doc = fs.readFileSync("./allEvents.html", "utf-8")
-    res.send(doc);
-  } else {
-    res.redirect("/");
-  }
-});
-
-//adds an event
-app.post("/addEvent", function (req, res) {
-  req.session.eventName = req.body.eventName;
-  req.session.instituteName = req.body.instituteName;
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: dbPass,
-    database: 'COMP2800'
-  });
-  connection.connect();
-  connection.query('INSERT INTO bby04_events (InstituteName,EventName,StartDate,EndDate,Description,ImagePath) values (?,?,?,?,?,?);',
-    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath],
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.send({
-        status: "success",
-        msg: "Record deleted."
-      });
-
-    });
-});
-
-//updates the event
-app.post("/updateEvent", function (req, res) {
-  let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: dbPass,
-    database: 'COMP2800'
-  });
-  connection.connect();
-  connection.query('UPDATE BBY04_events SET InstituteName = ? , EventName = ? , StartDate = ? , EndDate = ? , Description = ?, ImagePath = ? WHERE ID = ?',
-    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath, req.body.ID],
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      } else {
-        res.send({
-          status: "success",
-          msg: "Record update"
-        });
-      }
-    })
-});
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");
   let results = authenticate(req.body.email, req.body.password,
     function (userRecord) {
+
       if (userRecord == null) {
         res.send({
           status: "fail",
@@ -597,24 +370,26 @@ app.post("/login", function (req, res) {
         req.session.save(function (err) {});
         res.send({
           status: "success",
-          msg: userRecord.ID,
+          msg: "Logged in."
         });
       }
     });
+
 });
 
 app.get("/logout", function (req, res) {
+
   if (req.session) {
     req.session.destroy(function (error) {
       if (error) {
         res.status(400).send("Unable to log out")
       } else {
+
         res.redirect("/");
       }
     });
   }
 });
-
 
 function authenticate(email, password, callback) {
   const mysql = require("mysql2");
@@ -636,12 +411,40 @@ function authenticate(email, password, callback) {
       } else {
         return callback(null);
       }
+
     }
   );
+
 }
 
+
+app.post('/update-customer', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('UPDATE BBY04_user SET email = ? , password=? WHERE ID = ?',
+    [req.body.email, req.body.password, req.session.userid],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Recorded updated."
+      });
+
+    });
+  connection.end();
+
+});
 
 let port = process.env.PORT || 8000;
 app.listen(port, function () {
   console.log('StudentVote app listening on port ' + port + '!');
-})
+});

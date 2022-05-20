@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/allEvent.css">
+    <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
+    <title>Create Events</title>
+</head>
+
+<body>
+    <header class = "header"></header>
+
+    <div class="mainContent">
+
+      <div class="addEvent">
+          <span class = "plusBar"></span>
+          <span class = "plusBar" id = "rotateBar"></span>
+      </div>
+
+      <h1>Events</h1>
+
+      <div id = "events"></div>
+    </div>
+    
+    <form id = "addingEvent">
+
+        <h2>Add Event</h2>
+
+        <input type = "text" placeholder="Institute Name" id = "instituteName">
+        <input type = "text" placeholder="Event Name" id = "eventName" >
+        <input type = "text" placeholder="Start Date" id = "startDate" onfocus="(this.type='date')">
+        <input type = "text" placeholder="End Date" id = "endDate" onfocus="(this.type='date')">
+        <input type = "text" placeholder="Description" id = "description">
+        <input type = "file" id = "addImage" accept="image/png, image/gif, image/jpeg">
+        
+        <div id = "buttons">
+          <input type = "submit" value = "Back" id = "back">
+          <input type = "submit" value = "Create" id = "create">
+          
+          <p id = "error"></p>
+        </div> 
+    </form>
+    
+    <form id = "editingEvent" class="editEvent">
+      
+      <h2>Edit Event</h2>
+      
+      <input type = "text" placeholder="Institute Name" id = "editInstitute">
+      <input type = "text" placeholder="Event Name" id = "editEvent">
+      <input type = "text" value="Start Date" id = "editSDate" onfocus="(this.type='date')">
+      <input type = "text" value="End Date" id = "editEDate" onfocus="(this.type='date')">
+      <input type = "text" placeholder="Description" id = "editDescription">
+      <input type = "file" id = "editImage"  accept="image/png, image/gif, image/jpeg">
+      
+      <div id = "buttons2">
+        <input type = "submit" value = "Back" id = "back2">
+        <input type = "submit" value = "Submit" id = "submit-edit">
+        
+        <p id = "error2"></p>
+      </div> 
+  </form>
+
+  <footer class = "footer"></footer>
+  
+  <script src = "/js/script.js"></script>
+  <script src = "/js/allEvents.js"></script>
+</body>
+</html>

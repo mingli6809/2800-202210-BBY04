@@ -24,14 +24,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+
+//password for the database
 let dbPass = '';
-const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: dbPass,
-  database: "COMP2800",
-  multipleStatements: true
-});
+
+//upload files to profile page
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "./img")
@@ -45,12 +42,13 @@ const upload = multer({
 });
 
 app.post('/upload-images', upload.array("files"), function (req, res) {
-  console.log(req.files);
+
   for (let i = 0; i < req.files.length; i++) {
     req.files[i].filename = req.files[i].originalname;
   }
 });
 
+//landing page
 app.get("/", function (req, res) {
   if (req.session.loggedIn) {
     res.redirect("/profile");
@@ -162,7 +160,19 @@ app.get("/footer", function (req, res) {
   res.send(doc);
 });
 
+
+//returns all the users to the admin page
 app.get("/allUsers", function (req, res) {
+
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: dbPass,
+    database: "COMP2800"
+  });
+  let myResults = null;
+  connection.connect();
   connection.query(
     "SELECT * FROM BBY04_user",
     function (error, results, fields) {
@@ -304,16 +314,21 @@ app.get("/login_landing", function (req, res) {
 
 
 
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}));
+
 // for the create user admin page
 app.post('/add-user', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
 
   let string = req.body.email;
   if (string.includes("@my.bcit.ca")) {
+
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: dbPass,
+      database: 'COMP2800'
+    });
+    connection.connect();
     connection.query('Select * from BBY04_user where email = ?', [req.body.email], function (error, result1s, fields) {
       if (result1s.length == 0) {
         connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
@@ -326,8 +341,9 @@ app.post('/add-user', function (req, res) {
               status: "success",
               msg: "User Created"
             });
-
           });
+
+        connection.end();
       } else {
         res.send({
           status: "fail",
@@ -349,6 +365,35 @@ app.post("/updateUser", function (req, res) {
     connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
       [req.body.email, req.body.password, req.body.ID],
       function (error, results, fields) {
+        if (error) {}
+        res.send({
+          status: "success",
+          msg: "Record updated."
+        });
+      });
+
+  } else {
+    res.send({
+      status: "fail",
+      msg: "User email domain is not correct."
+    });
+  }
+});
+
+//request from admin to change the user details from the admin dashboard
+app.post("/updateUser", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+
+  if (req.body.email.includes("@my.bcit.ca")) {
+    connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
+      [req.body.email, req.body.password, req.body.ID],
+      function (error, results, fields) {
         if (error) {
           console.log(error);
         }
@@ -358,18 +403,17 @@ app.post("/updateUser", function (req, res) {
         });
 
       });
-
+    connection.end();
   } else {
     res.send({
       status: "fail",
       msg: "User email domain is not correct. Use my.bcit.ca"
     })
   }
+
 })
 
-
-
-
+//request from admin to delete the user
 app.post("/delUser", function (req, res) {
   if (req.body.email == req.session.email) {
     res.send({
@@ -377,6 +421,13 @@ app.post("/delUser", function (req, res) {
       msg: "Cannot Delete your own account"
     });
   } else {
+    let connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: dbPass,
+      database: 'COMP2800'
+    });
+    
     connection.query('DELETE FROM BBY04_user WHERE email = ?',
       [req.body.email],
       function (error, results, fields) {
@@ -387,9 +438,138 @@ app.post("/delUser", function (req, res) {
           status: "success",
           msg: "Record deleted."
         });
+
       });
   }
 })
+
+//returns all events to event page
+app.get("/allevents", function (req, res) {
+
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: dbPass,
+    database: "COMP2800"
+  });
+  let myResults = null;
+  connection.connect();
+  connection.query(
+    "SELECT * FROM BBY04_events",
+    function (error, results, fields) {
+
+      if (results.length == 0) {
+        res.send = {
+          status: "fail",
+          msg: "No events found"
+        }
+      } else {
+        res.send(results);
+      }
+    }
+  );
+});
+
+//deletes events 
+app.post("/delEvent", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('DELETE FROM BBY04_events WHERE EventName = ? AND InstituteName = ?',
+    [req.body.eventName, req.body.instituteName],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record deleted."
+      });
+
+    });
+})
+
+//uploads images for events
+const storage2 = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "./img")
+  },
+  filename: function (req, file, callback) {
+    callback(null, "event" + Date.now() + ".png");
+  }
+});
+const upload2 = multer({
+  storage: storage2
+});
+
+app.post("/uploadEventImage", upload2.single("files"), function (req, res) {
+  return res.json({
+    path: req.file.path
+  })
+});
+
+//Events page
+app.get('/events', function (req, res) {
+  if (req.session.loggedIn && req.session.code == "123") {
+    let doc = fs.readFileSync("./allEvents.html", "utf-8")
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
+});
+
+//adds an event
+app.post("/addEvent", function (req, res) {
+  req.session.eventName = req.body.eventName;
+  req.session.instituteName = req.body.instituteName;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('INSERT INTO bby04_events (InstituteName,EventName,StartDate,EndDate,Description,ImagePath) values (?,?,?,?,?,?);',
+    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record deleted."
+      });
+
+    });
+});
+
+//updates the event
+app.post("/updateEvent", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('UPDATE BBY04_events SET InstituteName = ? , EventName = ? , StartDate = ? , EndDate = ? , Description = ?, ImagePath = ? WHERE ID = ?',
+    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath, req.body.ID],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send({
+          status: "success",
+          msg: "Record update"
+        });
+      }
+    })
+});
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");
@@ -426,8 +606,16 @@ app.get("/logout", function (req, res) {
   }
 });
 
+
 function authenticate(email, password, callback) {
   const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: dbPass,
+    database: "COMP2800"
+  });
+  connection.connect();
   connection.query(
     "SELECT * FROM BBY04_user WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {

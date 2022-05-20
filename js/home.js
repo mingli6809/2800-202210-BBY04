@@ -44,7 +44,7 @@ GET("/allEvents", (response) => {
         let eventid = response[i].ID;
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");
-        let name = "img/event" + eventid + ".png";
+        let name = response[i].ImagePath;
 
         let img = document.createElement("img");
         img.setAttribute("class", "avatar1");

@@ -53,15 +53,29 @@ back.addEventListener("click", function () {
 })
 
 let create = document.getElementById("create");
-create.addEventListener("click", function () {
+create.addEventListener("click", async function (e) {
+    e.preventDefault()
     if (document.getElementById("addingEvent").style.display == "flex") {
         let instName = document.getElementById("instituteName").value;
         let eventName = document.getElementById("eventName").value;
         let strtDate = document.getElementById("startDate").value;
         let endDate = document.getElementById("endDate").value;
         let des = document.getElementById("description").value;
+
+        let img = document.getElementById("addImage");
+        const imgForm = new FormData();
+            imgForm.append("files", img.files[0]);
+
+        const options = {
+            method: 'POST',
+            body: imgForm,
+        };
+
+        const imageRes = await fetch("/uploadEventImage ", options)
+        const imageResJson = await imageRes.json()
+
         let queryString = "instituteName=" + instName + "&eventName=" + eventName +
-            "&strtDate=" + strtDate + "&endDate=" + endDate + "&des=" + des;
+            "&strtDate=" + strtDate + "&endDate=" + endDate + "&des=" + des + "&imgPath=" + imageResJson.path;
         POST("/addEvent", function (data) {
             if (data) {
                 let dataParsed = JSON.parse(data);
@@ -71,26 +85,28 @@ create.addEventListener("click", function () {
                 } else {
                     document.getElementById("addingEvent").style.display = "none";
                     document.querySelector(".mainContent").classList.remove("is-blurred");
-
+                    location.reload();
                 }
             }
 
         }, queryString);
+
+
     }
 })
 
 
 GET("/allevents", (response) => {
     response = JSON.parse(response);
-    console.log(response);
+    
     for (let i = 0; i < response.length; i++) {
 
         let data = response[i];
-        
+
         //formatting the start date
         let strtingDate = Date.parse(data.StartDate);
         strtingDate = new Date(strtingDate).toDateString();
-        
+
         //formatting the end date
         let endingDate = Date.parse(data.EndDate);
         endingDate = new Date(endingDate).toDateString();
@@ -98,7 +114,10 @@ GET("/allevents", (response) => {
         //The cards that are showing the events
         let div = document.createElement("div");
         div.setAttribute("class", "eventCard");
-        
+
+        let img = document.createElement("img");
+        img.setAttribute("src", data.ImagePath);
+        img.setAttribute("class", "eventImage");
         //institute name
         let p1 = document.createElement("p");
         p1.innerHTML = "Institute Name: " + data.InstituteName;
@@ -122,36 +141,49 @@ GET("/allevents", (response) => {
         // edit button
         let input1 = document.createElement("input");
         input1.setAttribute("type", "submit");
-        input1.setAttribute("value","Edit");
-        input1.addEventListener("click", function(){
+        input1.setAttribute("value", "Edit");
+        input1.addEventListener("click", function () {
             document.getElementById("editingEvent").style.display = "flex";
             let edit = document.getElementById("edit");
-            edit.addEventListener("click", function(){
+            edit.addEventListener("click", async function (e) {
+                if(document.getElementById("editingEvent").style.display == "flex");
+                e.preventDefault();
                 let newInstitute = document.getElementById("editInstitute").value;
                 let newEventName = document.getElementById("editEvent").value;
                 let newSDate = document.getElementById("editSDate").value;
                 let newEDate = document.getElementById("editEDate").value;
                 let newdes = document.getElementById("editDescription").value;
+                let newImg = document.getElementById("editImage");
+
+                const imgForm = new FormData();
+                    imgForm.append("files", newImg.files[0]);
+
+                const options = {
+                    method: 'POST',
+                    body: imgForm,
+                };
+        
+                const imageRes = await fetch("/uploadEventImage ", options)
+                const imageResJson = await imageRes.json()
                 let id = data.ID;
 
                 let queryString = "instituteName=" + newInstitute + "&eventName=" + newEventName +
-            "&strtDate=" + newSDate + "&endDate=" + newEDate + "&des=" + newdes + "&ID=" + id;
-            POST("/updateEvent", function (data) {
-                if (data) {
-                    let dataParsed = JSON.parse(data);
+                    "&strtDate=" + newSDate + "&endDate=" + newEDate + "&des=" + newdes + "&imgPath="+ imageResJson.path+ "&ID=" + id;
+                POST("/updateEvent", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
 
-                    if (dataParsed.status == "fail") {
+                        if (dataParsed.status == "fail") {
 
-                    } else {
-                        location.reload();
-                        console.log(response.msg)
+                        } else {
+                            location.reload();
+                        }
                     }
-                }
 
-            }, queryString);
+                }, queryString);
             })
         })
-    
+
 
         // delete button
         let input = document.createElement("input");
@@ -175,6 +207,7 @@ GET("/allevents", (response) => {
         })
 
         div.appendChild(p2);
+        div.appendChild(img);
         div.appendChild(p1);
         div.appendChild(p3);
         div.appendChild(p4);

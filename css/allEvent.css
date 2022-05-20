@@ -1,4 +1,5 @@
 /* Iphone 12pro */
+
 @media screen and (max-width:400px) {
 
     .none {
@@ -87,6 +88,10 @@
 
     }
 
+    .eventImage{
+        height:100px;
+        width: 200px;
+    }
     input:hover {
         color: #00BAC6;
         background-color: white;

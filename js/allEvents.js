@@ -60,7 +60,7 @@ create.addEventListener("click", async function (e) {
         let eventName = document.getElementById("eventName").value;
         let strtDate = document.getElementById("startDate").value;
         let endDate = document.getElementById("endDate").value;
-        let des = document.getElementById("description").value;
+        let des = tinyMCE.get('description').getContent();
 
         let img = document.getElementById("addImage");
         
@@ -149,7 +149,8 @@ GET("/allevents", (response) => {
         input1.setAttribute("id", "edit");
         input1.addEventListener("click", function () {
             document.getElementById("editingEvent").style.display = "flex";
-            let edit = document.getElementById("edit");
+            document.querySelector(".mainContent").classList.add("is-blurred");
+            let edit = document.getElementById("submit-edit");
             edit.addEventListener("click", async function (e) {
                 if (document.getElementById("editingEvent").style.display == "flex");
                 e.preventDefault();
@@ -157,7 +158,7 @@ GET("/allevents", (response) => {
                 let newEventName = document.getElementById("editEvent").value;
                 let newSDate = document.getElementById("editSDate").value;
                 let newEDate = document.getElementById("editEDate").value;
-                let newdes = document.getElementById("editDescription").value;
+                let newdes = tinyMCE.get('editDescription').getContent();;
                 let newImg = document.getElementById("editImage");
 
                 console.log(newImg.files.length)

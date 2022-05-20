@@ -90,16 +90,14 @@ footer {
         transform: translateX(-50%);
         display: none;
         width: 80vw;
+        align-items: center;
         flex-direction: column;
         background-color: #9FECEC;
-        height: 70%;
+        height: 80%;
         border-radius: 15px;
     }
 
     input[type="text"] {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
         margin-bottom: 10px;
         padding-left: 10px;
         height: 10%;
@@ -118,7 +116,7 @@ footer {
         border-style: none;
     }
 
-    input[placeholder="Description"] {
+    input[placeholder="Description"], #editDescription {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -142,7 +140,7 @@ footer {
         border-style: none;
         font-size: large;
         width: 30%;
-        height: 200%;
+        height: 100%;
         float: left;
         margin-left: 10%;
     }
@@ -154,9 +152,16 @@ footer {
         border-style: none;
         font-size: large;
         width: 30%;
-        height: 200%;
+        height: 100%;
         float: right;
         margin-right: 10%;
+    }
+
+    #buttons, #buttons2{
+        display:flex;
+        flex-direction: row;
+        width:100%;
+        justify-content: center;
     }
 
     .eventCard {

@@ -44,7 +44,8 @@ document.getElementById("submit").addEventListener("click", function (e) {
     xhr.open("POST", "/add-user");
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send( "email=" + formData.email +"&password=" +formData.password + "&code=" + formData.code);
+    xhr.send( "email=" + formData.email +"&password=" +formData.password + 
+         "&code=" + formData.code);
 })
 
 function ajaxPOST(url, callback, data) {

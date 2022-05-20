@@ -7,9 +7,9 @@
 
 .userCards {
     min-width: 30vw;
-    min-height: 41vh;
+    min-height: 50vh;
     max-width: 32vw;
-    max-height: 41vh;
+    max-height: 50vh;
 }
 
 #error {
@@ -135,15 +135,13 @@ input[type=password] {
 
     .displayUsers {
         background-color: white;
-        height: 90vh;
+        height: 100vh;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
-        margin: 5px; 
-        overflow: scroll;
-
+        margin: 5px;
     }
 
     .userCards {
@@ -189,14 +187,13 @@ input[type=password] {
 @media screen and (min-width:1080px) {
     .displayUsers {
         background-color: white;
-        height: 90vh;
+        height: 100vh;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
         margin: 5px;
-        overflow: scroll;
     }
 
     .userCards {

@@ -24,14 +24,14 @@ app.use(session({
   saveUninitialized: true
 }));
 
+let dbPass = '123456';
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: "123456",
+  password: dbPass,
   database: "COMP2800",
   multipleStatements: true
 });
-
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "./img")
@@ -126,9 +126,6 @@ app.get("/CHECKIMG", function (req, res) {
   else
     {res.send("0");
     console.log("101");}
-
-
-
 })
 
 app.get("/profile", function (req, res) {
@@ -140,14 +137,12 @@ app.get("/profile", function (req, res) {
     let name1 = "my" + n + ".png";
     let page = ' <img class = "avatar" src="img/' + name1 + '">';
     let page1 = ' <img class = "avatar" src="img/default.png">';
-
     const path = "./img/" + name1;
     if (fs.existsSync(path))
       dom.window.document.querySelector("#im").innerHTML = page;
     else {
       dom.window.document.querySelector("#im").innerHTML = page1;
     }
-
     if (req.session.code == "123")
       res.send(doc1);
     else
@@ -155,7 +150,6 @@ app.get("/profile", function (req, res) {
   } else {
     res.redirect("/");
   }
-
 });
 
 app.get("/nav", function (req, res) {
@@ -169,25 +163,21 @@ app.get("/footer", function (req, res) {
 });
 
 app.get("/allUsers", function (req, res) {
-
   connection.query(
     "SELECT * FROM BBY04_user",
     function (error, results, fields) {
       res.send(results);
     }
   );
-
 });
 
 app.get("/allEvents", function (req, res) {
-
   connection.query(
     "SELECT * FROM BBY04_event",
     function (error, results, fields) {
       res.send(results);
     }
   );
-
 });
 
 app.get("/EVENTRESULT", function (req, res) {
@@ -256,7 +246,6 @@ app.get("/updatevent1", function (req, res) {
     [b, a, 0],
     function (error, results, fields) {
       res.send(results);
-
     });
 })
 
@@ -288,8 +277,8 @@ app.get("/signup", function (req, res) {
     let doc = fs.readFileSync('./signup.html', "utf8");
     res.send(doc);
   }
-
 });
+
 app.get("/createUser", function (req, res) {
   if (req.session.loggedIn && req.session.code == "123") {
     let doc = fs.readFileSync("./createUser.html", "utf-8");
@@ -311,7 +300,6 @@ app.get("/login_landing", function (req, res) {
     let doc = fs.readFileSync('./login.html', "utf8");
     res.send(doc);
   }
-
 });
 
 
@@ -326,7 +314,6 @@ app.post('/add-user', function (req, res) {
 
   let string = req.body.email;
   if (string.includes("@my.bcit.ca")) {
-
     connection.query('Select * from BBY04_user where email = ?', [req.body.email], function (error, result1s, fields) {
       if (result1s.length == 0) {
         connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
@@ -341,9 +328,6 @@ app.post('/add-user', function (req, res) {
             });
 
           });
-
-
-
       } else {
         res.send({
           status: "fail",
@@ -351,7 +335,6 @@ app.post('/add-user', function (req, res) {
         })
       }
     })
-
   } else {
     res.send({
       status: "fail",
@@ -360,38 +343,8 @@ app.post('/add-user', function (req, res) {
   }
 });
 
-// app.post('/add-user', function (req, res) {
-//   res.setHeader('Content-Type', 'application/json');
-
-//   let string = req.body.email;
-//   if (string.includes("@my.bcit.ca")) {
-
-
-//     connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
-//       [req.body.email, req.body.password, req.body.code],
-//       function (error, results, fields) {
-//         if (error) {}
-//         res.send({
-//           status: "success",
-//           msg: "User Created"
-//         });
-
-//       });
-
-
-
-//   } else {
-//     res.send({
-//       status: "fail",
-//       msg: "User email domain is not correct."
-//     });
-//   }
-// });
-
 
 app.post("/updateUser", function (req, res) {
-
-
   if (req.body.email.includes("@my.bcit.ca")) {
     connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
       [req.body.email, req.body.password, req.body.ID],
@@ -412,7 +365,6 @@ app.post("/updateUser", function (req, res) {
       msg: "User email domain is not correct. Use my.bcit.ca"
     })
   }
-
 })
 
 
@@ -425,7 +377,6 @@ app.post("/delUser", function (req, res) {
       msg: "Cannot Delete your own account"
     });
   } else {
-
     connection.query('DELETE FROM BBY04_user WHERE email = ?',
       [req.body.email],
       function (error, results, fields) {
@@ -436,18 +387,14 @@ app.post("/delUser", function (req, res) {
           status: "success",
           msg: "Record deleted."
         });
-
       });
   }
-
-
 })
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");
   let results = authenticate(req.body.email, req.body.password,
     function (userRecord) {
-
       if (userRecord == null) {
         res.send({
           status: "fail",
@@ -462,21 +409,17 @@ app.post("/login", function (req, res) {
         res.send({
           status: "success",
           msg: userRecord.ID,
-
         });
       }
     });
-
 });
 
 app.get("/logout", function (req, res) {
-
   if (req.session) {
     req.session.destroy(function (error) {
       if (error) {
         res.status(400).send("Unable to log out")
       } else {
-
         res.redirect("/");
       }
     });
@@ -485,7 +428,6 @@ app.get("/logout", function (req, res) {
 
 function authenticate(email, password, callback) {
   const mysql = require("mysql2");
-
   connection.query(
     "SELECT * FROM BBY04_user WHERE email = ? AND password = ?", [email, password],
     function (error, results, fields) {
@@ -497,12 +439,12 @@ function authenticate(email, password, callback) {
       } else {
         return callback(null);
       }
-
     }
   );
-
 }
 
 
-
-app.listen(8000);
+let port = process.env.PORT || 8000;
+app.listen(port, function () {
+  console.log('StudentVote app listening on port ' + port + '!');
+})

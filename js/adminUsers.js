@@ -56,8 +56,8 @@ GET("/allUsers", (response) => {
         input.setAttribute("id", "editUser");
         input.addEventListener("click", function () {
             let editProfile = document.createElement("div");
-            // let p = document.createElement("p");
-            // p.setAttribute("class", "error");
+            let p = document.createElement("p");
+            p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
             emailInput.setAttribute("placeholder", "Email");
@@ -84,14 +84,14 @@ GET("/allUsers", (response) => {
                     errormsg.appendChild(message);
                     editProfile.appendChild(errormsg);
 
-                    // document.getElementById("email").style.width = "80%";
-                    // document.getElementById("email").style.display = "initial";
-                    // document.getElementById("pass").style.width = "80%";
-                    // document.getElementById("pass").style.display = "initial";
-                    // document.getElementById("submit").style.width = "20%";
-                    // document.getElementById("submit").style.height = "20%";
-                    // document.getElementById("back").style.width = "20%";
-                    // document.getElementById("back").style.height = "20%";
+                    document.getElementById("email").style.width = "80%";
+                    document.getElementById("email").style.display = "initial";
+                    document.getElementById("pass").style.width = "80%";
+                    document.getElementById("pass").style.display = "initial";
+                    document.getElementById("submit").style.width = "20%";
+                    document.getElementById("submit").style.height = "20%";
+                    document.getElementById("back").style.width = "20%";
+                    document.getElementById("back").style.height = "20%";
 
                 } else {
                     let queryString = "ID=" + response[i].ID + "&email=" + emailInput.value + "&password=" + passInput.value;
@@ -125,7 +125,7 @@ GET("/allUsers", (response) => {
             editProfile.appendChild(passInput);
             editProfile.appendChild(submit);
             editProfile.appendChild(back);
-            // editProfile.appendChild(p);
+            editProfile.appendChild(p);
             div.innerHTML = "";
             div.appendChild(editProfile);
         });
@@ -137,7 +137,7 @@ GET("/allUsers", (response) => {
         input2.setAttribute("class", "btn");
         input2.setAttribute("id", "delUser");
         let div2 = document.createElement("div");
-        // input2.addEventListener("click", function () {
+        input2.addEventListener("click", function () {
             input2.addEventListener("click", function (e) {
                 e.preventDefault();
                 let queryString = "email=" + response[i].email;
@@ -163,7 +163,7 @@ GET("/allUsers", (response) => {
 
                 }, queryString);
             });
-        // })
+        })
         div.appendChild(p1);
         div.appendChild(p2);
         div.appendChild(input);

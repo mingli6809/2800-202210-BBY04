@@ -24,7 +24,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-let dbPass = '123456';
+let dbPass = '';
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',

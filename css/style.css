@@ -26,6 +26,10 @@
 
 header{
     background-color: #00ccf9;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 li{
     list-style: none;
@@ -44,7 +48,6 @@ a{
     align-items: center;
     padding: 0 24px;
     max-height: 70px;
-   
 }
 
 .nav-menu{
@@ -53,7 +56,6 @@ a{
     align-items: center;
     text-align: center;
     gap: 60px;
-    z-index: 20;
 }
 
 .nav-branding{
@@ -94,7 +96,10 @@ footer{
     font-family: 'Inter', sans-serif;
     position: absolute;
     bottom: 0;
+    right: 0;
+    left: 0;
     width: 100%;
+    z-index: 10;
 }
 
 hr {

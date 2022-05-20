@@ -4,6 +4,21 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+body {
+    position: relative;
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -50px;
+}
 
 .userCards {
     min-width: 30vw;
@@ -12,15 +27,28 @@
     max-height: 50vh;
 }
 
+.displayUsers {
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
 #error {
     color: red;
     font-family: 'Inter', sans-serif;
     text-align: center;
+    padding-top: 2px;
+}
+
+.card-text{
+    font-family: 'Inter', sans-serif;
+    color: #3D3D67;
+    font-weight: 900;
+    font-size: larger;
 }
 
 input[type=email] {
     width: 100%;
-    font-family: 'Judson';
+    font-family: 'Inter', sans-serif;
     border: none;
     font-size: large;
     padding: 10px;
@@ -44,7 +72,6 @@ input[type=password] {
     justify-content: center;
     flex-direction: column;
 }
-
 
 #back {
     margin: 0 2px 2px 2px;
@@ -76,12 +103,10 @@ input[type=password] {
 
     .displayUsers {
         background-color: white;
-        height: 89vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 1px 0px ;
-        overflow: scroll;
     }
 
     #submit{
@@ -93,9 +118,7 @@ input[type=password] {
         margin: 5px;
         background-color: #9FECEC;
         min-width: 300px;
-        min-height: 300px;
         max-width: 300px;
-        max-height: 300px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -109,7 +132,7 @@ input[type=password] {
     .btn {
         margin: 0 2px 2px 2px;
         width: 50%;
-        height: 20%;
+        height: 10vh;
         background-color: #00BAC6;
         border-radius: 10px;
         color: white;
@@ -135,19 +158,17 @@ input[type=password] {
 
     .displayUsers {
         background-color: white;
-        height: 100vh;
+        height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
-        margin: 5px;
     }
 
     .userCards {
         border-radius: 20px;
         background-color: #9FECEC;
-        width: 300px;
         height: 300px;
         display: flex;
         flex-direction: column;
@@ -187,13 +208,12 @@ input[type=password] {
 @media screen and (min-width:1080px) {
     .displayUsers {
         background-color: white;
-        height: 100vh;
+        height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
-        margin: 5px;
     }
 
     .userCards {
@@ -235,9 +255,4 @@ input[type=password] {
         text-align: center;
     }
 }
-.card-text{
-    font-family: 'Inter', sans-serif;
-    color: #3D3D67;
-    font-weight: 900;
-    font-size: larger;
-}
+

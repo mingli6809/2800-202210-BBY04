@@ -32,7 +32,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
             let dataParsed = JSON.parse(data);
             if (dataParsed.status == "fail") {
                 
-                document.getElementById("err").innerHTML="email domain is not correct, try again";
+                document.getElementById("err").innerHTML="Email domain is not correct, try again";
             } else {
                 location.reload();
             }
@@ -40,7 +40,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
         }, queryString);
 });
 
-document.getElementById("avatar-div").addEventListener("click", function (e) {
+document.getElementById("avatar").addEventListener("click", function (e) {
     e.preventDefault();
     window.location = "/change_logo" ;
 

@@ -38,28 +38,18 @@ GET("/nav", (response) => {
         let signupPage = "http://localhost:8000/signup";
 
         
-        if (window.location.href.contains("/login_landing")  || window.location.href.contains("/signup") ) {
+        if (window.location.href.contains("/login_landing") || window.location.href.contains("/signup") ) {
             document.querySelector(".logout").style.display = "none";
             document.querySelector(".profilePage").style.display = "none";
         }
     })
-
-    if (window.location.href == "http://localhost:8000/adminUsers") {
-        document.getElementById("header").style.position = "sticky";
-        document.getElementById("header").style.top = "0";
-
-    } else {}     
+   
 })
 
 GET("/footer", (res)=>{
     let doc = document.querySelector(".footer");
     doc.innerHTML = res;
 })
-
-if (window.location.href == "http://localhost:8000/adminUsers") {
-    document.getElementById("footer").style.position = "sticky";
-} else {
-}
 
 let invert = false;
 let footer = document.querySelector(".footer");

@@ -146,6 +146,7 @@ GET("/allevents", (response) => {
         let input1 = document.createElement("input");
         input1.setAttribute("type", "submit");
         input1.setAttribute("value", "Edit");
+        input1.setAttribute("id", "edit");
         input1.addEventListener("click", function () {
             document.getElementById("editingEvent").style.display = "flex";
             let edit = document.getElementById("edit");
@@ -202,6 +203,7 @@ GET("/allevents", (response) => {
         let input = document.createElement("input");
         input.setAttribute("type", "submit");
         input.setAttribute("value", "Delete");
+        input.setAttribute("id", "delete");
         input.addEventListener("click", function () {
             let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
             POST("/delEvent", function (data) {

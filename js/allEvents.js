@@ -63,18 +63,23 @@ create.addEventListener("click", async function (e) {
         let des = document.getElementById("description").value;
 
         let img = document.getElementById("addImage");
-        const imgForm = new FormData();
+        if(img.files.length != 0){
+            const imgForm = new FormData();
             imgForm.append("files", img.files[0]);
-
-        const options = {
-            method: 'POST',
-            body: imgForm,
-        };
-
-        const imageRes = await fetch("/uploadEventImage ", options)
-        const imageResJson = await imageRes.json()
-
-        let queryString = "instituteName=" + instName + "&eventName=" + eventName +
+    
+            const options = {
+                method: 'POST',
+                body: imgForm,
+            };
+    
+            const imageRes = await fetch("/uploadEventImage ", options)
+            const imageResJson = await imageRes.json()
+        }
+        
+        if(instName == "" || eventName == "" || strtDate == "" || endDate == "" || des == "" || imageResJson.path == ""){
+            document.getElementById("error").innerHTML = "Values cannot be empty";
+        } else{
+            let queryString = "instituteName=" + instName + "&eventName=" + eventName +
             "&strtDate=" + strtDate + "&endDate=" + endDate + "&des=" + des + "&imgPath=" + imageResJson.path;
         POST("/addEvent", function (data) {
             if (data) {
@@ -90,15 +95,14 @@ create.addEventListener("click", async function (e) {
             }
 
         }, queryString);
-
-
+        }
     }
 })
 
 
 GET("/allevents", (response) => {
     response = JSON.parse(response);
-    
+
     for (let i = 0; i < response.length; i++) {
 
         let data = response[i];
@@ -146,7 +150,7 @@ GET("/allevents", (response) => {
             document.getElementById("editingEvent").style.display = "flex";
             let edit = document.getElementById("edit");
             edit.addEventListener("click", async function (e) {
-                if(document.getElementById("editingEvent").style.display == "flex");
+                if (document.getElementById("editingEvent").style.display == "flex");
                 e.preventDefault();
                 let newInstitute = document.getElementById("editInstitute").value;
                 let newEventName = document.getElementById("editEvent").value;
@@ -155,20 +159,27 @@ GET("/allevents", (response) => {
                 let newdes = document.getElementById("editDescription").value;
                 let newImg = document.getElementById("editImage");
 
-                const imgForm = new FormData();
-                    imgForm.append("files", newImg.files[0]);
+                console.log(newImg.files.length)
+                if(newImg.files.length != 0){
+                    const imgForm = new FormData();
+                imgForm.append("files", newImg.files[0]);
 
                 const options = {
                     method: 'POST',
                     body: imgForm,
                 };
-        
+
                 const imageRes = await fetch("/uploadEventImage ", options)
                 const imageResJson = await imageRes.json()
+                }
+                
                 let id = data.ID;
 
-                let queryString = "instituteName=" + newInstitute + "&eventName=" + newEventName +
-                    "&strtDate=" + newSDate + "&endDate=" + newEDate + "&des=" + newdes + "&imgPath="+ imageResJson.path+ "&ID=" + id;
+                if(newInstitute == "" || newEventName == "" || newSDate == "" || newEDate == "" || newdes == "" || imageResJson == ""){
+                    document.getElementById("error2").innerHTML = "Values cannot be empty";
+                } else {
+                    let queryString = "instituteName=" + newInstitute + "&eventName=" + newEventName +
+                    "&strtDate=" + newSDate + "&endDate=" + newEDate + "&des=" + newdes + "&imgPath=" + imageResJson.path + "&ID=" + id;
                 POST("/updateEvent", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
@@ -181,6 +192,8 @@ GET("/allevents", (response) => {
                     }
 
                 }, queryString);
+                }
+                
             })
         })
 

@@ -12,6 +12,7 @@ const {
   getEventListeners
 } = require('events');
 const req = require('express/lib/request');
+const { connect } = require('http2');
 app.use("/img", express.static("./img"));
 app.use("/css", express.static("./css"));
 app.use("/js", express.static("./js"));
@@ -63,13 +64,14 @@ app.get("/", function (req, res) {
         PRIMARY KEY (ID));`;
     const createDBAndTables1 = `CREATE DATABASE IF NOT EXISTS COMP2800;
         use COMP2800;
-        CREATE TABLE IF NOT EXISTS BBY04_Event (
+        CREATE TABLE IF NOT EXISTS BBY04_Events (
         ID int NOT NULL AUTO_INCREMENT,
         InstituteName varchar(30),
         EventName varchar(30),
         StartDate  DATE,
         EndDate    DATE,
-        Description  longtext,
+        Description  longtext
+        ImagePath varChar(50),
         PRIMARY KEY (ID));`;
     const createDBAndTables2 = `CREATE DATABASE IF NOT EXISTS COMP2800;
         use COMP2800;
@@ -83,6 +85,13 @@ app.get("/", function (req, res) {
         FOREIGN KEY(USERID)  REFERENCES bby04_user(ID)
         ON DELETE CASCADE
         );`;
+        const connection = mysql.createConnection({
+          host: "localhost",
+          user: "root",
+          password: dbPass,
+          database: "COMP2800"
+        });
+        connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
         console.log(error);

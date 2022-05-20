@@ -14,10 +14,8 @@ body {
 }
 
 footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -50px;
+    position: sticky;
+    bottom: 0;
 }
 
 .userCards {

@@ -195,7 +195,7 @@ footer {
         color: red;
     }
 
-    input:hover {
+    input:hover:not([type=file]) {
         color: #00BAC6;
         background-color: white;
         cursor: pointer;
@@ -385,7 +385,7 @@ footer {
         color: red;
     }
 
-    input:hover {
+    input:hover:not([type=file]) {
         color: #00BAC6;
         background-color: white;
         cursor: pointer;

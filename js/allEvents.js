@@ -63,7 +63,7 @@ create.addEventListener("click", async function (e) {
         let des = document.getElementById("description").value;
 
         let img = document.getElementById("addImage");
-        if(img.files.length != 0){
+        
             const imgForm = new FormData();
             imgForm.append("files", img.files[0]);
     
@@ -74,9 +74,9 @@ create.addEventListener("click", async function (e) {
     
             const imageRes = await fetch("/uploadEventImage ", options)
             const imageResJson = await imageRes.json()
-        }
         
-        if(instName == "" || eventName == "" || strtDate == "" || endDate == "" || des == "" || imageResJson.path == ""){
+        
+        if(instName == "" || eventName == "" || strtDate == "" || endDate == "" || des == ""){
             document.getElementById("error").innerHTML = "Values cannot be empty";
         } else{
             let queryString = "instituteName=" + instName + "&eventName=" + eventName +
@@ -160,18 +160,18 @@ GET("/allevents", (response) => {
                 let newImg = document.getElementById("editImage");
 
                 console.log(newImg.files.length)
-                if(newImg.files.length != 0){
+                
                     const imgForm = new FormData();
                 imgForm.append("files", newImg.files[0]);
 
                 const options = {
                     method: 'POST',
                     body: imgForm,
-                };
+                }
 
                 const imageRes = await fetch("/uploadEventImage ", options)
                 const imageResJson = await imageRes.json()
-                }
+                
                 
                 let id = data.ID;
 

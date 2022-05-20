@@ -582,6 +582,12 @@ footer {
         cursor: pointer;
     }
 
+    #error {
+        text-align: center;
+        color: red;
+        margin-top: 3%;
+    }
+
     .is-blurred {
         filter: blur(10px);
         -webkit-filter: blur(10px);

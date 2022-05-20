@@ -67,7 +67,19 @@ app.get("/", function (req, res) {
           EndDate    DATE,
           Description  longtext,
           ImagePath varChar(50),
-          PRIMARY KEY (ID));`;
+          PRIMARY KEY (ID));
+
+        CREATE TABLE IF NOT EXISTS BBY04_VoteResult (
+          EVENTID int NOT NULL ,
+          USERID  INT NOT NULL,
+          Result INT,
+          PRIMARY KEY (EVENTID,USERID),
+          FOREIGN KEY(EVENTID) REFERENCES bby04_events(ID)
+          ON DELETE CASCADE,
+          FOREIGN KEY(USERID)  REFERENCES bby04_user(ID)
+          ON DELETE CASCADE
+          ); 
+         `;
     connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
@@ -570,6 +582,118 @@ app.post('/update-customer', function (req, res) {
   connection.end();
 
 });
+
+
+app.get("/EVENTRESULT", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT Result FROM  BBY04_VOTERESULT WHERE USERID = ? AND   EVENTID= ? ",
+    [a, b],
+    function (error, results, fields) {
+      if (results != null) {
+        res.send(results);
+        console.log(results);
+      } else
+        res.send(3);
+    });
+})
+
+
+app.get("/EVENTRESULT1", function (req, res) {
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE  EVENTID= ? ",
+    [b],
+    function (error, results, fields) {
+      let string = results[0].count.toString();
+      res.send(string);
+    })
+
+})
+
+app.get("/EVENTRESULT2", function (req, res) {
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE Result=1 AND EVENTID= ? ",
+    [b],
+    function (error, results, fields) {
+      let string = results[0].count.toString();
+      res.send(string);
+    })
+
+})
+
+
+app.get("/EVENTDES", function (req, res) {
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT Description FROM  BBY04_EVENTS WHERE ID= ? ",
+    [b],
+    function (error, results, fields) {
+      res.send(results);
+    });
+})
+
+
+app.get("/updatevent", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
+    [b, a, 1],
+    function (error, results, fields) {
+      res.send(results);
+      console.log(results);
+    });
+})
+
+app.get("/updatevent1", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
+    [b, a, 0],
+    function (error, results, fields) {
+      res.send(results);
+    });
+})
 
 let port = process.env.PORT || 8000;
 app.listen(port, function () {

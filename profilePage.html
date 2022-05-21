@@ -9,49 +9,33 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/img/voting-box.png" type="image/x-icon">
 
-    <title>StudentVote - Profile</title>
+    <title>Profile</title>
 
 </head>
 
 <body>
+    <header class="header"></header>
 
-    <div class="grid-container">
-        <header class="header"></header>
-        <div class="dash-area">
-                <div class="image-upload">
-                    <div id="avatar-div"><img src="img/DummyImageUploadFile.png" id="avatar" alt="user-image"></div>
-                </div>
-                <div class="Profile-Info">
-
-                    <div>
-                        <h2>Edit Profile</h2>
-                    </div>
-
-                    <div id="profile-info-field">
-                        <input type="text" placeholder="Email" id="email">
-                    </div>
-
-                    <div id="profile-input-field">
-                        <input type="text" placeholder="Password" id="password">
-                    </div>
-
-                    <div class="submit-button">
-                        <input type="button" class="block2" id="submit" value="Update"/>
-                    </div>
-                    <div  id="err"></div>
-                
-                </div>
-                
-
-        </div>
-        <div class="profile-details-area">
-
-        </div>
-        <footer class = "footer"></footer>
+    <div id="avatar-div">
+        <img src="img/DummyImageUploadFile.png" id="avatar" alt="user-image">
     </div>
+
+    <div id="profile-info">
+        <h1>Edit Profile</h1>
+
+        <form id="input">
+            <input type="email" placeholder="Email" id="email">
+            <input type="text" placeholder="Password" id="password">
+            <input type="submit" id="submit" value="Update">
+        </form>
+
+        <div id="err"></div>
+    </div>
+        
+    <footer class = "footer"></footer>
+
     <script src="/js/script.js"></script>
-    <script src="/js/userprofile.js"></script>
-    
+    <script src="/js/profilePage.js"></script>
 </body>
 
 </html>

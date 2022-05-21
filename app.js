@@ -57,7 +57,29 @@ app.get("/", function (req, res) {
         email varchar(30),
         password varchar(30),
         code varchar(30),
-        PRIMARY KEY (ID));`;
+        PRIMARY KEY (ID));
+        
+        CREATE TABLE IF NOT EXISTS BBY04_events (
+          ID int NOT NULL AUTO_INCREMENT,
+          InstituteName varchar(30),
+          EventName varchar(30),
+          StartDate  DATE,
+          EndDate    DATE,
+          Description  longtext,
+          ImagePath varChar(50),
+          PRIMARY KEY (ID));
+
+        CREATE TABLE IF NOT EXISTS BBY04_VoteResult (
+          EVENTID int NOT NULL ,
+          USERID  INT NOT NULL,
+          Result INT,
+          PRIMARY KEY (EVENTID,USERID),
+          FOREIGN KEY(EVENTID) REFERENCES bby04_events(ID)
+          ON DELETE CASCADE,
+          FOREIGN KEY(USERID)  REFERENCES bby04_user(ID)
+          ON DELETE CASCADE
+          ); 
+         `;
     connection.connect();
     connection.query(createDBAndTables, function (error, results, fields) {
       if (error) {
@@ -90,14 +112,14 @@ app.get("/profile", function (req, res) {
     let page = ' <img class = "avatar" src="img/' + name1 + '">';
     let page1 = ' <img class = "avatar" src="img/default.png">';
 
-    const path = "./img/"+ name1;
+    const path = "./img/" + name1;
     if (fs.existsSync(path))
       dom.window.document.querySelector("#im").innerHTML = page;
     else {
       dom.window.document.querySelector("#im").innerHTML = page1;
     }
 
-    if (req.session.code == "123") 
+    if (req.session.code == "123")
       res.send(doc1);
     else
       res.send(dom.serialize());
@@ -123,7 +145,7 @@ app.get("/allUsers", function (req, res) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: dbPass,
+    password:dbPass,
     database: "COMP2800"
   });
   let myResults = null;
@@ -166,8 +188,8 @@ app.get("/signup", function (req, res) {
   }
 
 });
-app.get("/createUser", function(req,res){
-  if(req.session.loggedIn && req.session.code == "123"){
+app.get("/createUser", function (req, res) {
+  if (req.session.loggedIn && req.session.code == "123") {
     let doc = fs.readFileSync("./createUser.html", "utf-8");
     res.send(doc);
   } else {
@@ -216,20 +238,20 @@ app.post('/add-user', function (req, res) {
     connection.query('Select * from BBY04_user where email = ?',[req.body.email],function(error,result1s,fields){
       if(result1s.length == 0){
         connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
-      [req.body.email, req.body.password, req.body.code],
-      function (error, results, fields) {
-        if (error) {
-          console.log(error);
-        }
-        res.send({
-          status: "success",
-          msg: "User Created"
-        });
+          [req.body.email, req.body.password, req.body.code],
+          function (error, results, fields) {
+            if (error) {
+              console.log(error);
+            }
+            res.send({
+              status: "success",
+              msg: "User Created"
+            });
 
-      });
+          });
 
 
-    connection.end();
+        connection.end();
       } else {
         res.send({
           status:"fail",
@@ -237,7 +259,6 @@ app.post('/add-user', function (req, res) {
         })
       }
     })
-    
   } else {
     res.send({
       status: "fail",
@@ -280,7 +301,7 @@ app.post('/add-user', function (req, res) {
     });
   }
 });
-app.post("/updateUser", function(req,res){
+app.post("/updateUser", function (req, res) {
   let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -312,8 +333,8 @@ app.post("/updateUser", function(req,res){
   
 })
 
-app.post("/delUser",function(req,res){
-  if(req.body.email == req.session.email){
+app.post("/delUser", function (req, res) {
+  if (req.body.email == req.session.email) {
     res.send({
       status: "fail",
       msg: "Cannot Delete your own account"
@@ -342,6 +363,133 @@ app.post("/delUser",function(req,res){
   
     
 })
+//allevents displayed
+app.get("/allevents", function (req, res) {
+
+  const mysql = require("mysql2");
+  const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: dbPass,
+    database: "COMP2800"
+  });
+  let myResults = null;
+  connection.connect();
+  connection.query(
+    "SELECT * FROM BBY04_events",
+    function (error, results, fields) {
+
+      if (results.length == 0) {
+        res.send = {
+          status: "fail",
+          msg: "No events found"
+        }
+      } else {
+        res.send(results);
+      }
+    }
+  );
+});
+
+//deletes events 
+app.post("/delEvent", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('DELETE FROM BBY04_events WHERE EventName = ? AND InstituteName = ?',
+    [req.body.eventName, req.body.instituteName],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record deleted."
+      });
+
+    });
+})
+
+//uploads images for events
+const storage2 = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "./img")
+  },
+  filename: function (req, file, callback) {
+    callback(null, "event" + Date.now() + ".png");
+  }
+});
+const upload2 = multer({
+  storage: storage2
+});
+
+app.post("/uploadEventImage", upload2.single("files"), function (req, res) {
+  return res.json({
+    path: req.file.path
+  })
+});
+
+//Events page
+app.get('/events', function (req, res) {
+  if (req.session.loggedIn && req.session.code == "123") {
+    let doc = fs.readFileSync("./allEvents.html", "utf-8")
+    res.send(doc);
+  } else {
+    res.redirect("/");
+  }
+});
+
+//adds an event
+app.post("/addEvent", function (req, res) {
+  req.session.eventName = req.body.eventName;
+  req.session.instituteName = req.body.instituteName;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('INSERT INTO bby04_events (InstituteName,EventName,StartDate,EndDate,Description,ImagePath) values (?,?,?,?,?,?);',
+    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      }
+      res.send({
+        status: "success",
+        msg: "Record deleted."
+      });
+
+    });
+});
+
+//updates the event
+app.post("/updateEvent", function (req, res) {
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query('UPDATE BBY04_events SET InstituteName = ? , EventName = ? , StartDate = ? , EndDate = ? , Description = ?, ImagePath = ? WHERE ID = ?',
+    [req.body.instituteName, req.body.eventName, req.body.strtDate, req.body.endDate, req.body.des, req.body.imgPath, req.body.ID],
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send({
+          status: "success",
+          msg: "Record update"
+        });
+      }
+    })
+});
 
 app.post("/login", function (req, res) {
   res.setHeader("Content-Type", "application/json");
@@ -435,7 +583,119 @@ app.post('/update-customer', function (req, res) {
 
 });
 
+
+app.get("/EVENTRESULT", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT Result FROM  BBY04_VOTERESULT WHERE USERID = ? AND   EVENTID= ? ",
+    [a, b],
+    function (error, results, fields) {
+      if (results != null) {
+        res.send(results);
+        console.log(results);
+      } else
+        res.send(3);
+    });
+})
+
+
+app.get("/EVENTRESULT1", function (req, res) {
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE  EVENTID= ? ",
+    [b],
+    function (error, results, fields) {
+      let string = results[0].count.toString();
+      res.send(string);
+    })
+
+})
+
+app.get("/EVENTRESULT2", function (req, res) {
+  let b = req.query.eventid;
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT count(*) AS count FROM  BBY04_VOTERESULT WHERE Result=1 AND EVENTID= ? ",
+    [b],
+    function (error, results, fields) {
+      let string = results[0].count.toString();
+      res.send(string);
+    })
+
+})
+
+
+app.get("/EVENTDES", function (req, res) {
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT Description FROM  BBY04_EVENTS WHERE ID= ? ",
+    [b],
+    function (error, results, fields) {
+      res.send(results);
+    });
+})
+
+
+app.get("/updatevent", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
+    [b, a, 1],
+    function (error, results, fields) {
+      res.send(results);
+      console.log(results);
+    });
+})
+
+app.get("/updatevent1", function (req, res) {
+  let a = req.session.userid;
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("insert into BBY04_VOTERESULT values (?,?,?) ",
+    [b, a, 0],
+    function (error, results, fields) {
+      res.send(results);
+    });
+})
+
 let port = process.env.PORT || 8000;
 app.listen(port, function () {
   console.log('StudentVote app listening on port ' + port + '!');
-})
+});

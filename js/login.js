@@ -33,6 +33,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
                 document.getElementById("failedLogin").style.display = "block";
                 
             } else {
+                localStorage.setItem("userid", dataParsed.msg);
                 localStorage.setItem("email", email.value);
                 window.location.replace("/profile");
             }

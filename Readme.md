@@ -28,6 +28,7 @@ Top level of project folder:
 ├── .gitattributes                  # Folder for git
 ├── .gitignore                      # Git ignore files
 ├── Readme.md                       # Readme file
+├── adminUsers.html                 # HTML page to show all accounts
 ├── app.js                          # Primary JS file
 ├── dashboard.html                  # HTML dashboard for admins
 ├── database.sql                    # SQL database
@@ -40,10 +41,12 @@ It has the following subfolders and files:
 ├── common                          # Folder for common files
     ├── nav.html                        # HTML navbar
 ├── css                             # Folder for css
+    ├── adminUsers.css                  # Style for adminUsers.html
     ├── dashboardStyle.css              # Style for dashboard.html
     ├── landingPage.css                 # Style for landingpage.html
     ├── login.css                       # Style for login.html
     ├── signup.css                      # Style for signup.html
+    ├── style.css                       # Style for header.html and footer.html
     ├── styleHome.css                   # Style for home.html
 ├── img                             # Folder for images
     ├── Contact.svg                     # Image for "Email" icon

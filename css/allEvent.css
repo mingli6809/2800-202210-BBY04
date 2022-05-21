@@ -1,0 +1,595 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+p {
+    font-family: 'Inter', sans-serif;
+    color: #3D3D67;
+    margin: 5px;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+}
+
+/* Iphone 12pro */
+@media screen and (max-width:400px) {
+    body {
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 100vw;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .mainContent {
+        height: 100vh;
+        margin-top: 40px;
+    }
+
+    .addEvent {
+        width: 40px;
+        height: 40px;
+        background-color: #00BAC6;
+        border-radius: 50%;
+        position: sticky;
+        right: 0%;
+        left: 88%;
+        top: 10%;
+        border-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .plusBar {
+        display: block;
+        justify-content: end;
+        background-color: white;
+        height: 3px;
+        width: 20px;
+    }
+
+    #rotateBar {
+        transform: translateY(-3px) rotate(90deg);
+    }
+
+    .addEvent:hover {
+        background-color: #9FECEC;
+        cursor: pointer;
+    }
+
+    h1, h2 {
+        color: #3D3D67;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        font-size: 40px;
+    }
+
+    #events{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow: scroll;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    #addingEvent, #editingEvent{
+        position: fixed;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        width: 80vw;
+        align-items: center;
+        flex-direction: column;
+        background-color: #9FECEC;
+        height: 65%;
+        border-radius: 15px;
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 8%;
+        width: 70%;
+        border-style: none;
+    }
+
+    input[type="Date"] {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 8%;
+        width: 70%;
+        border-style: none;
+    }
+
+    input[placeholder="Description"], #editDescription {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        height: 10%;
+        width: 70%;
+        border-style: none;
+    }
+
+    input[type=file] {
+        position: relative;
+        left: 65%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
+
+    input[id=back], input[id=back2] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 130%;
+        float: left;
+        margin-left: 5%;
+    }
+
+    input[id=create], input[id=submit-edit] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 130%;
+        float: right;
+        margin-right: 5%;
+    }
+
+    #buttons, #buttons2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .eventCard {
+        background-color: #9FECEC;
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eventImage{
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: contain;
+        display: block;
+        margin: auto;
+    }
+
+    h3 {
+        color: #3D3D67;
+        font-family: 'Judson', serif;
+        text-align: center;
+        margin: 1px;
+        font-size: large;
+    }
+
+    input[value="Edit"], input[value="Delete"] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border: 0px;
+        margin-bottom: 5px;
+    }
+
+    input[value="Delete"]:hover {
+        color: red;
+    }
+
+    input:hover:not([type=file]):not([value=Delete]){
+        color: #00BAC6;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .is-blurred {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+    }
+}
+
+/* 1080p */
+@media screen and (min-width:400px) and (max-width:1079px) {
+    body {
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 100vw;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .mainContent {
+        height: 100vh;
+        margin-top: 40px;
+    }
+
+    .addEvent {
+        width: 50px;
+        height: 50px;
+        background-color: #00BAC6;
+        border-radius: 50%;
+        position: sticky;
+        right: 0%;
+        left: 93%;
+        top: 10%;
+        border-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .plusBar {
+        display: block;
+        justify-content: end;
+        background-color: white;
+        height: 3px;
+        width: 20px;
+    }
+
+    #rotateBar {
+        transform: translateY(-3px) rotate(90deg);
+    }
+
+    .addEvent:hover {
+        background-color: #9FECEC;
+        cursor: pointer;
+    }
+
+    h1, h2 {
+        color: #3D3D67;
+        text-align: center;
+        margin-top: 1%;
+        font-size: 64px;
+    }
+
+    #events{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow: scroll;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    #addingEvent, #editingEvent{
+        position: fixed;
+        top: 10%;
+        left: 10%;
+        align-items: center;
+        display: none;
+        width: 80vw;
+        flex-direction: column;
+        background-color: #9FECEC;
+        height: 80%;
+        border-radius: 15px;
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 10%;
+        width: 70%;
+        border-style: none;
+    }
+
+    input[type="Date"] {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 10%;
+        width: 70%;
+        border-style: none;
+    }
+
+    input[placeholder="Description"] {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        height: 10%;
+        width: 40%;
+        border-style: none;
+    }
+
+    input[type=file] {
+        margin-bottom: 10px;
+    }
+
+    input[id=back], input[id=back2] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 140%;
+        float: left;
+        margin-left: 5%;
+    }
+
+    input[id=create], input[id=submit-edit] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 140%;
+        float: right;
+        margin-right: 5%;
+    }
+
+    #buttons, #buttons2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .eventCard {
+        background-color: #9FECEC;
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eventImage{
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: contain;
+        display: block;
+        margin: auto;
+    }
+
+    h3 {
+        color: #3D3D67;
+        font-family: 'Judson', serif;
+        text-align: center;
+        margin: 1px;
+        font-size: x-large;
+    }
+
+    input[value="Edit"], input[value="Delete"] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border: 0px;
+        margin-bottom: 5px;
+    }
+
+    input[value="Delete"]:hover {
+        color: red;
+    }
+
+    input:hover:not([type=file]):not([value=Delete]){
+        color: #00BAC6;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .is-blurred {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+    }
+}
+
+/* 1440p */
+@media screen and (min-width:1080px) {
+    body {
+        position: relative;
+        padding: 0%;
+        margin: 0%;
+        height: 100%;
+        width: 100vw;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .mainContent {
+        height: 100vh;
+        margin-top: 40px;
+    }
+
+    .addEvent {
+        width: 60px;
+        height: 60px;
+        background-color: #00BAC6;
+        border-radius: 50%;
+        position: sticky;
+        right: 0%;
+        left: 92%;
+        top: 10%;
+        border-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .plusBar {
+        display: block;
+        justify-content: end;
+        background-color: white;
+        height: 3px;
+        width: 20px;
+    }
+
+    #rotateBar {
+        transform: translateY(-3px) rotate(90deg);
+    }
+
+    .addEvent:hover {
+        background-color: #9FECEC;
+        cursor: pointer;
+    }
+
+    h1, h2 {
+        color: #3D3D67;
+        text-align: center;
+        margin-top: 1%;
+        font-size: 64px;
+    }
+
+    #events{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow: hidden;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    #addingEvent, #editingEvent{
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        width: 80vw;
+        flex-direction: column;
+        background-color: #9FECEC;
+        height: 70%;
+        border-radius: 15px;
+    }
+
+    input[type="text"] {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 8%;
+        width: 60%;
+        border-style: none;
+    }
+
+    input[type="Date"] {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        padding-left: 10px;
+        height: 8%;
+        width: 60%;
+        border-style: none;
+    }
+
+    input[placeholder="Description"], #editDescription, #description, div[role="application"] {
+        margin-bottom: 10px;
+        border-style: none;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    input[type=file] {
+        position: relative;
+        left: 70%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
+
+    input[id=back], input[id=back2] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 150%;
+        float: left;
+        margin-left: 5%;
+    }
+
+    input[id=create], input[id=submit-edit] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border-style: none;
+        font-size: large;
+        width: 40%;
+        height: 150%;
+        float: right;
+        margin-right: 5%;
+    }
+
+    #buttons, #buttons2 {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .eventCard {
+        background-color: #9FECEC;
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eventImage{
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: contain;
+        display: block;
+        margin: auto;
+    }
+
+    h3 {
+        color: #3D3D67;
+        font-family: 'Judson', serif;
+        text-align: center;
+        margin: 1px;
+        font-size: x-large;
+    }
+
+    input[value="Edit"], input[value="Delete"] {
+        background-color: #00BAC6;
+        border-radius: 8px;
+        color: white;
+        border: 0px;
+        margin-bottom: 5px;
+    }
+
+    input[value="Delete"]:hover {
+        color: red;
+    }
+
+    input:hover:not([type=file]) {
+        color: #00BAC6;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #error {
+        text-align: center;
+        color: red;
+        margin-top: 3%;
+    }
+
+    .is-blurred {
+        filter: blur(10px);
+        -webkit-filter: blur(10px);
+    }
+}

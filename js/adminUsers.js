@@ -38,6 +38,7 @@ function POST(url, callback, data) {
 
 GET("/allUsers", (response) => {
     response = JSON.parse(response);
+    console.log(response);
     for (let i = 0; i < response.length; i++) {
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");

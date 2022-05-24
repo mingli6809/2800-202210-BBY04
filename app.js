@@ -642,6 +642,23 @@ app.get("/EVENTRESULT2", function (req, res) {
 
 })
 
+app.get("/EVENTRESULT3", function (req, res) {
+  let b = req.query.eventid
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: dbPass,
+    database: 'COMP2800'
+  });
+  connection.connect();
+  connection.query("SELECT ENDDATE FROM  BBY04_EVENTS WHERE ID= ? ",
+    [b],
+    function (error, results, fields) {
+      let string = results[0].ENDDATE;
+      res.send(string);
+    });
+})
+
 
 app.get("/EVENTDES", function (req, res) {
   let b = req.query.eventid

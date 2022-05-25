@@ -4,6 +4,12 @@
 /* Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+.is-blurred {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    pointer-events: none;
+}
+
 p {
     font-family: 'Inter', sans-serif;
     color: #3D3D67;
@@ -201,10 +207,7 @@ footer {
         cursor: pointer;
     }
 
-    .is-blurred {
-        filter: blur(10px);
-        -webkit-filter: blur(10px);
-    }
+    
     #confirmation{
         display:none;
         position:fixed;

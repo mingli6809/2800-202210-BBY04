@@ -207,6 +207,7 @@ GET("/allevents", (response) => {
         input.setAttribute("id", "delete");
         input.addEventListener("click", function () {
             document.getElementById("confirmation").style.display = "flex";
+            document.querySelector(".mainContent").classList.add("is-blurred");
 
             if(document.getElementById("confirmation").style.display != "none"){
                 let confirm = document.getElementById("yes");

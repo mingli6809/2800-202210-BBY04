@@ -148,8 +148,17 @@ GET("/allevents", (response) => {
         input1.setAttribute("value", "Edit");
         input1.setAttribute("id", "edit");
         input1.addEventListener("click", function () {
+
+
+            document.getElementById("editInstitute").value = data.InstituteName;
+            document.getElementById("editEvent").value = data.EventName;
+            document.getElementById("editSDate").value = strtingDate;
+            document.getElementById("editEDate").value = endingDate;
+
+
             document.getElementById("editingEvent").style.display = "flex";
             document.querySelector(".mainContent").classList.add("is-blurred");
+            
             let edit = document.getElementById("submit-edit");
             edit.addEventListener("click", async function (e) {
                 if (document.getElementById("editingEvent").style.display == "flex");

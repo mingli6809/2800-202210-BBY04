@@ -161,6 +161,8 @@ GET("/allUsers", (response) => {
                                 setTimeout(function(){
                                     div2.style.display = "none";
                                 }, 5000)
+                                document.querySelector(".displayUsers").classList.remove("is-blurred");
+                                document.getElementById("confirmation").style.display = "none";
                             } else {
                                 localStorage.setItem(`email${response[i].ID}`, response[i].email);
                                 location.reload();

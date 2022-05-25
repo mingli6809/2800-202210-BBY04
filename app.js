@@ -475,20 +475,33 @@ app.post("/login", function (req, res) {
         req.session.loggedIn = true;
         req.session.email = userRecord.email;
         req.session.userid = userRecord.ID;
-        if (userRecord.code == "123") {
-          req.session.code = true
-        } else {
-          req.session.code = false
-        }
-
-        req.session.save(function (err) {});
-        res.send({
-          status: "success",
-          msg: "Logged in."
+        const mysql = require("mysql2");
+        const connection = mysql.createConnection({
+          host: "localhost",
+          user: "root",
+          password: dbPass,
+          database: "COMP2800"
         });
+        let myResults = null;
+        connection.connect();
+        connection.query(
+          "SELECT code FROM BBY04_user where email='admin@my.bcit.ca' ",
+          function (error, results, fields) {
+            let admincode = results[0].code;
+            if (userRecord.code == admincode) {
+              req.session.code = true
+            } else {
+              req.session.code = false
+            }
+            req.session.save(function (err) {});
+            res.send({
+              status: "success",
+              msg: "Logged in."
+            });
+          }
+        );
       }
     });
-
 });
 
 app.get("/logout", function (req, res) {

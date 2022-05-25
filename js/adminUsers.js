@@ -139,31 +139,46 @@ GET("/allUsers", (response) => {
         input2.setAttribute("id", "delUser");
         let div2 = document.createElement("div");
         input2.addEventListener("click", function () {
-            input2.addEventListener("click", function (e) {
+            document.querySelector(".displayUsers").classList.add("is-blurred");
+            document.getElementById("confirmation").style.display = "flex";
+            let confirm = document.getElementById("yes");
+            let decline = document.getElementById("no");
+            
+            confirm.addEventListener("click", function (e) {
                 e.preventDefault();
-                let queryString = "email=" + response[i].email;
-                POST("/delUser", function (data) {
-                    if (data) {
-                        let dataParsed = JSON.parse(data);
-                        
-                        if (dataParsed.status == "fail") {
+                if(document.getElementById("confirmation").style.display != "none"){
+                    let queryString = "email=" + response[i].email;
+                    POST("/delUser", function (data) {
+                        if (data) {
+                            let dataParsed = JSON.parse(data);
                             
-                            div2.setAttribute("class", "error");
-                            div2.innerHTML = dataParsed.msg;
-                            
-                            div.appendChild(div2);
-                            setTimeout(function(){
-                                div2.style.display = "none";
-                            }, 5000)
-                        } else {
-                            localStorage.setItem(`email${response[i].ID}`, response[i].email);
-                            location.reload();
-                            div2.innerHTML = "";
+                            if (dataParsed.status == "fail") {
+                                
+                                div2.setAttribute("class", "error");
+                                div2.innerHTML = dataParsed.msg;
+                                
+                                div.appendChild(div2);
+                                setTimeout(function(){
+                                    div2.style.display = "none";
+                                }, 5000)
+                            } else {
+                                localStorage.setItem(`email${response[i].ID}`, response[i].email);
+                                location.reload();
+                                div2.innerHTML = "";
+                            }
                         }
-                    }
-
-                }, queryString);
+    
+                    }, queryString);
+                }
+                
             });
+            decline.addEventListener("click",function(e){
+                e.preventDefault();
+                if(document.getElementById("confirmation").style.display != "none"){
+                    location.reload();
+                }
+
+            })
         })
         div.appendChild(p1);
         div.appendChild(p2);

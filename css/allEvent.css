@@ -205,6 +205,14 @@ footer {
         filter: blur(10px);
         -webkit-filter: blur(10px);
     }
+    #confirmation{
+        display:none;
+        position:fixed;
+        top:40%;
+        left:20%;
+        border:1px solid black;
+        background-color:#9FECEC ;
+    }
 }
 
 /* 1080p */

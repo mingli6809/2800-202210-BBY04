@@ -206,20 +206,32 @@ GET("/allevents", (response) => {
         input.setAttribute("value", "Delete");
         input.setAttribute("id", "delete");
         input.addEventListener("click", function () {
-            let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
-            POST("/delEvent", function (data) {
-                if (data) {
-                    let dataParsed = JSON.parse(data);
+            document.getElementById("confirmation").style.display = "flex";
 
-                    if (dataParsed.status == "fail") {
-
-                    } else {
-                        location.reload();
-
+            if(document.getElementById("confirmation").style.display != "none"){
+                let confirm = document.getElementById("yes");
+                confirm.addEventListener("click", function(){
+                    let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
+                POST("/delEvent", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+    
+                        if (dataParsed.status == "fail") {
+    
+                        } else {
+                            location.reload();
+    
+                        }
                     }
-                }
-
-            }, queryString);
+    
+                }, queryString);
+                })
+                let decline = document.getElementById("no");
+                decline.addEventListener("click",function(){
+                    location.reload();
+                })  
+            }
+            
         })
 
         div.appendChild(p2);

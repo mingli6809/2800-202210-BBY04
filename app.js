@@ -64,7 +64,7 @@ app.get("/", function (req, res) {
   }
 });
 app.get("/adminUsers", function (req, res) {
-  if (req.session.loggedIn && req.session.code == "123") {
+  if (req.session.loggedIn && req.session.code == true) {
     let doc = fs.readFileSync("./adminUsers.html", "utf-8");
     res.send(doc);
   } else {
@@ -90,7 +90,7 @@ app.get("/profile", function (req, res) {
       dom.window.document.querySelector("#im").innerHTML = page1;
     }
 
-    if (req.session.code == "123")
+    if (req.session.code == true)
       res.send(doc1);
     else
       res.send(dom.serialize());
@@ -116,7 +116,7 @@ app.get("/allUsers", function (req, res) {
   const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password:dbPass,
+    password: dbPass,
     database: "COMP2800"
   });
   let myResults = null;
@@ -149,7 +149,7 @@ app.get("/signup", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
-    if (req.session.code == "123")
+    if (req.session.code == true)
       res.send(doc1);
     else
       res.send(doc2);
@@ -160,7 +160,7 @@ app.get("/signup", function (req, res) {
 
 });
 app.get("/createUser", function (req, res) {
-  if (req.session.loggedIn && req.session.code == "123") {
+  if (req.session.loggedIn && req.session.code == true) {
     let doc = fs.readFileSync("./createUser.html", "utf-8");
     res.send(doc);
   } else {
@@ -172,7 +172,7 @@ app.get("/login_landing", function (req, res) {
   if (req.session.loggedIn) {
     let doc1 = fs.readFileSync('./dashboard.html', "utf8");
     let doc2 = fs.readFileSync('./home.html', "utf8");
-    if (req.session.code == "123")
+    if (req.session.code == true)
       res.send(doc1);
     else
       res.send(doc2);
@@ -206,8 +206,8 @@ app.post('/add-user', function (req, res) {
       database: 'COMP2800'
     });
     connection.connect();
-    connection.query('Select * from BBY04_user where email = ?',[req.body.email],function(error,result1s,fields){
-      if(result1s.length == 0){
+    connection.query('Select * from BBY04_user where email = ?', [req.body.email], function (error, result1s, fields) {
+      if (result1s.length == 0) {
         connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
           [req.body.email, req.body.password, req.body.code],
           function (error, results, fields) {
@@ -225,7 +225,7 @@ app.post('/add-user', function (req, res) {
         connection.end();
       } else {
         res.send({
-          status:"fail",
+          status: "fail",
           msg: "User already exists"
         })
       }
@@ -254,8 +254,7 @@ app.post('/add-user', function (req, res) {
     connection.query('INSERT INTO BBY04_user (email, password,code) values (?, ?, ?)',
       [req.body.email, req.body.password, req.body.code],
       function (error, results, fields) {
-        if (error) {
-        }
+        if (error) {}
         res.send({
           status: "success",
           msg: "User Created"
@@ -280,28 +279,28 @@ app.post("/updateUser", function (req, res) {
     database: 'COMP2800'
   });
   connection.connect();
-  
-  if(req.body.email.includes("@my.bcit.ca")){
+
+  if (req.body.email.includes("@my.bcit.ca")) {
     connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
-    [req.body.email, req.body.password, req.body.ID],
-    function (error, results, fields) {
-      if (error) {
-        console.log(error);
-      }
-      res.send({
-        status: "success",
-        msg: "Record updated."
+      [req.body.email, req.body.password, req.body.ID],
+      function (error, results, fields) {
+        if (error) {
+          console.log(error);
+        }
+        res.send({
+          status: "success",
+          msg: "Record updated."
+        });
+
       });
-      
-    });
     connection.end();
   } else {
     res.send({
-      status:"fail",
-      msg:"User email domain is not correct. Use my.bcit.ca"
+      status: "fail",
+      msg: "User email domain is not correct. Use my.bcit.ca"
     })
   }
-  
+
 })
 
 app.post("/delUser", function (req, res) {
@@ -309,8 +308,8 @@ app.post("/delUser", function (req, res) {
     res.send({
       status: "fail",
       msg: "Cannot Delete your own account"
-    }); 
-  } else{
+    });
+  } else {
     let connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
@@ -328,11 +327,11 @@ app.post("/delUser", function (req, res) {
           status: "success",
           msg: "Record deleted."
         });
-  
+
       });
   }
-  
-    
+
+
 })
 //allevents displayed
 app.get("/allevents", function (req, res) {
@@ -406,7 +405,7 @@ app.post("/uploadEventImage", upload2.single("files"), function (req, res) {
 
 //Events page
 app.get('/events', function (req, res) {
-  if (req.session.loggedIn && req.session.code == "123") {
+  if (req.session.loggedIn && req.session.code == true) {
     let doc = fs.readFileSync("./allEvents.html", "utf-8")
     res.send(doc);
   } else {
@@ -476,7 +475,12 @@ app.post("/login", function (req, res) {
         req.session.loggedIn = true;
         req.session.email = userRecord.email;
         req.session.userid = userRecord.ID;
-        req.session.code = userRecord.code;
+        if (userRecord.code == "123") {
+          req.session.code = true
+        } else {
+          req.session.code = false
+        }
+
         req.session.save(function (err) {});
         res.send({
           status: "success",

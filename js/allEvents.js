@@ -220,8 +220,13 @@ GET("/allevents", (response) => {
                         if (dataParsed.status == "fail") {
     
                         } else {
-                            location.reload();
-    
+                            document.getElementById("rus").style.display = "none";
+                            document.getElementById("button-container").style.display = "none";
+                            document.getElementById("deleted").style.display = "flex";
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 2000);                                 
+                            input.innerHTML = "";
                         }
                     }
     

@@ -165,7 +165,12 @@ GET("/allUsers", (response) => {
                                 document.getElementById("confirmation").style.display = "none";
                             } else {
                                 localStorage.setItem(`email${response[i].ID}`, response[i].email);
-                                location.reload();
+                                document.getElementById("rus").style.display = "none";
+                                document.getElementById("button-container").style.display = "none";
+                                document.getElementById("deleted").style.display = "flex";
+                                setTimeout(function(){
+                                    window.location.reload();
+                                }, 2000);                                 
                                 div2.innerHTML = "";
                             }
                         }

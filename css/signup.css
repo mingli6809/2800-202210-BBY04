@@ -70,7 +70,9 @@
 
     input[type=submit] {
         text-align: center;
-        padding-left: 0;
+        padding: 0%;
+        height: 15%;
+        width: 40%;
         border-radius: 12px;
         background-color: #00BAC6;
         font-family: 'Inter', sans-serif;

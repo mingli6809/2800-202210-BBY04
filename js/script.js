@@ -31,7 +31,7 @@ GET("/nav", (response) => {
     }));
     window.addEventListener("load", function(){
 
-        if(this.window.location.href.indexOf("/login_landing") > -1 ||this.window.location.href.indexOf("/signup") > -1 ){
+        if(this.window.location.href == "http://localhost:8000/" || this.window.location.href.indexOf("/login_landing") > -1 ||this.window.location.href.indexOf("/signup") > -1 ){
             document.querySelector(".logout").style.display = "none";
             document.querySelector(".profilePage").style.display = "none";
         }

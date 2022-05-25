@@ -206,20 +206,38 @@ GET("/allevents", (response) => {
         input.setAttribute("value", "Delete");
         input.setAttribute("id", "delete");
         input.addEventListener("click", function () {
-            let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
-            POST("/delEvent", function (data) {
-                if (data) {
-                    let dataParsed = JSON.parse(data);
+            document.getElementById("confirmation").style.display = "flex";
+            document.querySelector(".mainContent").classList.add("is-blurred");
 
-                    if (dataParsed.status == "fail") {
-
-                    } else {
-                        location.reload();
-
+            if(document.getElementById("confirmation").style.display != "none"){
+                let confirm = document.getElementById("yes");
+                confirm.addEventListener("click", function(){
+                    let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
+                POST("/delEvent", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+    
+                        if (dataParsed.status == "fail") {
+    
+                        } else {
+                            document.getElementById("rus").style.display = "none";
+                            document.getElementById("button-container").style.display = "none";
+                            document.getElementById("deleted").style.display = "flex";
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 2000);                                 
+                            input.innerHTML = "";
+                        }
                     }
-                }
-
-            }, queryString);
+    
+                }, queryString);
+                })
+                let decline = document.getElementById("no");
+                decline.addEventListener("click",function(){
+                    location.reload();
+                })  
+            }
+            
         })
 
         div.appendChild(p2);

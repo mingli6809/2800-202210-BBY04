@@ -1,4 +1,5 @@
 "use script";
+
 function GET(url, callback) {
 
     const xhr = new XMLHttpRequest();
@@ -29,45 +30,43 @@ GET("/nav", (response) => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }));
-    window.addEventListener("load", function(){
-
-        if(this.window.location.href == "http://localhost:8000/" || this.window.location.href.indexOf("/login_landing") > -1 ||this.window.location.href.indexOf("/signup") > -1 ){
-            document.querySelector(".logout").style.display = "none";
-            document.querySelector(".profilePage").style.display = "none";
+    window.addEventListener("load", function () {
+        if (this.window.location.href.indexOf("/login_landing") > -1 || this.window.location.href.indexOf("/signup") > -1) {
+            this.document.querySelector(".nav-menu").style.display = "none";
+            this.document.querySelector(".hamburger").style.display = "none";
         }
     })
 
-    if (window.location.href.indexOf("/adminUsers") > - 1) {
+    if (window.location.href.indexOf("/adminUsers") > -1) {
         document.getElementById("header").style.position = "sticky";
         document.getElementById("header").style.top = "0";
 
-    } else {}     
+    } else {}
 });
 
-GET("/footer", (res)=>{
+GET("/footer", (res) => {
     let doc = document.querySelector(".footer");
     doc.innerHTML = res;
 });
 
 if (window.location.href == "http://localhost:8000/adminUsers") {
     document.getElementById("footer").style.position = "sticky";
-} else {
-};
+} else {};
 
 let invert = false;
 let footer = document.querySelector(".footer");
-footer.addEventListener("click",function(){
-    footer.addEventListener("click",function(){
-        footer.addEventListener("click",function(){
-            if(document.body.classList.contains("easterEgg")){
+footer.addEventListener("click", function () {
+    footer.addEventListener("click", function () {
+        footer.addEventListener("click", function () {
+            if (document.body.classList.contains("easterEgg")) {
                 document.body.classList.remove("easterEgg");
                 document.querySelector(".nav-menu").style.display = "flex";
             } else {
                 document.body.classList.add("easterEgg");
                 document.querySelector(".nav-menu").style.display = "none";
-                setTimeout(function(){
+                setTimeout(function () {
                     document.querySelector(".nav-menu").style.display = "flex";
-                },6000)
+                }, 6000)
             }
         });
     });

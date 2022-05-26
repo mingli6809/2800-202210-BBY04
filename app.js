@@ -601,7 +601,6 @@ app.get("/EVENTRESULT", function (req, res) {
     function (error, results, fields) {
       if (results != null) {
         res.send(results);
-        console.log(results);
       } else
         res.send(3);
     });

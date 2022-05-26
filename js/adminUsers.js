@@ -99,11 +99,11 @@ GET("/allUsers", (response) => {
                     POST("/updateUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
+                        console.log(data);
                         if (dataParsed.status == "fail") {
                             let errormsg = document.createElement("p");
                             errormsg.setAttribute("id", "error");
-                            let message = document.createTextNode("Something went wrong, try again");
-                            errormsg.appendChild(message);
+                            errormsg.innerHTML = dataParsed.msg;
                             editProfile.appendChild(errormsg);
                         } else {
                             location.reload();

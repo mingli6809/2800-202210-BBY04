@@ -142,7 +142,7 @@ GET("/allevents", (response) => {
                     if (dataParsed.status == "fail") {
                         console.log("fail");
                     } else {
-                         if (dataParsed[0] != null)
+                        if (dataParsed[0] != null)
                             localStorage.setItem("result1", dataParsed[0].Result);
                         else
                             localStorage.setItem("result1", 3);
@@ -279,8 +279,14 @@ GET("/allevents", (response) => {
                     div.innerHTML = "";
                     div.appendChild(editProfile1);
                 } else {
- 
-                    location.reload();
+                    let errormsg = document.createElement("p");
+                    errormsg.setAttribute("id", "error");
+                    let message = document.createTextNode("Please wait for event ending!");
+                    errormsg.appendChild(message);
+                    editProfile.appendChild(errormsg);
+                    input3.addEventListener("click", function (e) {
+                        location.reload();
+                    })
                 }
             })
             GET("/EVENTRESULT1?eventid=" + eventid, function (data) {

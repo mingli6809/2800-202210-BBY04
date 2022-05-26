@@ -77,8 +77,8 @@ GET("/allUsers", (response) => {
 
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
-
-                if (emailInput.value == "" | passInput.value == "") {
+                console.log(emailInput.value.trim().length);
+                if (emailInput.value.trim().length == 0 || passInput.value.toString().trim().length == 0 || emailInput.value.indexOf("@my.bcit.ca") == 0) {
                     let errormsg = document.createElement("p");
                     errormsg.setAttribute("id", "error");
                     let message = document.createTextNode("You have left an input blank. Please try again.");
@@ -99,11 +99,11 @@ GET("/allUsers", (response) => {
                     POST("/updateUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
+                        console.log(data);
                         if (dataParsed.status == "fail") {
                             let errormsg = document.createElement("p");
                             errormsg.setAttribute("id", "error");
-                            let message = document.createTextNode("Something went wrong, try again");
-                            errormsg.appendChild(message);
+                            errormsg.innerHTML = dataParsed.msg;
                             editProfile.appendChild(errormsg);
                         } else {
                             location.reload();

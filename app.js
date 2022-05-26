@@ -34,7 +34,6 @@ const upload = multer({
 });
 
 app.post('/upload-images', upload.array("files"), function (req, res) {
-  console.log(req.files);
   for (let i = 0; i < req.files.length; i++) {
     req.files[i].filename = req.files[i].originalname;
   }
@@ -279,28 +278,42 @@ app.post("/updateUser", function (req, res) {
     database: 'COMP2800'
   });
   connection.connect();
-  let n=req.body.email;
-  let char=n.substring(0,1);
-  if (req.body.email.includes("@my.bcit.ca")&& char!="@" ) {
-    connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
-      [req.body.email, req.body.password, req.body.ID],
-      function (error, results, fields) {
-        if (error) {
-          console.log(error);
-        }
-        res.send({
-          status: "success",
-          msg: "Record updated."
-        });
 
-      });
-    connection.end();
+let n=req.body.email;
+  let char=n.substring(0,1);
+  if (req.body.email.includes("@my.bcit.ca") && char!="@" ) {
+
+    connection.query("Select * from BBY04_user where email = ?", [req.body.email], async function (error1, result1, field1) {
+      if (result1.length == 0) {
+         connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
+          [req.body.email, req.body.password, req.body.ID],
+          function (error, results, fields) {
+            if (error) {
+              console.log(error);
+            }
+            res.send({
+              status: "success",
+              msg: "Record updated."
+            });
+            connection.end();
+          })
+
+      } else {
+        res.send({
+          status: "fail",
+          msg: "User already exists"
+        })
+      }
+      
+    })
+    
   } else {
     res.send({
       status: "fail",
-      msg: "User email is not correct. Use my.bcit.ca"
+      msg: "User email domain is not correct. Use my.bcit.ca"
     })
   }
+  
 
 })
 
@@ -308,7 +321,7 @@ app.post("/delUser", function (req, res) {
   if (req.body.email == req.session.email) {
     res.send({
       status: "fail",
-      msg: "Cannot Delete your own account"
+      msg: "Cannot delete your own account."
     });
   } else {
     let connection = mysql.createConnection({
@@ -680,7 +693,6 @@ app.get("/updatevent", function (req, res) {
     [b, a, 1],
     function (error, results, fields) {
       res.send(results);
-      console.log(results);
     });
 })
 

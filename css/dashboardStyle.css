@@ -8,7 +8,7 @@
 @media screen and (max-width:400px) {
     body {
         display: grid;
-        grid-template-rows: 40% 60%;
+        grid-template-rows: auto 4fr 6fr auto;
         margin: 0px;
         height: 100vh;
     }
@@ -17,8 +17,12 @@
         line-height: 20px;
     }
 
-    #content-area {
+    header{
         grid-row: 1;
+    }
+
+    #content-area {
+        grid-row: 2;
         background-color: white;
         display: flex;
         justify-content: center;
@@ -40,7 +44,7 @@
     }
 
     #dash-area {
-        grid-row: 2;
+        grid-row: 3;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
         display: flex;
@@ -66,13 +70,16 @@
         color:#00BAC6;
         background-color: white;
     }
+    footer{
+        grid-row:4;
+    }
 }
 
 /* 1080p */
 @media screen and (min-width:400px) and (max-width:1080px) {
     body {
         display: grid;
-        grid-template-rows: 40% 60%;
+        grid-template-rows:auto 4fr 6fr auto;
         margin: 0px;
         overflow-y: hidden; 
         overflow-x: hidden;
@@ -83,8 +90,12 @@
         line-height: 20px;
     }
 
-    #content-area {
+    header{
         grid-row: 1;
+    }
+
+    #content-area {
+        grid-row: 2;
         background-color: white;
         display: flex;
         justify-content: center;
@@ -106,7 +117,7 @@
     }
 
     #dash-area {
-        grid-row: 2;
+        grid-row: 3;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
         display: flex;
@@ -132,13 +143,16 @@
         color:#00BAC6;
         background-color: white;
     }
+    footer{
+        grid-row: 4;
+    }
 }
 
 /* 1440p */
 @media screen and (min-width:1080px) {
     body {
         display: grid;
-        grid-template-rows: 40% 60%;
+        grid-template-rows:auto 4fr 6fr auto;
         margin: 0px;
         overflow-y: hidden; 
         overflow-x: hidden;
@@ -149,8 +163,11 @@
         line-height: 20px;
     }
 
+    header{
+        grid-row:1;
+    }
     #content-area {
-        grid-row: 1;
+        grid-row: 2;
         background-color: white;
         display: flex;
         justify-content: center;
@@ -171,7 +188,7 @@
     }
 
     #dash-area {
-        grid-row: 2;
+        grid-row: 3;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
         display: flex;
@@ -196,5 +213,8 @@
     .loginbtn:hover{
         color:#00BAC6;
         background-color: white;
+    }
+    footer{
+        grid-row: 4;
     }
 }

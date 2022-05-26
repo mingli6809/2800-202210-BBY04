@@ -13,11 +13,14 @@ footer{
     body{
         height:100vh;
         display: grid;
-        grid-template-rows:1fr 1fr;
+        grid-template-rows:auto 1fr 1fr auto;
     }
 
-    #main-content {
+    header{
         grid-row: 1;
+    }
+    #main-content {
+        grid-row: 2;
         margin: 10%;
         text-align: center;
         background: white;
@@ -28,7 +31,7 @@ footer{
     }
     
     #other-half {
-        grid-row: 2;
+        grid-row: 3;
         background-color: #9FECEC;
         display: flex;
         flex-direction: column;
@@ -63,6 +66,7 @@ footer{
     }
 
     footer{
+        grid-row: 4;
         background-color: #9FECEC; 
         font-family: 'Inter', sans-serif;
     }
@@ -126,25 +130,31 @@ footer{
     body{
         height:100vh;
         display: grid;
-        grid-template-rows:1fr 1fr;
+        grid-template-rows:auto 1fr 1fr auto;
     }
 
-    #main-content {
+    header{
         grid-row: 1;
+    }
+    #main-content {
+        grid-row: 2;
         margin:0%;
         margin-top: 5%;
         background: white;
     }
     
     #other-half {
-        grid-row: 2;
+        grid-row: 3;
         background-color: #9FECEC;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        padding: 5% 0 5% 0;
+        padding: 0% 0 5% 0;
     }
 
+    footer{
+        grid-row: 4;
+    }
     .loginbtn{
         width:30%;
         height:50%;

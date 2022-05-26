@@ -15,9 +15,8 @@ body {
     position: relative;
     padding: 0%;
     margin: 0%;
-    height: 100vh;
+    height: 83vh;
     width: 100%;
-    overflow: scroll;
 }
 
 .userCards {
@@ -28,8 +27,8 @@ body {
 }
 
 .displayUsers {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -109,6 +108,7 @@ input[type=password] {
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow-y: scroll;
     }
 
     #submit{
@@ -247,6 +247,7 @@ input[type=password] {
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
+        overflow-y: scroll;
     }
 
     .userCards {
@@ -353,6 +354,9 @@ input[type=password] {
 
 /* 1440p */
 @media screen and (min-width:1080px) {
+    body{
+        height: 75vh;
+    }
 
     h1{
         color: #3D3D67;
@@ -369,6 +373,7 @@ input[type=password] {
         align-items: center;
         grid-template-rows: auto;
         grid-gap: 1rem;
+        overflow-y: scroll;
     }
 
     .userCards {

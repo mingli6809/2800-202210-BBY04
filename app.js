@@ -311,9 +311,9 @@ app.post("/updateUser", function (req, res) {
 
   if (req.body.email.includes("@my.bcit.ca")) {
 
-    connection.query("Select * from BBY04_user where email = ?", [req.body.email], function (error1, result1, field1) {
+    connection.query("Select * from BBY04_user where email = ?", [req.body.email], async function (error1, result1, field1) {
       if (result1.length == 0) {
-        connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
+         connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
           [req.body.email, req.body.password, req.body.ID],
           function (error, results, fields) {
             if (error) {
@@ -323,7 +323,7 @@ app.post("/updateUser", function (req, res) {
               status: "success",
               msg: "Record updated."
             });
-
+            connection.end();
           })
 
       } else {
@@ -332,15 +332,16 @@ app.post("/updateUser", function (req, res) {
           msg: "User already exists"
         })
       }
+      
     })
-
+    
   } else {
     res.send({
       status: "fail",
       msg: "User email domain is not correct. Use my.bcit.ca"
     })
   }
-  connection.end();
+  
 
 })
 

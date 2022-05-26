@@ -175,12 +175,15 @@
     body {
         height: 100vh;
         display: grid;
-        grid-template-rows: 40% 60%;
+        grid-template-rows:auto 4fr 6fr auto;
         margin: 0%;
     }
 
-    #sign-up {
+    header{
         grid-row: 1;
+    }
+    #sign-up {
+        grid-row: 2;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -195,11 +198,14 @@
     }
 
     #input-forms {
-        grid-row: 2;
+        grid-row: 3;
         display: inline;
         text-align: center;
         font-family: 'Inter', sans-serif;
         background-color: #9FECEC;
+    }
+    footer{
+        grid-row: 4;
     }
 
     input {
@@ -246,8 +252,8 @@
     }
 
     input[type=submit]:hover {
-        background-color: #148891;
-        color: white;
+        background-color: white;
+        color: #00BAC6;
     }
 
 }

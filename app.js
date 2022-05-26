@@ -34,7 +34,6 @@ const upload = multer({
 });
 
 app.post('/upload-images', upload.array("files"), function (req, res) {
-  console.log(req.files);
   for (let i = 0; i < req.files.length; i++) {
     req.files[i].filename = req.files[i].originalname;
   }
@@ -703,7 +702,6 @@ app.get("/updatevent", function (req, res) {
     [b, a, 1],
     function (error, results, fields) {
       res.send(results);
-      console.log(results);
     });
 })
 

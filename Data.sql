@@ -27,4 +27,4 @@ CREATE DATABASE IF NOT EXISTS COMP2800;
           FOREIGN KEY(USERID)  REFERENCES bby04_user(ID)
           ON DELETE CASCADE
           ); 
-        INSERT INTO BBY04_user (email, password,code) values ("admin@my.bcit.ca", "333", "123");
+        INSERT IGNORE INTO BBY04_user (ID,email, password,code) values (1,"admin@my.bcit.ca", "333", "123");

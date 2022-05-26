@@ -279,7 +279,7 @@ GET("/allevents", (response) => {
                     div.innerHTML = "";
                     div.appendChild(editProfile1);
                 } else {
-                    alert("please wait until event end!");
+ 
                     location.reload();
                 }
             })

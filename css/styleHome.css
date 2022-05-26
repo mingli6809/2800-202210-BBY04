@@ -150,6 +150,12 @@ body {
     margin-left: 110px;
     font-size: medium;
 }
+
+#back3:hover {
+    background-color: white;
+    color: #00BAC6;
+}
+
 #back4 {
     display:block;
     margin: 0 auto;
@@ -162,6 +168,12 @@ body {
    
     font-size: medium;
 }
+
+#back4:hover {
+    background-color: white;
+    color: #00BAC6;
+}
+
 #back1 {
     margin: 0 2px 2px 2px;
     width: 50%;
@@ -172,6 +184,11 @@ body {
     border: 0px;
     margin-right: 10px;
     font-size: medium;
+}
+
+#back1:hover {
+    background-color: white;
+    color: #00BAC6;
 }
 
 #content{
@@ -187,7 +204,7 @@ body {
 
 }
 
-#submit {
+#submit, #submit1 {
     margin: 0 2px 2px 2px;
     width: 25%;
     height: 20%;
@@ -198,19 +215,6 @@ body {
     margin-left: 20px;
     font-size: medium;
 }
-
-#submit1 {
-    margin: 0 2px 2px 2px;
-    width: 25%;
-    height: 20%;
-    background-color: #00BAC6;
-    border-radius: 10px;
-    color: white;
-    border: 0px;
-    margin-left: 5px;
-    font-size: medium;
-}
-
 
 #submit2 {
     margin: 0 2px 2px 2px;
@@ -223,6 +227,34 @@ body {
     /* margin-left: 10px; */
     font-size: large;
 }
+
+#submit:hover {
+    color: #00BAC6;
+    background-color: white;
+}
+
+.btn:hover {
+    color: #00BAC6;
+    background-color: white;
+}
+
+
+#submit1:hover {
+    color: #00BAC6;
+    background-color: white;
+}
+
+
+#back:hover {
+    color: #00BAC6;
+    background-color: white;
+}
+
+#submit2:hover {
+    color: #00BAC6;
+    background-color: white;
+}
+
 
 .avatar {
     width: 75px;
@@ -262,6 +294,8 @@ body {
         padding:0%;
         margin: 12px;
     }
+
+
     .userCards {
         border-radius: 20px;
         margin: 5px;
@@ -291,10 +325,6 @@ body {
         font-size: large;
     }
 
-    .btn:hover {
-        color: #00BAC6;
-        background-color: white;
-    }
 
     .error {
         color: red;

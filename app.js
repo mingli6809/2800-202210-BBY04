@@ -279,8 +279,9 @@ app.post("/updateUser", function (req, res) {
     database: 'COMP2800'
   });
   connection.connect();
-
-  if (req.body.email.includes("@my.bcit.ca")) {
+  let n=req.body.email;
+  let char=n.substring(0,1);
+  if (req.body.email.includes("@my.bcit.ca")&& char!="@" ) {
     connection.query('UPDATE BBY04_user SET email = ? , password = ? WHERE ID = ?',
       [req.body.email, req.body.password, req.body.ID],
       function (error, results, fields) {
@@ -297,7 +298,7 @@ app.post("/updateUser", function (req, res) {
   } else {
     res.send({
       status: "fail",
-      msg: "User email domain is not correct. Use my.bcit.ca"
+      msg: "User email is not correct. Use my.bcit.ca"
     })
   }
 

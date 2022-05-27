@@ -152,9 +152,7 @@ footer{
         padding: 0% 0 5% 0;
     }
 
-    footer{
-        grid-row: 4;
-    }
+    
     .loginbtn{
         width:30%;
         height:50%;
@@ -170,7 +168,9 @@ footer{
         background-color: #00BAC6; 
     }
     footer{
+        grid-row: 4;
         background-color: #9FECEC;
         font-size: 0.9em; 
     }
 }
+

@@ -38,7 +38,7 @@ function POST(url, callback, data) {
 
 GET("/allUsers", (response) => {
     response = JSON.parse(response);
-    console.log(response);
+    
     for (let i = 0; i < response.length; i++) {
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");
@@ -61,12 +61,12 @@ GET("/allUsers", (response) => {
             p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
-            emailInput.setAttribute("placeholder", "Email");
+            emailInput.setAttribute("placeholder", "Email*");
             emailInput.setAttribute("id", "email");
             
             let passInput = document.createElement("input");
             passInput.setAttribute("type","Password");
-            passInput.setAttribute("placeholder", "Password");
+            passInput.setAttribute("placeholder", "Password*");
             passInput.setAttribute("id", "pass");
 
             let submit = document.createElement("input");
@@ -77,8 +77,8 @@ GET("/allUsers", (response) => {
 
             submit.addEventListener("click", function (e) {
                 e.preventDefault();
-
-                if (emailInput.value == "" | passInput.value == "") {
+                console.log(emailInput.value.trim().length);
+                if (emailInput.value.trim().length == 0 || passInput.value.toString().trim().length == 0 || emailInput.value.indexOf("@my.bcit.ca") == 0) {
                     let errormsg = document.createElement("p");
                     errormsg.setAttribute("id", "error");
                     let message = document.createTextNode("You have left an input blank. Please try again.");
@@ -99,11 +99,11 @@ GET("/allUsers", (response) => {
                     POST("/updateUser", function (data) {
                     if (data) {
                         let dataParsed = JSON.parse(data);
+                        console.log(data);
                         if (dataParsed.status == "fail") {
                             let errormsg = document.createElement("p");
                             errormsg.setAttribute("id", "error");
-                            let message = document.createTextNode("Something went wrong, try again");
-                            errormsg.appendChild(message);
+                            errormsg.innerHTML = dataParsed.msg;
                             editProfile.appendChild(errormsg);
                         } else {
                             location.reload();
@@ -139,31 +139,54 @@ GET("/allUsers", (response) => {
         input2.setAttribute("id", "delUser");
         let div2 = document.createElement("div");
         input2.addEventListener("click", function () {
-            input2.addEventListener("click", function (e) {
+            document.querySelector(".displayUsers").classList.add("is-blurred");
+            document.getElementById("confirmation").style.display = "flex";
+            let confirm = document.getElementById("yes");
+            let decline = document.getElementById("no");
+            
+            confirm.addEventListener("click", function (e) {
                 e.preventDefault();
-                let queryString = "email=" + response[i].email;
-                POST("/delUser", function (data) {
-                    if (data) {
-                        let dataParsed = JSON.parse(data);
-                        
-                        if (dataParsed.status == "fail") {
+                if(document.getElementById("confirmation").style.display != "none"){
+                    let queryString = "email=" + response[i].email;
+                    POST("/delUser", function (data) {
+                        if (data) {
+                            let dataParsed = JSON.parse(data);
                             
-                            div2.setAttribute("class", "error");
-                            div2.innerHTML = dataParsed.msg;
-                            
-                            div.appendChild(div2);
-                            setTimeout(function(){
-                                div2.style.display = "none";
-                            }, 5000)
-                        } else {
-                            localStorage.setItem(`email${response[i].ID}`, response[i].email);
-                            location.reload();
-                            div2.innerHTML = "";
+                            if (dataParsed.status == "fail") {
+                                
+                                div2.setAttribute("id", "error");
+                                div2.innerHTML = dataParsed.msg;
+                                
+                                div.appendChild(div2);
+                                setTimeout(function(){
+                                    div2.style.display = "none";
+                                    location.reload();
+                                }, 2000)
+                                document.querySelector(".displayUsers").classList.remove("is-blurred");
+                                document.getElementById("confirmation").style.display = "none";
+                            } else {
+                                localStorage.setItem(`email${response[i].ID}`, response[i].email);
+                                document.getElementById("rus").style.display = "none";
+                                document.getElementById("button-container").style.display = "none";
+                                document.getElementById("deleted").style.display = "flex";
+                                setTimeout(function(){
+                                    window.location.reload();
+                                }, 2000);                                 
+                                div2.innerHTML = "";
+                            }
                         }
-                    }
-
-                }, queryString);
+    
+                    }, queryString);
+                }
+                
             });
+            decline.addEventListener("click",function(e){
+                e.preventDefault();
+                if(document.getElementById("confirmation").style.display != "none"){
+                    location.reload();
+                }
+
+            })
         })
         div.appendChild(p1);
         div.appendChild(p2);

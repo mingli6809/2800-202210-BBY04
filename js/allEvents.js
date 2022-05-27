@@ -63,7 +63,9 @@ create.addEventListener("click", async function (e) {
         let des = tinyMCE.get('description').getContent();
 
         let img = document.getElementById("addImage");
-        
+        if(img.files.length == 0){
+            document.getElementById("error").innerHTML = "Image not added";
+        } else {
             const imgForm = new FormData();
             imgForm.append("files", img.files[0]);
     
@@ -76,7 +78,7 @@ create.addEventListener("click", async function (e) {
             const imageResJson = await imageRes.json()
         
         
-        if(instName == "" || eventName == "" || strtDate == "" || endDate == "" || des == ""){
+        if(instName == "" || eventName == "" || strtDate == "" || endDate == "" || des == "" ){
             document.getElementById("error").innerHTML = "Values cannot be empty";
         } else{
             let queryString = "instituteName=" + instName + "&eventName=" + eventName +
@@ -96,6 +98,8 @@ create.addEventListener("click", async function (e) {
 
         }, queryString);
         }
+        }
+            
     }
 })
 
@@ -148,8 +152,17 @@ GET("/allevents", (response) => {
         input1.setAttribute("value", "Edit");
         input1.setAttribute("id", "edit");
         input1.addEventListener("click", function () {
+
+
+            document.getElementById("editInstitute").value = data.InstituteName;
+            document.getElementById("editEvent").value = data.EventName;
+            document.getElementById("editSDate").value = strtingDate;
+            document.getElementById("editEDate").value = endingDate;
+
+
             document.getElementById("editingEvent").style.display = "flex";
             document.querySelector(".mainContent").classList.add("is-blurred");
+            
             let edit = document.getElementById("submit-edit");
             edit.addEventListener("click", async function (e) {
                 if (document.getElementById("editingEvent").style.display == "flex");
@@ -206,20 +219,38 @@ GET("/allevents", (response) => {
         input.setAttribute("value", "Delete");
         input.setAttribute("id", "delete");
         input.addEventListener("click", function () {
-            let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
-            POST("/delEvent", function (data) {
-                if (data) {
-                    let dataParsed = JSON.parse(data);
+            document.getElementById("confirmation").style.display = "flex";
+            document.querySelector(".mainContent").classList.add("is-blurred");
 
-                    if (dataParsed.status == "fail") {
-
-                    } else {
-                        location.reload();
-
+            if(document.getElementById("confirmation").style.display != "none"){
+                let confirm = document.getElementById("yes");
+                confirm.addEventListener("click", function(){
+                    let queryString = "eventName=" + data.EventName + "&instituteName=" + data.InstituteName;
+                POST("/delEvent", function (data) {
+                    if (data) {
+                        let dataParsed = JSON.parse(data);
+    
+                        if (dataParsed.status == "fail") {
+    
+                        } else {
+                            document.getElementById("rus").style.display = "none";
+                            document.getElementById("button-container").style.display = "none";
+                            document.getElementById("deleted").style.display = "flex";
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 2000);                                 
+                            input.innerHTML = "";
+                        }
                     }
-                }
-
-            }, queryString);
+    
+                }, queryString);
+                })
+                let decline = document.getElementById("no");
+                decline.addEventListener("click",function(){
+                    location.reload();
+                })  
+            }
+            
         })
 
         div.appendChild(p2);

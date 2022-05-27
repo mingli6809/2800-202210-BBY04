@@ -21,11 +21,14 @@
         position: relative;
         height: 100vh;
         display: grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows:auto 1fr 1fr auto;
+    }
+    header{
+        grid-row: 1;
     }
 
     #avatar-div {
-        grid-row: 1;
+        grid-row: 2;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -37,9 +40,13 @@
     }
 
     #profile-info {
-        grid-row: 2;
+        grid-row: 3;
         text-align: center;
         background-color: #9FECEC;
+    }
+
+    footer {
+        grid-row:4;
     }
 
     h1 {
@@ -100,11 +107,15 @@
         position: relative;
         height: 100vh;
         display: grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: auto 1fr 1fr auto;
+    }
+
+    header{
+        grid-row:1;
     }
 
     #avatar-div {
-        grid-row: 1;
+        grid-row: 2;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -116,7 +127,7 @@
     }
 
     #profile-info {
-        grid-row: 2;
+        grid-row: 3;
         text-align: center;
         background-color: #9FECEC;
     }
@@ -126,6 +137,10 @@
         color: #3D3D67;
         font-family: 'Judson', serif;
         margin-bottom: 2%;
+    }
+    
+    footer{
+        grid-row: 4;
     }
 
     #input {
@@ -180,11 +195,15 @@
         position: relative;
         height: 100vh;
         display: grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows:auto 1fr 1fr auto;
+    }
+
+    header{
+        grid-row: 1;
     }
 
     #avatar-div {
-        grid-row: 1;
+        grid-row: 2;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -196,17 +215,20 @@
     }
 
     #profile-info {
-        grid-row: 2;
+        grid-row: 3;
         text-align: center;
         background-color: #9FECEC;
     }
 
     h1 {
-        margin-top: 2%;
+        margin-top: 2px;
         color: #3D3D67;
         font-family: 'Judson', serif;
-        margin-bottom: 2%;
+        margin-bottom: 2px;
         font-size: 64px;
+    }
+    footer{
+        grid-row: 4;
     }
 
     #input {
@@ -222,7 +244,7 @@
         border: none;
         font-size: x-large;
         border-radius: 8px;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
 
     input[type=text] {

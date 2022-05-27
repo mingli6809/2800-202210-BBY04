@@ -88,7 +88,7 @@
 
 }
 
-/* 1080p */
+/* 400px and 1080px */
 @media screen and (min-width:400px) and (max-width:1080px) {
     body {
         height: 100vh;

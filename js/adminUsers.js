@@ -38,7 +38,7 @@ function POST(url, callback, data) {
 
 GET("/allUsers", (response) => {
     response = JSON.parse(response);
-    console.log(response);
+    
     for (let i = 0; i < response.length; i++) {
         let div = document.createElement("div");
         div.setAttribute("class", "userCards");
@@ -61,12 +61,12 @@ GET("/allUsers", (response) => {
             p.setAttribute("class", "error");
             let emailInput = document.createElement("input");
             emailInput.setAttribute("type", "email");
-            emailInput.setAttribute("placeholder", "Email");
+            emailInput.setAttribute("placeholder", "Email*");
             emailInput.setAttribute("id", "email");
             
             let passInput = document.createElement("input");
             passInput.setAttribute("type","Password");
-            passInput.setAttribute("placeholder", "Password");
+            passInput.setAttribute("placeholder", "Password*");
             passInput.setAttribute("id", "pass");
 
             let submit = document.createElement("input");
@@ -154,13 +154,14 @@ GET("/allUsers", (response) => {
                             
                             if (dataParsed.status == "fail") {
                                 
-                                div2.setAttribute("class", "error");
+                                div2.setAttribute("id", "error");
                                 div2.innerHTML = dataParsed.msg;
                                 
                                 div.appendChild(div2);
                                 setTimeout(function(){
                                     div2.style.display = "none";
-                                }, 5000)
+                                    location.reload();
+                                }, 2000)
                                 document.querySelector(".displayUsers").classList.remove("is-blurred");
                                 document.getElementById("confirmation").style.display = "none";
                             } else {

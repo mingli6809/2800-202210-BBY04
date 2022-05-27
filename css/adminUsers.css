@@ -38,6 +38,7 @@ body {
     font-family: 'Inter', sans-serif;
     text-align: center;
     padding-top: 2px;
+    font-size: larger;
 }
 
 .card-text{

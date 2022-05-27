@@ -6,7 +6,9 @@
 
 ## General Info
 StudentVote is an app made by students, for students, to be able to vote for what we feel is important.
-This webapp is written with HTML, JS, and CSS, running off of NodeJS and it's modules: mysql2, express, and express-sessions.
+The app focuses on empowering students by giving them a platform to express their voices. Please use "@my.bcit.ca"
+as your domain for your email as it is an app made for the client and the client wanted it for bcit app.
+
 
 ## Developers
 StudentVote is written with care by Team BBY04:
@@ -15,61 +17,115 @@ StudentVote is written with care by Team BBY04:
 * Ming Li 2C
 * Dalibor Cavlovic 2C
 
+## Technology
+Technologies used for this project:
+* HTML, CSS
+* JavaScript
+* Node 
+* Heroku
+* MySQL
+* Node modules - mysql2, express, express-sessions, and multer.
+
 ## Contents
 Contents of the project folder are:
 
 ```
-Top level of project folder:
-├── .vscode                         # Settings for VSCode
-├── common                          # Folder for common files
-├── css                             # Folder for css
-├── img                             # Folder for images
-├── js                              # Folder for js
-├── .gitattributes                  # Folder for git
-├── .gitignore                      # Git ignore files
-├── Readme.md                       # Readme file
-├── adminUsers.html                 # HTML page to show all accounts
-├── app.js                          # Primary JS file
-├── dashboard.html                  # HTML dashboard for admins
-├── database.sql                    # SQL database
-├── home.html                       # HTML homepage for users
-├── landingpage.html                # HTML landing page for users and admins
-├── login.html                      # HTML login page for users and admins
-├── signup.html                     # HTML signup page for users and admins
-
-It has the following subfolders and files:
-├── common                          # Folder for common files
-    ├── nav.html                        # HTML navbar
-├── css                             # Folder for css
-    ├── adminUsers.css                  # Style for adminUsers.html
-    ├── dashboardStyle.css              # Style for dashboard.html
-    ├── landingPage.css                 # Style for landingpage.html
-    ├── login.css                       # Style for login.html
-    ├── signup.css                      # Style for signup.html
-    ├── style.css                       # Style for header.html and footer.html
-    ├── styleHome.css                   # Style for home.html
-├── img                             # Folder for images
-    ├── Contact.svg                     # Image for "Email" icon
-    ├── Key.svg                         # Image for "Admin Code" icon
-    ├── Pass.svg                        # Image for "Password" icon
-    ├── StudentVote.png                 # Image for logo
-    ├── StudentVoterLogoResized.png     # Image for resized logo
-    ├── close.png                       # Image for "Close" icon
-    ├── contact.png                     # Image for "Contact Us" icon
-    ├── download.png                    # Image of hand holding loudspeaker
-    ├── hamburger.png                   # Image for hamburger menu
-    ├── home.png                        # Image for "Home" icon
-    ├── images.png                      # Image of ballot box
-    ├── power.png                       # Image for "Logout" icon
-    ├── settings.png                    # Image for "Settings" icon
-    ├── vote.png                        # Image for "Past Votes" icon
-    ├── voting-box.png                  # Image for favicon
-    ├── voting.jpg                      # Image of someone voting
-├── js                              # Folder for js
-    ├── dashboard.js                    # JS for dashboard.html
-    ├── home.js                         # JS for home.html
-    ├── landingPage.js                  # JS for landingpage.html
-    ├── login.js                        # JS for login.html
-    ├── signup.js                       # JS for signup.html
+|   .gitattributes
+|   .gitignore
+|   adminUsers.html
+|   allEvents.html
+|   app.js
+|   createUser.html
+|   dashboard.html
+|   Data.sql
+|   database.sql
+|   home.html
+|   landingpage.html
+|   login.html
+|   package-lock.json
+|   package.json
+|   profilePage.html
+|   ProfilePage_icon.html
+|   Readme.md
+|   signup.html
+|   template.html
+|
++---.vscode
+|       settings.json
+|
++---common
+|       footer.html
+|       nav.html
+|
++---css
+|       adminUsers.css
+|       allEvent.css
+|       dashboardStyle.css
+|       landingPage.css
+|       login.css
+|       profilePage-Icon.css
+|       profilePage.css
+|       signup.css
+|       style.css
+|       styleHome.css
+|
++---img
+|       close.png
+|       contact.png
+|       Contact.svg
+|       default.png
+|       download.png
+|       DummyImageUploadFile.png
+|       event1.png
+|       event10.png
+|       event11.png
+|       event1653603692183.png
+|       event1653603821418.png
+|       event1653604039635.png
+|       event1653604336217.png
+|       event1653604361636.png
+|       event1653604393028.png
+|       event2.png
+|       event3.png
+|       event4.png
+|       event5.png
+|       event6.png
+|       event7.png
+|       event8.png
+|       event9.png
+|       hamburger.png
+|       home.png
+|       images.jpg
+|       Key.svg
+|       my1.png
+|       my11.png
+|       my14.png
+|       my6.png
+|       my7.png
+|       my8.png
+|       Pass.svg
+|       power.png
+|       StudentVote.png
+|       StudentVoterLogoResized.png
+|       vote.png
+|       vote1.png
+|       vote2.png
+|       voting-box.png
+|       voting.jpg
+|
+\---js
+        adminUsers.js
+        allEvents.js
+        createUser.js
+        dashboard.js
+        home.js
+        landingPage.js
+        login.js
+        profilePage.js
+        profilePage_icon.js
+        script.js
+        signup.js
+        tinyEditor.js
+        userprofileicon.js
 
 ```

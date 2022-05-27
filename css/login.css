@@ -1,0 +1,250 @@
+/* Judson */
+@import url('https://fonts.googleapis.com/css2?family=Judson:wght@700&display=swap');
+
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+#failedLogin{
+    color:red;
+    display:none;
+    font-family: 'Inter', sans-serif;
+    margin-top: 20px;
+}
+
+/* iPhone 12 Pro */
+@media screen and (max-width:400px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto 4fr 6fr auto;
+        margin: 0%;
+        overflow: hidden;
+    }
+
+    header{
+        grid-row: 1;
+    }
+    #sign-up {
+        grid-row: 2;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sign-up-text {
+        color: #3D3D67;
+        font-family: 'Judson', serif;
+        padding-top: 20px;
+        font-size: 64px;
+    }
+
+    #input-forms {
+        grid-row: 3;
+        display: inline;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        background-color: #9FECEC;
+    }
+
+    footer{
+        grid-row: 4;
+    }
+
+    input {
+        width: 60%;
+        padding: 20px;
+        padding-left: 50px;
+        border: none;
+        font-size: x-large;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    input[type=email] {
+        background-image: url(/img/Contact.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+        margin-top: 50px;
+    }
+    
+    input[type=password] {
+        background-image: url(/img/Pass.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+        margin-top: 20px;
+    }
+
+    input[type=submit] {
+        text-align: center;
+        padding-left: 0;
+        border-radius: 12px;
+        background: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        margin-top: 30px;
+    }
+
+}
+
+/* 1080p */
+@media screen and (min-width:400px) and (max-width:1080px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto 4fr 6fr auto;
+        margin: 0%;
+    }
+    header{
+        grid-row: 1;
+    }
+
+    #sign-up {
+        grid-row: 2;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sign-up-text {
+        color: #3D3D67;
+        padding-top: 10px;
+        font-family: 'Judson', serif;
+        font-size: 80px;
+    }
+
+    #input-forms {
+        grid-row: 3;
+        display: inline;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        background-color: #9FECEC;
+    }
+
+    footer{
+        grid-row: 4;
+    }
+
+    input {
+        width: 60%;
+        padding: 20px;
+        padding-left: 50px;
+        border: none;
+        font-size: x-large;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    input[type=email] {
+        background-image: url(/img/Contact.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+        margin-top: 80px;
+    }
+
+    input[type=password] {
+        background-image: url(/img/Pass.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+    }
+
+    input[type=submit] {
+        text-align: center;
+        margin-top: 20px;
+        padding-left: 0;
+        border-radius: 12px;
+        background-color: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        margin-top: 30px;
+    }
+
+}
+
+/* 1440p */
+@media screen and (min-width:1080px) {
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 40% 60%;
+        margin: 0%;
+    }
+
+    #sign-up {
+        grid-row: 1;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sign-up-text {
+        color: #3D3D67;
+        padding-top: 40px;
+        font-family: 'Judson', serif;
+        font-size: 100px;
+    }
+
+    #input-forms {
+        grid-row: 2;
+        display: inline;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+        background-color: #9FECEC;
+    }
+
+    input {
+        width: 60%;
+        padding: 20px;
+        padding-left: 60px;
+        border: none;
+        font-size: x-large;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    input[type=email] {
+        background-image: url(/img/Contact.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+        margin-top: 50px;
+    }
+
+    input[type=text] {
+        background-image: url(/img/Key.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+    }
+
+    input[type=password] {
+        background-image: url(/img/Pass.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-x: 5px;
+    }
+
+    input[type=submit] {
+        text-align: center;
+        margin-top: 20px;
+        padding-left: 0;
+        border-radius: 12px;
+        background-color: #00BAC6;
+        font-family: 'Inter', sans-serif;
+        color: white;
+        transition-duration: 0.2s;
+        margin-top: 10px;
+    }
+
+    input[type=submit]:hover {
+        background-color: white;
+        color: #00BAC6;
+    }
+
+}

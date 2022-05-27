@@ -28,6 +28,4 @@ CREATE DATABASE IF NOT EXISTS COMP2800;
           ON DELETE CASCADE
           ); 
         INSERT IGNORE INTO BBY04_user (ID,email, password,code) values (1,"admin@my.bcit.ca", "333", "123");
-        INSERT INTO BBY04_user (email, password,code) values ("sumit@my.bcit.ca", "123", "123");
-        INSERT INTO BBY04_user (email, password,code) values ("eugene@my.bcit.ca", "333", "");
 
